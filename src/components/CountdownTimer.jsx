@@ -16,7 +16,9 @@ export default function CountdownTimer() {
   const [time, setTime] = useState(calculateRemaining());
 
   useEffect(() => {
-    const id = setInterval(() => setTime(calculateRemaining()), 1000);
+    const id = setInterval(() => {
+      setTime(calculateRemaining());
+    }, 1000);
     return () => clearInterval(id);
   }, []);
 
@@ -28,35 +30,45 @@ export default function CountdownTimer() {
   ];
 
   return (
-    <section className="py-20 bg-charcoal relative overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gold/5 blur-3xl" />
+    <section className="py-12 bg-cream relative overflow-hidden border-y border-emerald-dark/10">
+      {/* Subtle ambient glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[100px] rounded-full bg-gold/5 blur-3xl pointer-events-none" />
 
-      <div className="max-w-4xl mx-auto px-4 relative z-10 text-center">
-        <span className="text-gold text-xs tracking-[0.3em] uppercase font-semibold">Mark Your Calendar</span>
-        <h2 className="font-heading text-3xl sm:text-4xl text-cream mt-2 mb-12">
-          Days Until Ashara Mubarak
-        </h2>
+      <div className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 px-4 max-w-5xl mx-auto">
 
-        <div className="flex justify-center gap-4 sm:gap-8">
+        {/* Minimal Title */}
+        <div className="text-center md:text-right">
+          <span className="text-gold text-[10px] tracking-[0.3em] uppercase font-semibold block mb-1 opacity-80">
+            Approaching
+          </span>
+          <h2 className="font-heading text-2xl sm:text-3xl text-emerald-dark">
+            Ashara Mubarak
+          </h2>
+        </div>
+
+        {/* Divider for desktop */}
+        <div className="hidden md:block w-px h-16 bg-gradient-to-b from-transparent via-gold/20 to-transparent" />
+
+        {/* The Timer */}
+        <div className="flex justify-center gap-3 sm:gap-6">
           {boxes.map((b) => (
-            <div
-              key={b.label}
-              className="animate-glow rounded-2xl bg-emerald-dark/60 backdrop-blur-md border border-gold/20 p-4 sm:p-6 w-20 sm:w-28"
-            >
-              <span className="block font-heading text-3xl sm:text-5xl text-gold font-bold tabular-nums">
-                {String(b.value).padStart(2, '0')}
-              </span>
-              <span className="block text-cream/50 text-xs sm:text-sm mt-2 uppercase tracking-widest">
+            <div key={b.label} className="flex flex-col items-center">
+              <div className="rounded-xl bg-white border border-emerald-dark/10 p-3 w-[72px] sm:w-[88px] text-center shadow-sm hover:shadow-md transition-all">
+                <span
+                  className={`block font-heading text-3xl sm:text-4xl text-gold font-bold tabular-nums ${b.label === 'Seconds' ? 'animate-count-change' : ''
+                    }`}
+                  key={b.value}
+                >
+                  {String(b.value).padStart(2, '0')}
+                </span>
+              </div>
+              <span className="text-charcoal/60 text-[10px] mt-2 uppercase tracking-[0.2em] font-medium">
                 {b.label}
               </span>
             </div>
           ))}
         </div>
 
-        <p className="text-cream/40 text-sm mt-10">
-          Live relay will be available across all centres in Bhopal
-        </p>
       </div>
     </section>
   );

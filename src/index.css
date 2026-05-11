@@ -74,3 +74,13 @@ body {
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.15);
 }
+
+/* Count change animation */
+@keyframes countChange {
+  0% { transform: scale(1.15); opacity: 0.6; }
+  50% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.animate-count-change {
+  animation: countChange 0.4s ease-out;
+}

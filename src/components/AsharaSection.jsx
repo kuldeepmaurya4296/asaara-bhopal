@@ -31,18 +31,14 @@ export default function AsharaSection() {
         </div>
 
         <div className="flex flex-col lg:flex-row items-center gap-12">
-          {/* Left – Visual */}
+          {/* Left – Image */}
           <div className="lg:w-1/2">
             <div className="relative">
-              <div className="w-full aspect-[4/3] rounded-2xl bg-gradient-to-br from-gold/20 to-emerald-light/30 border border-gold/20 flex items-center justify-center overflow-hidden">
-                <div className="text-center p-8">
-                  <div className="w-24 h-24 rounded-full bg-gold/20 border-2 border-gold/40 flex items-center justify-center mx-auto mb-4">
-                    <span className="font-heading text-4xl text-gold font-bold">ﷺ</span>
-                  </div>
-                  <p className="font-heading text-2xl text-gold mb-2">Ashara Mubarak</p>
-                  <p className="text-cream/60 text-sm">1448 Hijri • Bhopal</p>
-                </div>
-              </div>
+              <img
+                src="/Ashara1447.jpg"
+                alt="Ashara Mubarak 1447H"
+                className="w-full rounded-2xl shadow-xl object-contain border border-gold/20"
+              />
               {/* Decorative corner */}
               <div className="absolute -top-4 -left-4 w-8 h-8 border-t-2 border-l-2 border-gold/40 rounded-tl-lg" />
               <div className="absolute -bottom-4 -right-4 w-8 h-8 border-b-2 border-r-2 border-gold/40 rounded-br-lg" />
