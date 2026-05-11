@@ -1,39 +1,6 @@
 import { MapPin, Phone, ExternalLink } from 'lucide-react';
-
-const masjids = [
-  {
-    name: 'Tajul Masajid',
-    desc: 'One of the largest mosques in Asia, a historical landmark of Bhopal with magnificent architecture.',
-    address: 'Kohefiza, Bhopal, MP 462001',
-    phone: '+91-9876543211',
-    mapLink: 'https://maps.google.com/?q=Tajul+Masajid+Bhopal',
-    color: 'from-emerald-dark to-emerald-light',
-  },
-  {
-    name: 'Saifee Masjid',
-    desc: 'Renowned for its vibrant community services and beautiful interiors.',
-    address: 'Nawab Siddiqui Road, Bhopal',
-    phone: '+91-9876543212',
-    mapLink: 'https://maps.google.com/?q=Saifee+Masjid+Bhopal',
-    color: 'from-charcoal to-charcoal-light',
-  },
-  {
-    name: 'Moti Masjid',
-    desc: 'Iconic pearl mosque near the lake, built in the style of Delhi\'s Jama Masjid.',
-    address: 'Hawai Mahal, Bhopal, MP 462001',
-    phone: '+91-9876543213',
-    mapLink: 'https://maps.google.com/?q=Moti+Masjid+Bhopal',
-    color: 'from-emerald-light to-emerald-dark',
-  },
-  {
-    name: 'Iqbal Maidan Masjid',
-    desc: 'Central mosque with spacious prayer hall serving the Iqbal Maidan community.',
-    address: 'Iqbal Maidan, Bhopal, MP',
-    phone: '+91-9876543214',
-    mapLink: 'https://maps.google.com/?q=Iqbal+Maidan+Bhopal',
-    color: 'from-charcoal-light to-charcoal',
-  },
-];
+import { Link } from 'react-router-dom';
+import { masjids } from '../data/masjids';
 
 export default function MasjidSection() {
   return (
@@ -50,8 +17,8 @@ export default function MasjidSection() {
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {masjids.map((m, i) => (
             <div
-              key={m.name}
-              className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-emerald-dark/5"
+              key={m.slug}
+              className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-emerald-dark/5 flex flex-col h-full"
               style={{ animationDelay: `${i * 150}ms` }}
             >
               {/* Color Header */}
@@ -67,9 +34,9 @@ export default function MasjidSection() {
               </div>
 
               {/* Content */}
-              <div className="p-5">
+              <div className="p-5 flex flex-col flex-1">
                 <h3 className="font-heading text-lg text-emerald-dark font-semibold mb-2">{m.name}</h3>
-                <p className="text-sm text-charcoal/60 mb-4 leading-relaxed">{m.desc}</p>
+                <p className="text-sm text-charcoal/60 mb-4 leading-relaxed flex-1">{m.desc}</p>
 
                 <div className="space-y-2 text-sm text-charcoal/70 mb-4">
                   <p className="flex items-start gap-2">
@@ -82,16 +49,24 @@ export default function MasjidSection() {
                   </p>
                 </div>
 
-                <a
-                  href={m.mapLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-dark hover:text-gold transition-colors duration-300 group/link"
-                >
-                  <ExternalLink size={14} />
-                  View on Map
-                  <span className="block w-0 group-hover/link:w-4 h-px bg-gold transition-all duration-300" />
-                </a>
+                <div className="flex items-center justify-between">
+                  <Link
+                    to={`/masjid/${m.slug}`}
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-dark hover:text-gold transition-colors duration-300 group/link"
+                  >
+                    View Details
+                    <span className="block w-0 group-hover/link:w-4 h-px bg-gold transition-all duration-300" />
+                  </Link>
+                  <a
+                    href={m.mapLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-charcoal/40 hover:text-gold transition-colors flex items-center gap-2"
+                    aria-label="View on Map"
+                  >
+                    Map <ExternalLink size={14} />
+                  </a>
+                </div>
               </div>
             </div>
           ))}
