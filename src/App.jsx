@@ -4,10 +4,12 @@ import MasjidPage from './pages/MasjidPage';
 import UmoorPage from './pages/UmoorPage';
 import ContactPage from './pages/ContactPage';
 import SmoothScroll from './components/SmoothScroll';
+import ScrollToHashElement from './components/ScrollToHashElement';
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToHashElement />
       <SmoothScroll>
         <Routes>
           <Route path="/" element={<HomePage />} />

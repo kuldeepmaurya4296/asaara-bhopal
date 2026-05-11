@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Play, MapPin, Compass } from 'lucide-react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import TextReveal from './animations/TextReveal';
 
 const slides = [
   {
@@ -102,14 +103,11 @@ export default function HeroSlider() {
               <span className="w-16 h-px bg-gold/50" />
             </motion.div>
 
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
-              className="font-heading text-4xl sm:text-5xl md:text-7xl text-cream font-bold mb-6 tracking-wide drop-shadow-lg"
-            >
-              {slide.title}
-            </motion.h2>
+            <TextReveal
+              text={slide.title}
+              delay={0.2}
+              className="font-heading text-4xl sm:text-5xl md:text-7xl text-cream font-bold mb-6 tracking-wide drop-shadow-lg justify-center"
+            />
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -123,14 +121,16 @@ export default function HeroSlider() {
             <motion.a
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, boxShadow: "0px 0px 20px 5px rgba(212,175,55,0.4)" }}
               whileTap={{ scale: 0.95 }}
               transition={{ delay: 0.4, duration: 0.4 }}
               href={slide.btn.href}
-              className="inline-flex items-center gap-2 bg-gold text-emerald-dark font-heading font-semibold px-8 py-3.5 rounded-full hover:bg-gold-light shadow-lg hover:shadow-gold/30 transition-colors text-sm tracking-wide"
+              className="relative overflow-hidden group inline-flex items-center gap-2 bg-gold text-emerald-dark font-heading font-semibold px-8 py-3.5 rounded-full hover:bg-gold-light shadow-lg transition-all text-sm tracking-wide"
             >
-              <slide.btn.icon size={18} />
-              {slide.btn.text}
+              {/* Shine effect overlay */}
+              <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-[150%] group-hover:animate-shine" />
+              <slide.btn.icon size={18} className="relative z-10" />
+              <span className="relative z-10">{slide.btn.text}</span>
             </motion.a>
           </motion.div>
         </AnimatePresence>

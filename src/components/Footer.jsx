@@ -92,8 +92,9 @@ export default function Footer() {
                   rows="3"
                   className="w-full px-4 py-2.5 text-[13px] rounded bg-white border border-gray-100 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors resize-none"
                 ></textarea>
-                <button type="submit" className="w-full bg-[#c59c1f] text-white font-medium py-3 rounded hover:bg-opacity-90 transition-all text-[13px] shadow-sm">
-                  Submit Now
+                <button type="submit" className="relative overflow-hidden group w-full bg-[#c59c1f] text-white font-medium py-3 rounded hover:bg-gold transition-all text-[13px] shadow-sm">
+                  <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-[150%] group-hover:animate-shine" />
+                  <span className="relative z-10">Submit Now</span>
                 </button>
               </form>
             </div>

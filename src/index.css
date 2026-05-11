@@ -92,3 +92,11 @@ body {
 .animate-fade-in {
   animation: fadeIn 0.3s ease-out forwards;
 }
+
+/* Shine animation for buttons */
+@keyframes shine {
+  100% { transform: translateX(100%); }
+}
+.animate-shine {
+  animation: shine 1.5s ease-in-out infinite;
+}

@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import FadeIn from '../components/animations/FadeIn';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 export default function ContactPage() {
   const [formState, setFormState] = useState({ name: '', email: '', subject: '', message: '' });
@@ -44,6 +45,7 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-cream flex flex-col font-sans">
+      <SEO title="Contact Us" description="Get in touch with the Bhopal Ashara Mubarak Relay Centre for any queries regarding services, accommodations, and support." />
       <Header />
 
       <main className="flex-grow pb-20">

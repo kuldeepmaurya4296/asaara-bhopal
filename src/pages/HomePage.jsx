@@ -9,10 +9,12 @@ import Gallery from '../components/Gallery';
 import FAQ from '../components/FAQ';
 import Footer from '../components/Footer';
 import FadeIn from '../components/animations/FadeIn';
+import SEO from '../components/SEO';
 
 export default function HomePage() {
   return (
     <div className="font-body bg-cream text-charcoal min-h-screen">
+      <SEO title="Home" description="Welcome to the Bhopal Ashara Mubarak Relay Centre. Stay updated with the latest events, services, and live relays." />
       <Header />
       <main>
         <section id="home"><HeroSlider /></section>

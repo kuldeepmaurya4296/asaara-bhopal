@@ -118,7 +118,7 @@ export default function Header() {
                       className="relative px-4 py-3 text-sm font-medium text-cream/80 hover:text-gold transition-colors duration-300 group block"
                     >
                       {item.label}
-                      <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gold rounded-full transition-all duration-300 group-hover:w-3/4" />
+                      <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gold rounded-full transition-all duration-300 group-hover:w-full" />
                     </Link>
                   ) : (
                     <a
@@ -126,7 +126,7 @@ export default function Header() {
                       className="relative px-4 py-3 text-sm font-medium text-cream/80 hover:text-gold transition-colors duration-300 group block"
                     >
                       {item.label}
-                      <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gold rounded-full transition-all duration-300 group-hover:w-3/4" />
+                      <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gold rounded-full transition-all duration-300 group-hover:w-full" />
                     </a>
                   )}
                 </li>

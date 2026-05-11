@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { getUmoorBySlug } from '../data/umoor';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 export default function UmoorPage() {
   const { slug } = useParams();
@@ -35,6 +36,7 @@ export default function UmoorPage() {
 
   return (
     <div className="min-h-screen bg-cream flex flex-col font-sans">
+      <SEO title={umoor.title} description={umoor.description.substring(0, 160)} image={umoor.image} />
       <Header />
 
       <main className="flex-grow pb-20">

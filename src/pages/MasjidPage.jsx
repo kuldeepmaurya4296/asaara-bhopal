@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 export default function MasjidPage() {
   const { slug } = useParams();
@@ -43,6 +44,7 @@ export default function MasjidPage() {
 
   return (
     <div className="font-body bg-cream text-charcoal min-h-screen">
+      <SEO title={masjid.name} description={masjid.tagline} image={masjid.heroImage} />
       <Header />
 
       {/* Hero Banner */}
