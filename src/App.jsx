@@ -2,6 +2,7 @@ import AnnouncementBar from './components/AnnouncementBar';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
 import HeroSlider from './components/HeroSlider';
+import AboutSection from './components/AboutSection';
 import MasjidSection from './components/MasjidSection';
 import AsharaSection from './components/AsharaSection';
 import CountdownTimer from './components/CountdownTimer';
@@ -18,6 +19,7 @@ function App() {
       <Navbar />
       <main>
         <section id="home"><HeroSlider /></section>
+        <section id="about"><AboutSection /></section>
         <section id="masjids"><MasjidSection /></section>
         <section id="relay"><AsharaSection /></section>
         <section id="countdown"><CountdownTimer /></section>
