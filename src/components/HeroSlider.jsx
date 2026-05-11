@@ -6,19 +6,22 @@ const slides = [
     title: 'Ashara Mubarak 1448H',
     subtitle: 'Experience the sacred blessings through our premium live relay service',
     btn: { text: 'Watch Live', icon: Play, href: '#countdown' },
-    gradient: 'from-emerald-dark via-emerald-dark/90 to-emerald-dark/70',
+    image: 'https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?q=80&w=2000&auto=format&fit=crop',
+    gradient: 'from-emerald-dark/90 via-emerald-dark/80 to-emerald-dark/90',
   },
   {
     title: 'Bhopal Relay Centre',
     subtitle: 'Your gateway to spiritual unity — state-of-the-art relay infrastructure',
     btn: { text: 'Explore Services', icon: Compass, href: '#services' },
-    gradient: 'from-charcoal via-charcoal/90 to-charcoal/70',
+    image: 'https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?q=80&w=2000&auto=format&fit=crop',
+    gradient: 'from-charcoal/90 via-charcoal/80 to-charcoal/90',
   },
   {
     title: 'Volunteers & Community',
     subtitle: 'Together we serve — join hundreds of dedicated volunteers',
     btn: { text: 'Get Directions', icon: MapPin, href: '#masjids' },
-    gradient: 'from-emerald-dark via-emerald-light/80 to-emerald-dark/60',
+    image: 'https://images.unsplash.com/photo-1542816417-0983c9c9ad53?q=80&w=2000&auto=format&fit=crop',
+    gradient: 'from-emerald-dark/90 via-emerald-light/80 to-emerald-dark/90',
   },
 ];
 
@@ -45,21 +48,26 @@ export default function HeroSlider() {
 
   return (
     <div className="relative h-[85vh] min-h-[500px] overflow-hidden">
-      {/* Background with gradient */}
-      <div className={`absolute inset-0 bg-gradient-to-r ${slide.gradient} transition-all duration-1000`}>
-        {/* Islamic geometric pattern overlay */}
-        <div className="absolute inset-0 opacity-5">
-          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <pattern id="islamic-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-              <circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-gold" />
-              <circle cx="0" cy="0" r="4" fill="none" stroke="currentColor" strokeWidth="0.3" className="text-gold" />
-              <circle cx="20" cy="0" r="4" fill="none" stroke="currentColor" strokeWidth="0.3" className="text-gold" />
-              <circle cx="0" cy="20" r="4" fill="none" stroke="currentColor" strokeWidth="0.3" className="text-gold" />
-              <circle cx="20" cy="20" r="4" fill="none" stroke="currentColor" strokeWidth="0.3" className="text-gold" />
-            </pattern>
-            <rect x="0" y="0" width="100" height="100" fill="url(#islamic-pattern)" />
-          </svg>
-        </div>
+      {/* Background with image and gradient */}
+      <div
+        className="absolute inset-0 bg-cover bg-center transition-all duration-1000"
+        style={{ backgroundImage: `url(${slide.image})` }}
+      >
+        <div className={`absolute inset-0 bg-gradient-to-r ${slide.gradient} transition-all duration-1000`} />
+      </div>
+
+      {/* Islamic geometric pattern overlay */}
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
+        <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <pattern id="islamic-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+            <circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-gold" />
+            <circle cx="0" cy="0" r="4" fill="none" stroke="currentColor" strokeWidth="0.3" className="text-gold" />
+            <circle cx="20" cy="0" r="4" fill="none" stroke="currentColor" strokeWidth="0.3" className="text-gold" />
+            <circle cx="0" cy="20" r="4" fill="none" stroke="currentColor" strokeWidth="0.3" className="text-gold" />
+            <circle cx="20" cy="20" r="4" fill="none" stroke="currentColor" strokeWidth="0.3" className="text-gold" />
+          </pattern>
+          <rect x="0" y="0" width="100" height="100" fill="url(#islamic-pattern)" />
+        </svg>
       </div>
 
       {/* Content */}
@@ -112,9 +120,8 @@ export default function HeroSlider() {
           <button
             key={i}
             onClick={() => goTo(i)}
-            className={`h-2.5 rounded-full transition-all duration-500 ${
-              i === current ? 'w-10 bg-gold' : 'w-2.5 bg-cream/30 hover:bg-cream/50'
-            }`}
+            className={`h-2.5 rounded-full transition-all duration-500 ${i === current ? 'w-10 bg-gold' : 'w-2.5 bg-cream/30 hover:bg-cream/50'
+              }`}
             aria-label={`Go to slide ${i + 1}`}
           />
         ))}
