@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Play, MapPin, Compass } from 'lucide-react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 
 const slides = [
   {
@@ -28,6 +29,14 @@ const slides = [
 export default function HeroSlider() {
   const [current, setCurrent] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const ref = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
 
   const goTo = (idx) => {
     if (isAnimating) return;
@@ -47,14 +56,14 @@ export default function HeroSlider() {
   const slide = slides[current];
 
   return (
-    <div className="relative h-[85vh] min-h-[500px] overflow-hidden">
-      {/* Background with image and gradient */}
-      <div
-        className="absolute inset-0 bg-cover bg-center transition-all duration-1000"
-        style={{ backgroundImage: `url(${slide.image})` }}
+    <div ref={ref} className="relative h-[85vh] min-h-[500px] overflow-hidden">
+      {/* Background with image and gradient and Parallax */}
+      <motion.div
+        style={{ y, backgroundImage: `url(${slide.image})` }}
+        className="absolute w-full h-[120%] -top-[10%] -bottom-[10%] bg-cover bg-center transition-colors duration-1000"
       >
-        <div className={`absolute inset-0 bg-gradient-to-r ${slide.gradient} transition-all duration-1000`} />
-      </div>
+        <div className={`absolute inset-0 bg-gradient-to-r ${slide.gradient} transition-colors duration-1000`} />
+      </motion.div>
 
       {/* Islamic geometric pattern overlay */}
       <div className="absolute inset-0 opacity-5 pointer-events-none">
@@ -72,30 +81,59 @@ export default function HeroSlider() {
 
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
-        <div key={current} className="animate-fade-in-up">
-          {/* Decorative line */}
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <span className="w-16 h-px bg-gold/50" />
-            <span className="text-gold text-xs tracking-[0.3em] uppercase font-medium">Bhopal Relay Centre</span>
-            <span className="w-16 h-px bg-gold/50" />
-          </div>
-
-          <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl text-cream font-bold mb-6 tracking-wide">
-            {slide.title}
-          </h2>
-
-          <p className="text-cream/70 text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-            {slide.subtitle}
-          </p>
-
-          <a
-            href={slide.btn.href}
-            className="inline-flex items-center gap-2 bg-gold text-emerald-dark font-heading font-semibold px-8 py-3.5 rounded-full hover:bg-gold-light hover:shadow-lg hover:shadow-gold/20 transition-all duration-300 text-sm tracking-wide"
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={current}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -30 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="flex flex-col items-center"
           >
-            <slide.btn.icon size={18} />
-            {slide.btn.text}
-          </a>
-        </div>
+            {/* Decorative line */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.1, duration: 0.5 }}
+              className="flex items-center justify-center gap-4 mb-6"
+            >
+              <span className="w-16 h-px bg-gold/50" />
+              <span className="text-gold text-xs tracking-[0.3em] uppercase font-medium">Bhopal Relay Centre</span>
+              <span className="w-16 h-px bg-gold/50" />
+            </motion.div>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
+              className="font-heading text-4xl sm:text-5xl md:text-7xl text-cream font-bold mb-6 tracking-wide drop-shadow-lg"
+            >
+              {slide.title}
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
+              className="text-cream/80 text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed drop-shadow-md"
+            >
+              {slide.subtitle}
+            </motion.p>
+
+            <motion.a
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ delay: 0.4, duration: 0.4 }}
+              href={slide.btn.href}
+              className="inline-flex items-center gap-2 bg-gold text-emerald-dark font-heading font-semibold px-8 py-3.5 rounded-full hover:bg-gold-light shadow-lg hover:shadow-gold/30 transition-colors text-sm tracking-wide"
+            >
+              <slide.btn.icon size={18} />
+              {slide.btn.text}
+            </motion.a>
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       {/* Navigation Arrows */}

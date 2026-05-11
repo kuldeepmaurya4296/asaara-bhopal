@@ -32,7 +32,7 @@ export default function AsharaSection() {
 
         <div className="flex flex-col lg:flex-row items-center gap-12">
           {/* Left – Image */}
-          <div className="lg:w-1/2">
+          <div className="lg:w-1/3">
             <div className="relative">
               <img
                 src="/Ashara1447.jpg"
@@ -48,13 +48,13 @@ export default function AsharaSection() {
           {/* Right – Text */}
           <div className="lg:w-1/2 space-y-6">
             <p className="text-cream/80 text-lg leading-relaxed">
-              The Bhopal Ashara Mubarak Relay Centre offers a comprehensive suite of services 
-              for mumineen, ensuring comfort, safety, and spiritual fulfillment throughout the 
+              The Bhopal Ashara Mubarak Relay Centre offers a comprehensive suite of services
+              for mumineen, ensuring comfort, safety, and spiritual fulfillment throughout the
               blessed period of Ashara Mubarak.
             </p>
             <p className="text-cream/60 leading-relaxed">
-              Our dedicated team of volunteers works around the clock to provide world-class 
-              facilities including live relay of waaz mubarak, transportation, medical care, 
+              Our dedicated team of volunteers works around the clock to provide world-class
+              facilities including live relay of waaz mubarak, transportation, medical care,
               and much more.
             </p>
 

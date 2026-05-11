@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ChevronRight, ArrowLeft } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { getUmoorBySlug } from '../data/umoor';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -8,6 +9,14 @@ import Footer from '../components/Footer';
 export default function UmoorPage() {
   const { slug } = useParams();
   const umoor = getUmoorBySlug(slug);
+  const heroRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  });
+  
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -28,19 +37,19 @@ export default function UmoorPage() {
     <div className="min-h-screen bg-cream flex flex-col font-sans">
       <Header />
 
-      <main className="flex-grow pt-24 pb-20">
+      <main className="flex-grow pb-20">
         
         {/* Page Header (Hero) */}
-        <div className="bg-emerald-dark py-12 px-4 relative overflow-hidden">
+        <div ref={heroRef} className="bg-emerald-dark py-12 px-4 relative overflow-hidden">
           {/* Background pattern */}
-          <div className="absolute inset-0 opacity-5 pointer-events-none">
+          <motion.div style={{ y }} className="absolute inset-0 opacity-10 pointer-events-none w-full h-[150%] -top-[25%]">
             <svg className="w-full h-full" preserveAspectRatio="none">
               <pattern id="umoor-pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
                 <path d="M0 20 Q10 0 20 20 T40 20" fill="none" stroke="currentColor" strokeWidth="1" className="text-gold" />
               </pattern>
               <rect width="100%" height="100%" fill="url(#umoor-pattern)" />
             </svg>
-          </div>
+          </motion.div>
 
           <div className="max-w-5xl mx-auto relative z-10 text-center">
             <h1 className="font-heading text-3xl sm:text-4xl text-cream mb-4">

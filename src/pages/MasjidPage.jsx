@@ -1,13 +1,13 @@
 import { useParams, Link } from 'react-router-dom';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { getMasjidBySlug } from '../data/masjids';
 import {
   ArrowLeft, MapPin, Phone, Mail, Clock, Heart, ShieldCheck,
   ExternalLink, Building2, ShoppingBag, Hotel, Info, Stethoscope,
   Navigation, ChevronRight,
 } from 'lucide-react';
-import AnnouncementBar from '../components/AnnouncementBar';
 import Header from '../components/Header';
-import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 export default function MasjidPage() {
@@ -17,9 +17,7 @@ export default function MasjidPage() {
   if (!masjid) {
     return (
       <div className="font-body bg-cream text-charcoal min-h-screen">
-        <AnnouncementBar />
         <Header />
-        <Navbar />
         <div className="flex flex-col items-center justify-center py-32 px-4 text-center">
           <h2 className="font-heading text-3xl text-emerald-dark mb-4">Masjid Not Found</h2>
           <p className="text-charcoal/60 mb-8">The masjid you're looking for doesn't exist.</p>
@@ -36,21 +34,26 @@ export default function MasjidPage() {
     );
   }
 
+  const heroRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  });
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+
   return (
     <div className="font-body bg-cream text-charcoal min-h-screen">
-      <AnnouncementBar />
       <Header />
-      <Navbar />
 
       {/* Hero Banner */}
-      <div className="relative py-24 sm:py-32 overflow-hidden">
+      <div ref={heroRef} className="relative py-24 sm:py-32 overflow-hidden">
         {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${masjid.heroImage})` }}
+        <motion.div
+          className="absolute inset-0 bg-cover bg-center w-full h-[150%] -top-[25%]"
+          style={{ y, backgroundImage: `url(${masjid.heroImage})` }}
         >
           <div className={`absolute inset-0 bg-gradient-to-br ${masjid.color} opacity-90`} />
-        </div>
+        </motion.div>
 
         {/* Islamic pattern overlay */}
         <div className="absolute inset-0 opacity-5 pointer-events-none">
