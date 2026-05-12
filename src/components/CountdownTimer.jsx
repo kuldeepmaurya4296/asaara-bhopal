@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 function calculateRemaining() {
-  const target = new Date('2026-07-05T00:00:00');
+  const target = new Date('2026-06-15T10:00:00');
   const now = new Date();
   const diff = Math.max(0, target - now);
   return {

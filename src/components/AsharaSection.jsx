@@ -68,11 +68,11 @@ export default function AsharaSection() {
             </ul>
 
             <a
-              href="#masjids"
+              href="/relay-zones"
               className="inline-flex items-center gap-2 bg-gold text-emerald-dark font-heading font-semibold px-7 py-3 rounded-full hover:bg-gold-light hover:shadow-lg hover:shadow-gold/20 transition-all duration-300 text-sm tracking-wide mt-4"
             >
               <Navigation size={16} />
-              Getting There
+              Explore Relay Zones
             </a>
           </div>
         </div>
