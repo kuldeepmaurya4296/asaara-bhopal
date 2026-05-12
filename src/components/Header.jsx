@@ -12,13 +12,12 @@ const announcements = [
 
 const navItems = [
   { label: 'Home', href: '/' },
+  { type: 'dropdown', label: 'Ashara Relay Centre Update' },
+  // { label: "Dawoodi Bohra's of Bhopal", href: '/about' },
   { label: 'About Us', href: '/about' },
-  { label: 'Live Relay', href: '/#countdown' },
-  { label: 'Masjid in Bhopal', href: '/#masjids' },
-  { label: 'Services', href: '/#services' },
   { label: 'Gallery', href: '/gallery' },
   { label: 'FAQ', href: '/faq' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Contact Us', href: '/contact' },
 ];
 
 const dropdownItems = [
@@ -138,7 +137,7 @@ export default function Header() {
               </div>
 
               {/* Hamburger Button */}
-              <button 
+              <button
                 className="md:hidden p-2 text-charcoal hover:text-emerald-dark transition-colors"
                 onClick={() => setIsMobileMenuOpen(true)}
               >
@@ -152,90 +151,92 @@ export default function Header() {
         <nav className="bg-emerald-dark/95 backdrop-blur-md border-b border-gold/20 hidden md:block">
           <div className="max-w-7xl mx-auto px-4">
             <ul className="flex items-center justify-center gap-1 py-1">
-              {navItems.map((item) => (
-                <li key={item.href}>
-                  {item.href.startsWith('/') && !item.href.includes('#') ? (
-                    <Link
-                      to={item.href}
-                      className="relative px-4 py-3 text-sm font-medium text-cream/80 hover:text-gold transition-colors duration-300 group block"
+              {navItems.map((item) => {
+                if (item.type === 'dropdown') {
+                  return (
+                    <li
+                      key={item.label}
+                      ref={dropdownRef}
+                      className="relative"
+                      onMouseEnter={handleDropdownEnter}
+                      onMouseLeave={handleDropdownLeave}
                     >
-                      {item.label}
-                      <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gold rounded-full transition-all duration-300 group-hover:w-full" />
-                    </Link>
-                  ) : (
-                    <a
-                      href={item.href}
-                      className="relative px-4 py-3 text-sm font-medium text-cream/80 hover:text-gold transition-colors duration-300 group block"
-                    >
-                      {item.label}
-                      <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gold rounded-full transition-all duration-300 group-hover:w-full" />
-                    </a>
-                  )}
-                </li>
-              ))}
+                      <button
+                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                        className={`relative px-4 py-3 text-sm font-medium transition-colors duration-300 group flex items-center gap-1.5 ${isDropdownOpen ? 'text-gold' : 'text-cream/80 hover:text-gold'
+                          }`}
+                      >
+                        {item.label}
+                        <ChevronDown
+                          size={14}
+                          className={`transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`}
+                        />
+                        <span className={`absolute bottom-1 left-1/2 -translate-x-1/2 h-0.5 bg-gold rounded-full transition-all duration-300 ${isDropdownOpen ? 'w-full' : 'w-0 group-hover:w-full'
+                          }`} />
+                      </button>
 
-              {/* Ashara Relay Centre Update Dropdown */}
-              <li
-                ref={dropdownRef}
-                className="relative"
-                onMouseEnter={handleDropdownEnter}
-                onMouseLeave={handleDropdownLeave}
-              >
-                <button
-                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                  className={`relative px-4 py-3 text-sm font-medium transition-colors duration-300 group flex items-center gap-1.5 ${
-                    isDropdownOpen ? 'text-gold' : 'text-cream/80 hover:text-gold'
-                  }`}
-                >
-                  Ashara Relay Centre Update
-                  <ChevronDown
-                    size={14}
-                    className={`transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`}
-                  />
-                  <span className={`absolute bottom-1 left-1/2 -translate-x-1/2 h-0.5 bg-gold rounded-full transition-all duration-300 ${
-                    isDropdownOpen ? 'w-full' : 'w-0 group-hover:w-full'
-                  }`} />
-                </button>
-
-                {/* Dropdown Menu */}
-                <AnimatePresence>
-                  {isDropdownOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 8, scale: 0.97 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 8, scale: 0.97 }}
-                      transition={{ duration: 0.2, ease: "easeOut" }}
-                      className="absolute right-0 top-full mt-1 w-72 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-emerald-dark/10 overflow-hidden z-50"
-                    >
-                      {/* Gold accent bar */}
-                      <div className="h-1 bg-gradient-to-r from-emerald-dark via-gold to-emerald-dark" />
-
-                      <div className="p-2">
-                        {dropdownItems.map((item, idx) => (
-                          <button
-                            key={item.href}
-                            onClick={() => handleDropdownItemClick(item)}
-                            className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left hover:bg-emerald-dark/5 transition-all duration-200 group/item"
+                      <AnimatePresence>
+                        {isDropdownOpen && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 8, scale: 0.97 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: 8, scale: 0.97 }}
+                            transition={{ duration: 0.2, ease: "easeOut" }}
+                            className="absolute left-0 top-full mt-1 w-72 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-emerald-dark/10 overflow-hidden z-50"
                           >
-                            <div className="w-9 h-9 rounded-lg bg-emerald-dark/5 flex items-center justify-center shrink-0 group-hover/item:bg-gold/10 transition-colors">
-                              <item.icon size={16} className="text-emerald-dark group-hover/item:text-gold transition-colors" />
+                            <div className="h-1 bg-gradient-to-r from-emerald-dark via-gold to-emerald-dark" />
+
+                            <div className="p-2">
+                              {dropdownItems.map((dropItem) => (
+                                <button
+                                  key={dropItem.href}
+                                  onClick={() => handleDropdownItemClick(dropItem)}
+                                  className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left hover:bg-emerald-dark/5 transition-all duration-200 group/item"
+                                >
+                                  <div className="w-9 h-9 rounded-lg bg-emerald-dark/5 flex items-center justify-center shrink-0 group-hover/item:bg-gold/10 transition-colors">
+                                    <dropItem.icon size={16} className="text-emerald-dark group-hover/item:text-gold transition-colors" />
+                                  </div>
+                                  <div className="flex-1 min-w-0">
+                                    <p className="text-sm font-semibold text-charcoal group-hover/item:text-emerald-dark transition-colors flex items-center gap-1.5">
+                                      {dropItem.label}
+                                      {dropItem.external && (
+                                        <span className="text-[8px] bg-green-500/10 text-green-600 px-1.5 py-0.5 rounded-full font-bold uppercase">WhatsApp</span>
+                                      )}
+                                    </p>
+                                    <p className="text-[11px] text-charcoal/40 leading-tight">{dropItem.desc}</p>
+                                  </div>
+                                </button>
+                              ))}
                             </div>
-                            <div className="flex-1 min-w-0">
-                              <p className="text-sm font-semibold text-charcoal group-hover/item:text-emerald-dark transition-colors flex items-center gap-1.5">
-                                {item.label}
-                                {item.external && (
-                                  <span className="text-[8px] bg-green-500/10 text-green-600 px-1.5 py-0.5 rounded-full font-bold uppercase">WhatsApp</span>
-                                )}
-                              </p>
-                              <p className="text-[11px] text-charcoal/40 leading-tight">{item.desc}</p>
-                            </div>
-                          </button>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </li>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </li>
+                  );
+                }
+
+                return (
+                  <li key={item.label}>
+                    {item.href.startsWith('/') && !item.href.includes('#') ? (
+                      <Link
+                        to={item.href}
+                        className="relative px-4 py-3 text-sm font-medium text-cream/80 hover:text-gold transition-colors duration-300 group block"
+                      >
+                        {item.label}
+                        <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gold rounded-full transition-all duration-300 group-hover:w-full" />
+                      </Link>
+                    ) : (
+                      <a
+                        href={item.href}
+                        className="relative px-4 py-3 text-sm font-medium text-cream/80 hover:text-gold transition-colors duration-300 group block"
+                      >
+                        {item.label}
+                        <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gold rounded-full transition-all duration-300 group-hover:w-full" />
+                      </a>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </nav>
@@ -248,14 +249,14 @@ export default function Header() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <>
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="fixed inset-0 bg-charcoal/40 backdrop-blur-sm z-[60] md:hidden"
               onClick={() => setIsMobileMenuOpen(false)}
             />
-            
+
             {/* Drawer */}
             <motion.div
               initial={{ x: "100%" }}
@@ -266,7 +267,7 @@ export default function Header() {
             >
               <div className="flex items-center justify-between p-4 border-b border-emerald-dark/10">
                 <span className="font-heading font-bold text-emerald-dark">Menu</span>
-                <button 
+                <button
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="p-2 text-charcoal hover:text-emerald-dark"
                 >
@@ -275,76 +276,79 @@ export default function Header() {
               </div>
 
               <div className="flex flex-col p-6 gap-1 overflow-y-auto flex-1">
-                {navItems.map((item) => (
-                  item.href.startsWith('/') && !item.href.includes('#') ? (
+                {navItems.map((item) => {
+                  if (item.type === 'dropdown') {
+                    return (
+                      <div key={item.label} className="py-1 border-b border-emerald-dark/5">
+                        <button
+                          onClick={() => setIsMobileDropdownOpen(!isMobileDropdownOpen)}
+                          className="w-full flex items-center justify-between text-base font-semibold text-emerald-dark py-2.5"
+                        >
+                          {item.label}
+                          <ChevronDown
+                            size={16}
+                            className={`transition-transform duration-300 ${isMobileDropdownOpen ? 'rotate-180' : ''}`}
+                          />
+                        </button>
+
+                        <AnimatePresence>
+                          {isMobileDropdownOpen && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.3 }}
+                              className="overflow-hidden"
+                            >
+                              <div className="pl-2 space-y-1 pb-2 mt-1">
+                                {dropdownItems.map((dropItem) => (
+                                  <button
+                                    key={dropItem.href}
+                                    onClick={() => handleDropdownItemClick(dropItem)}
+                                    className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-left hover:bg-white transition-colors"
+                                  >
+                                    <div className="w-8 h-8 rounded-lg bg-emerald-dark/5 flex items-center justify-center shrink-0">
+                                      <dropItem.icon size={14} className="text-emerald-dark" />
+                                    </div>
+                                    <div>
+                                      <p className="text-sm font-medium text-charcoal flex items-center gap-1.5">
+                                        {dropItem.label}
+                                        {dropItem.external && (
+                                          <span className="text-[8px] bg-green-500/10 text-green-600 px-1.5 py-0.5 rounded-full font-bold">WA</span>
+                                        )}
+                                      </p>
+                                      <p className="text-[10px] text-charcoal/40">{dropItem.desc}</p>
+                                    </div>
+                                  </button>
+                                ))}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  }
+
+                  return item.href.startsWith('/') && !item.href.includes('#') ? (
                     <Link
-                      key={item.href}
+                      key={item.label}
                       to={item.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="text-base font-medium text-charcoal hover:text-emerald-dark transition-colors py-2.5"
+                      className="text-base font-medium text-charcoal hover:text-emerald-dark transition-colors py-2.5 border-b border-emerald-dark/5 last:border-0"
                     >
                       {item.label}
                     </Link>
                   ) : (
                     <a
-                      key={item.href}
+                      key={item.label}
                       href={item.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="text-base font-medium text-charcoal hover:text-emerald-dark transition-colors py-2.5"
+                      className="text-base font-medium text-charcoal hover:text-emerald-dark transition-colors py-2.5 border-b border-emerald-dark/5 last:border-0"
                     >
                       {item.label}
                     </a>
-                  )
-                ))}
-
-                {/* Mobile Dropdown */}
-                <div className="mt-4 pt-4 border-t border-emerald-dark/10">
-                  <button
-                    onClick={() => setIsMobileDropdownOpen(!isMobileDropdownOpen)}
-                    className="w-full flex items-center justify-between text-base font-semibold text-emerald-dark py-2.5"
-                  >
-                    Ashara Relay Centre Update
-                    <ChevronDown
-                      size={16}
-                      className={`transition-transform duration-300 ${isMobileDropdownOpen ? 'rotate-180' : ''}`}
-                    />
-                  </button>
-
-                  <AnimatePresence>
-                    {isMobileDropdownOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden"
-                      >
-                        <div className="pl-4 space-y-1 pb-2">
-                          {dropdownItems.map((item) => (
-                            <button
-                              key={item.href}
-                              onClick={() => handleDropdownItemClick(item)}
-                              className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-left hover:bg-white transition-colors"
-                            >
-                              <div className="w-8 h-8 rounded-lg bg-emerald-dark/5 flex items-center justify-center shrink-0">
-                                <item.icon size={14} className="text-emerald-dark" />
-                              </div>
-                              <div>
-                                <p className="text-sm font-medium text-charcoal flex items-center gap-1.5">
-                                  {item.label}
-                                  {item.external && (
-                                    <span className="text-[8px] bg-green-500/10 text-green-600 px-1.5 py-0.5 rounded-full font-bold">WA</span>
-                                  )}
-                                </p>
-                                <p className="text-[10px] text-charcoal/40">{item.desc}</p>
-                              </div>
-                            </button>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
+                  );
+                })}
               </div>
 
               <div className="p-6 bg-white/50 border-t border-emerald-dark/10">
