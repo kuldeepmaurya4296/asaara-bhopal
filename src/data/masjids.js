@@ -41,11 +41,11 @@ export const masjids = [
       { name: 'Reliance Fresh', mapLink: 'https://maps.google.com/?q=Reliance+Fresh+Bhopal' },
     ],
     nearbyHotels: [
-      { name: 'Hotel Aura Residency', bookLink: 'https://www.makemytrip.com/hotels/bhopal' },
-      { name: 'Hotel Ranjeet', bookLink: 'https://www.makemytrip.com/hotels/bhopal' },
-      { name: 'Jehan Numa Palace', bookLink: 'https://www.makemytrip.com/hotels/bhopal' },
-      { name: 'Noor-Us-Sabah Palace', bookLink: 'https://www.makemytrip.com/hotels/bhopal' },
-      { name: 'OYO Rooms Kohefiza', bookLink: 'https://www.oyorooms.com/bhopal' },
+      { name: 'Hotel Aura Residency', bookLink: 'https://wa.me/918982675004?text=Hello' },
+      { name: 'Hotel Ranjeet', bookLink: 'https://wa.me/918982675004?text=Hello' },
+      { name: 'Jehan Numa Palace', bookLink: 'https://wa.me/918982675004?text=Hello' },
+      { name: 'Noor-Us-Sabah Palace', bookLink: 'https://wa.me/918982675004?text=Hello' },
+      { name: 'OYO Rooms Kohefiza', bookLink: 'https://wa.me/918982675004?text=Hello' },
     ],
   },
   {
@@ -87,10 +87,10 @@ export const masjids = [
       { name: 'DMart Bhopal', mapLink: 'https://maps.google.com/?q=DMart+Bhopal' },
     ],
     nearbyHotels: [
-      { name: 'Hotel Palash Residency', bookLink: 'https://www.makemytrip.com/hotels/bhopal' },
-      { name: 'Courtyard by Marriott', bookLink: 'https://www.makemytrip.com/hotels/bhopal' },
-      { name: 'Lemon Tree Hotel', bookLink: 'https://www.makemytrip.com/hotels/bhopal' },
-      { name: 'Hotel Lake View Ashok', bookLink: 'https://www.makemytrip.com/hotels/bhopal' },
+      { name: 'Hotel Palash Residency', bookLink: 'https://wa.me/918982675004?text=Hello' },
+      { name: 'Courtyard by Marriott', bookLink: 'https://wa.me/918982675004?text=Hello' },
+      { name: 'Lemon Tree Hotel', bookLink: 'https://wa.me/918982675004?text=Hello' },
+      { name: 'Hotel Lake View Ashok', bookLink: 'https://wa.me/918982675004?text=Hello' },
     ],
   },
   {
@@ -132,9 +132,9 @@ export const masjids = [
       { name: 'Ibrahimpura Market', mapLink: 'https://maps.google.com/?q=Ibrahimpura+Market+Bhopal' },
     ],
     nearbyHotels: [
-      { name: 'Hotel Rajhans', bookLink: 'https://www.makemytrip.com/hotels/bhopal' },
-      { name: 'Zostel Bhopal', bookLink: 'https://www.zostel.com/zostel/bhopal/' },
-      { name: 'The Fern Residency', bookLink: 'https://www.makemytrip.com/hotels/bhopal' },
+      { name: 'Hotel Rajhans', bookLink: 'https://wa.me/918982675004?text=Hello' },
+      { name: 'Zostel Bhopal', bookLink: 'https://wa.me/918982675004?text=Hello' },
+      { name: 'The Fern Residency', bookLink: 'https://wa.me/918982675004?text=Hello' },
     ],
   },
   {
@@ -180,12 +180,12 @@ export const masjids = [
       { name: 'Big Bazaar', mapLink: 'https://maps.google.com/?q=Big+Bazaar+Bhopal' },
     ],
     nearbyHotels: [
-      { name: 'Sayaji Hotel', bookLink: 'https://www.makemytrip.com/hotels/bhopal' },
-      { name: 'Hotel Amer Palace', bookLink: 'https://www.makemytrip.com/hotels/bhopal' },
-      { name: 'Jehan Numa Retreat', bookLink: 'https://www.makemytrip.com/hotels/bhopal' },
-      { name: 'OYO Townhouse', bookLink: 'https://www.oyorooms.com/bhopal' },
-      { name: 'FabHotel Prime', bookLink: 'https://www.makemytrip.com/hotels/bhopal' },
-      { name: 'Treebo Trend', bookLink: 'https://www.makemytrip.com/hotels/bhopal' },
+      { name: 'Sayaji Hotel', bookLink: 'https://wa.me/918982675004?text=Hello' },
+      { name: 'Hotel Amer Palace', bookLink: 'https://wa.me/918982675004?text=Hello' },
+      { name: 'Jehan Numa Retreat', bookLink: 'https://wa.me/918982675004?text=Hello' },
+      { name: 'OYO Townhouse', bookLink: 'https://wa.me/918982675004?text=Hello' },
+      { name: 'FabHotel Prime', bookLink: 'https://wa.me/918982675004?text=Hello' },
+      { name: 'Treebo Trend', bookLink: 'https://wa.me/918982675004?text=Hello' },
     ],
   },
 ];
