@@ -1,5 +1,6 @@
 import { Mail, Phone, MapPin, Instagram, Twitter, Youtube, Facebook, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const pagesLinks = [
   { label: 'Home', href: '/' },
@@ -14,6 +15,32 @@ const pagesLinks = [
 ];
 
 export default function Footer() {
+  const [formState, setFormState] = useState({ name: '', email: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
+  const handleContactSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formState, subject: 'Quick Contact Form' })
+      });
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormState({ name: '', email: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    }
+    setIsSubmitting(false);
+    setTimeout(() => setSubmitStatus(null), 4000);
+  };
+
   return (
     <footer className="relative mt-24">
       {/* Background layer: half transparent, half emerald-dark */}
@@ -81,26 +108,45 @@ export default function Footer() {
             {/* Col 3: Quick Contact */}
             <div>
               <h3 className="font-heading text-xl text-emerald-dark font-semibold mb-6">Quick Contact</h3>
-              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+              <form className="space-y-4" onSubmit={handleContactSubmit}>
                 <input
                   type="text"
+                  required
                   placeholder="Name"
+                  value={formState.name}
+                  onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                   className="w-full px-4 py-2.5 text-[13px] rounded bg-white border border-gray-100 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors"
                 />
                 <input
                   type="email"
+                  required
                   placeholder="Email"
+                  value={formState.email}
+                  onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                   className="w-full px-4 py-2.5 text-[13px] rounded bg-white border border-gray-100 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors"
                 />
                 <textarea
                   placeholder="Message"
+                  required
                   rows="3"
+                  value={formState.message}
+                  onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                   className="w-full px-4 py-2.5 text-[13px] rounded bg-white border border-gray-100 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold transition-colors resize-none"
                 ></textarea>
-                <button type="submit" className="relative overflow-hidden group w-full bg-[#c59c1f] text-white font-medium py-3 rounded hover:bg-gold transition-all text-[13px] shadow-sm">
+                <button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="relative overflow-hidden group w-full bg-[#c59c1f] text-white font-medium py-3 rounded hover:bg-gold transition-all text-[13px] shadow-sm disabled:opacity-70 disabled:cursor-not-allowed"
+                >
                   <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-[150%] group-hover:animate-shine" />
-                  <span className="relative z-10">Submit Now</span>
+                  <span className="relative z-10">{isSubmitting ? 'Sending...' : 'Submit Now'}</span>
                 </button>
+                {submitStatus === 'success' && (
+                  <p className="text-green-600 text-xs font-medium text-center">Message sent successfully!</p>
+                )}
+                {submitStatus === 'error' && (
+                  <p className="text-red-500 text-xs font-medium text-center">Failed to send message.</p>
+                )}
               </form>
             </div>
 
