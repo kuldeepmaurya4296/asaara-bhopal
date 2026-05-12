@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { ChevronLeft, ChevronRight, Play, MapPin, Compass } from 'lucide-react';
+import { Play, MapPin, Compass } from 'lucide-react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import TextReveal from './animations/TextReveal';
 
@@ -8,28 +8,27 @@ const slides = [
     title: 'Ashara Mubarak 1448H',
     subtitle: 'Experience the sacred blessings through our premium live relay service',
     btn: { text: 'Watch Live', icon: Play, href: '#countdown' },
-    image: 'https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?q=80&w=2000&auto=format&fit=crop',
-    gradient: 'from-emerald-dark/90 via-emerald-dark/80 to-emerald-dark/90',
+    gradient: 'from-emerald-dark/80 via-emerald-dark/70 to-emerald-dark/80',
   },
   {
     title: 'Bhopal Relay Centre',
     subtitle: 'Your gateway to spiritual unity — state-of-the-art relay infrastructure',
     btn: { text: 'Explore Services', icon: Compass, href: '#services' },
-    image: 'https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?q=80&w=2000&auto=format&fit=crop',
-    gradient: 'from-charcoal/90 via-charcoal/80 to-charcoal/90',
+    gradient: 'from-charcoal/80 via-charcoal/70 to-charcoal/80',
   },
   {
     title: 'Volunteers & Community',
     subtitle: 'Together we serve — join hundreds of dedicated volunteers',
     btn: { text: 'Get Directions', icon: MapPin, href: '#masjids' },
-    image: 'https://images.unsplash.com/photo-1542816417-0983c9c9ad53?q=80&w=2000&auto=format&fit=crop',
-    gradient: 'from-emerald-dark/90 via-emerald-light/80 to-emerald-dark/90',
+    gradient: 'from-emerald-dark/80 via-emerald-light/70 to-emerald-dark/80',
   },
 ];
 
 export default function HeroSlider() {
   const [current, setCurrent] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
   const ref = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -49,6 +48,28 @@ export default function HeroSlider() {
   const next = () => goTo((current + 1) % slides.length);
   const prev = () => goTo((current - 1 + slides.length) % slides.length);
 
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEndHandler = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+    
+    if (isLeftSwipe) {
+      next();
+    } else if (isRightSwipe) {
+      prev();
+    }
+  };
+
   useEffect(() => {
     const timer = setInterval(next, 6000);
     return () => clearInterval(timer);
@@ -57,12 +78,28 @@ export default function HeroSlider() {
   const slide = slides[current];
 
   return (
-    <div ref={ref} className="relative h-[85vh] min-h-[500px] overflow-hidden">
-      {/* Background with image and gradient and Parallax */}
+    <div 
+      ref={ref} 
+      className="relative h-[85vh] min-h-[500px] overflow-hidden"
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEndHandler}
+    >
+      {/* Continuous Video Background with Parallax and Dynamic Gradient */}
       <motion.div
-        style={{ y, backgroundImage: `url(${slide.image})` }}
-        className="absolute w-full h-[120%] -top-[10%] -bottom-[10%] bg-cover bg-center transition-colors duration-1000"
+        style={{ y }}
+        className="absolute w-full h-[120%] -top-[10%] -bottom-[10%] z-0"
       >
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/Sequence 01.mp4" type="video/mp4" />
+        </video>
+        {/* The gradient overlay changes color per slide while video runs continuously */}
         <div className={`absolute inset-0 bg-gradient-to-r ${slide.gradient} transition-colors duration-1000`} />
       </motion.div>
 
@@ -136,21 +173,6 @@ export default function HeroSlider() {
         </AnimatePresence>
       </div>
 
-      {/* Navigation Arrows */}
-      <button
-        onClick={prev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/10 backdrop-blur-sm text-cream hover:bg-gold/30 hover:text-gold transition-all duration-300 border border-white/10"
-        aria-label="Previous slide"
-      >
-        <ChevronLeft size={22} />
-      </button>
-      <button
-        onClick={next}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/10 backdrop-blur-sm text-cream hover:bg-gold/30 hover:text-gold transition-all duration-300 border border-white/10"
-        aria-label="Next slide"
-      >
-        <ChevronRight size={22} />
-      </button>
 
       {/* Dots */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
