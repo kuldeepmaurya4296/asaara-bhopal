@@ -21,16 +21,14 @@ export default function MasjidSection() {
               className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-emerald-dark/5 flex flex-col h-full"
               style={{ animationDelay: `${i * 150}ms` }}
             >
-              {/* Color Header */}
-              <div className={`h-40 bg-gradient-to-br ${m.color} relative overflow-hidden`}>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-20 h-20 rounded-full border-2 border-gold/30 flex items-center justify-center">
-                    <span className="font-heading text-2xl text-gold font-bold">{m.name.charAt(0)}</span>
-                  </div>
-                </div>
-                {/* Decorative circles */}
-                <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-gold/10" />
-                <div className="absolute -bottom-8 -left-8 w-32 h-32 rounded-full bg-white/5" />
+              {/* Image Header */}
+              <div className="h-48 relative overflow-hidden">
+                <img
+                  src={m.heroImage}
+                  alt={m.name}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-emerald-dark/80 via-emerald-dark/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
               </div>
 
               {/* Content */}

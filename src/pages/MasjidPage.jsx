@@ -108,7 +108,6 @@ export default function MasjidPage() {
               <div className="flex flex-wrap gap-4">
                 <InfoChip icon={MapPin} text={masjid.address} />
                 <InfoChip icon={Phone} text={masjid.phone} />
-                <InfoChip icon={Mail} text={masjid.email} />
                 <InfoChip icon={Clock} text={`Waaz: ${masjid.waazTimings.morning} & ${masjid.waazTimings.evening}`} />
               </div>
             </div>
