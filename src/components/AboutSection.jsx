@@ -1,4 +1,5 @@
 import { BookOpen, Heart, Users, Globe, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 
 export default function AboutSection() {
@@ -57,15 +58,13 @@ export default function AboutSection() {
 
 
             {/* Read More Button */}
-            <a
-              href="https://www.thedawoodibohras.com/about-the-bohras/#intro"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/about"
               className="inline-flex items-center gap-2 bg-gold text-emerald-dark font-heading font-semibold px-7 py-3 rounded-full hover:bg-gold-light hover:shadow-lg hover:shadow-gold/20 transition-all duration-300 text-sm tracking-wide mt-2 group"
             >
               Read More
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

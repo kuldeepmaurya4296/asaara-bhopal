@@ -12,7 +12,7 @@ const announcements = [
 
 const navItems = [
   { label: 'Home', href: '/' },
-  { label: 'About Ashara', href: '/#relay' },
+  { label: 'About Us', href: '/about' },
   { label: 'Live Relay', href: '/#countdown' },
   { label: 'Masjid in Bhopal', href: '/#masjids' },
   { label: 'Services', href: '/#services' },
