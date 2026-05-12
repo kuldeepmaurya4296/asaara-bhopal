@@ -60,18 +60,21 @@ export default function AboutSection() {
           {/* Right – Text Content */}
           <div className="lg:w-7/12 space-y-6">
             <p className="text-charcoal/80 text-lg leading-relaxed">
-              The Dawoodi Bohras are a community of Shia Fatimid Muslims with a rich heritage
-              spanning over a thousand years. Under the guidance of the Dai al-Mutlaq, His Holiness
-              Dr. Syedna Mufaddal Saifuddin <span className="text-gold font-medium">TUS</span>, the
-              community flourishes with an emphasis on education, ethical living, and service to humanity.
+              Dawoodi Bohra community in Bhopal is widely known for its deep sense of mohabbat, ikhlaas, unity, and hospitality. With a community of approximately 6,500 members, the Dawoodi Bohras of Bhopal have always shared a strong bond of love, respect, and togetherness, creating an environment where every visitor feels welcomed like family.
             </p>
             <p className="text-charcoal/60 leading-relaxed">
-              Known for their close-knit family values, entrepreneurial spirit, and philanthropic
-              endeavours, the Bohras actively contribute to the societies they live in. The community's
-              commitment to cleanliness, sustainability, and interfaith harmony has earned global
-              recognition. Ashara Mubarak — the annual commemoration of Imam Husain SA — is the
-              cornerstone of the community's spiritual calendar.
+              The people of Bhopal hold immense love and devotion for Maula, and this mohabbat can be seen in their culture, gatherings, service, and everyday interactions. The community is recognized for its sincerity, humble nature, and the spirit of serving others with happiness and respect.
             </p>
+            <p>
+              Bhopal itself is a city filled with heritage, peace, and culture, famously known as the “City of Lakes.” The warmth of its people beautifully reflects in the Dawoodi Bohra community as well, making the city a memorable place for all those who visit.
+            </p>
+            {/* <p className="text-charcoal/60 leading-relaxed">
+              A unique aspect of the Bohra community in Bhopal is the beautiful use of Lisaan ud-Dawat along with Urdu, both spoken with sweetness and elegance. These languages not only preserve tradition but also reflect the rich cultural identity of the community.
+
+              The city is home to five Dawoodi Bohra masjids, which serve as important centers of spirituality, unity, learning, and community connection.
+
+              As thousands of mumineen visit Bhopal for the Ashara , they will experience the true essence of the city — heartfelt hospitality, strong community spirit, and above all, the mohabbat and ikhlaas that define the people of Bhopal.
+            </p> */}
 
 
 
