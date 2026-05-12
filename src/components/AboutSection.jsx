@@ -1,27 +1,5 @@
 import { BookOpen, Heart, Users, Globe, ArrowRight } from 'lucide-react';
 
-const highlights = [
-  {
-    icon: Globe,
-    title: 'Global Community',
-    desc: 'Over a million members across more than 40 countries worldwide.',
-  },
-  {
-    icon: Heart,
-    title: 'Faith & Values',
-    desc: 'Rooted in the Fatimid tradition of Islam, guided by the Dai al-Mutlaq.',
-  },
-  {
-    icon: Users,
-    title: 'Unity & Service',
-    desc: 'Dedicated to community welfare, education, and humanitarian efforts.',
-  },
-  {
-    icon: BookOpen,
-    title: 'Heritage & Knowledge',
-    desc: 'A rich legacy of scholarship, art, architecture, and cultural preservation.',
-  },
-];
 
 export default function AboutSection() {
   return (

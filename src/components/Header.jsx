@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { Phone, Mail, Search, Menu, X, Megaphone } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react';
+import { Phone, Mail, Search, Menu, X, Megaphone, ChevronDown, Hotel, Bus, Layers, Users, MessageCircle } from 'lucide-react';
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const announcements = [
   "✦ Ashara Mubarak 1448H – Live Relay Active ✦",
@@ -21,10 +21,23 @@ const navItems = [
   { label: 'Contact', href: '/contact' },
 ];
 
+const dropdownItems = [
+  { label: 'Accommodations', href: '/accommodations', icon: Hotel, desc: 'Hotels 2★ to 5★ in Bhopal' },
+  { label: 'Transport', href: '/transport', icon: Bus, desc: 'Rail, Air, Road & City transport' },
+  { label: 'Relay Centre & Zone', href: '/relay-zones', icon: Layers, desc: '4 zones with relay centres' },
+  { label: 'Volunteers & Community', href: '/volunteers', icon: Users, desc: '23 departments & contacts' },
+  { label: 'Instant Ashara Update', href: 'https://wa.me/918982675004', icon: MessageCircle, desc: 'Latest updates via WhatsApp', external: true },
+];
+
 export default function Header() {
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+  const dropdownTimeoutRef = useRef(null);
+  const navigate = useNavigate();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious();
@@ -34,6 +47,35 @@ export default function Header() {
       setHidden(false);
     }
   });
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setIsDropdownOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const handleDropdownEnter = () => {
+    clearTimeout(dropdownTimeoutRef.current);
+    setIsDropdownOpen(true);
+  };
+  const handleDropdownLeave = () => {
+    dropdownTimeoutRef.current = setTimeout(() => setIsDropdownOpen(false), 200);
+  };
+
+  const handleDropdownItemClick = (item) => {
+    setIsDropdownOpen(false);
+    setIsMobileMenuOpen(false);
+    if (item.external) {
+      window.open(item.href, '_blank', 'noopener,noreferrer');
+    } else {
+      navigate(item.href);
+    }
+  };
 
   return (
     <>
@@ -131,6 +173,69 @@ export default function Header() {
                   )}
                 </li>
               ))}
+
+              {/* Ashara Relay Centre Update Dropdown */}
+              <li
+                ref={dropdownRef}
+                className="relative"
+                onMouseEnter={handleDropdownEnter}
+                onMouseLeave={handleDropdownLeave}
+              >
+                <button
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  className={`relative px-4 py-3 text-sm font-medium transition-colors duration-300 group flex items-center gap-1.5 ${
+                    isDropdownOpen ? 'text-gold' : 'text-cream/80 hover:text-gold'
+                  }`}
+                >
+                  Ashara Relay Centre Update
+                  <ChevronDown
+                    size={14}
+                    className={`transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`}
+                  />
+                  <span className={`absolute bottom-1 left-1/2 -translate-x-1/2 h-0.5 bg-gold rounded-full transition-all duration-300 ${
+                    isDropdownOpen ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`} />
+                </button>
+
+                {/* Dropdown Menu */}
+                <AnimatePresence>
+                  {isDropdownOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8, scale: 0.97 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 8, scale: 0.97 }}
+                      transition={{ duration: 0.2, ease: "easeOut" }}
+                      className="absolute right-0 top-full mt-1 w-72 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-emerald-dark/10 overflow-hidden z-50"
+                    >
+                      {/* Gold accent bar */}
+                      <div className="h-1 bg-gradient-to-r from-emerald-dark via-gold to-emerald-dark" />
+
+                      <div className="p-2">
+                        {dropdownItems.map((item, idx) => (
+                          <button
+                            key={item.href}
+                            onClick={() => handleDropdownItemClick(item)}
+                            className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left hover:bg-emerald-dark/5 transition-all duration-200 group/item"
+                          >
+                            <div className="w-9 h-9 rounded-lg bg-emerald-dark/5 flex items-center justify-center shrink-0 group-hover/item:bg-gold/10 transition-colors">
+                              <item.icon size={16} className="text-emerald-dark group-hover/item:text-gold transition-colors" />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <p className="text-sm font-semibold text-charcoal group-hover/item:text-emerald-dark transition-colors flex items-center gap-1.5">
+                                {item.label}
+                                {item.external && (
+                                  <span className="text-[8px] bg-green-500/10 text-green-600 px-1.5 py-0.5 rounded-full font-bold uppercase">WhatsApp</span>
+                                )}
+                              </p>
+                              <p className="text-[11px] text-charcoal/40 leading-tight">{item.desc}</p>
+                            </div>
+                          </button>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </li>
             </ul>
           </div>
         </nav>
@@ -157,7 +262,7 @@ export default function Header() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 h-full w-2/3 bg-cream shadow-2xl z-[70] md:hidden flex flex-col"
+              className="fixed top-0 right-0 h-full w-3/4 max-w-sm bg-cream shadow-2xl z-[70] md:hidden flex flex-col"
             >
               <div className="flex items-center justify-between p-4 border-b border-emerald-dark/10">
                 <span className="font-heading font-bold text-emerald-dark">Menu</span>
@@ -169,14 +274,14 @@ export default function Header() {
                 </button>
               </div>
 
-              <div className="flex flex-col p-6 gap-6 overflow-y-auto">
+              <div className="flex flex-col p-6 gap-1 overflow-y-auto flex-1">
                 {navItems.map((item) => (
                   item.href.startsWith('/') && !item.href.includes('#') ? (
                     <Link
                       key={item.href}
                       to={item.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="text-lg font-medium text-charcoal hover:text-emerald-dark transition-colors"
+                      className="text-base font-medium text-charcoal hover:text-emerald-dark transition-colors py-2.5"
                     >
                       {item.label}
                     </Link>
@@ -185,15 +290,64 @@ export default function Header() {
                       key={item.href}
                       href={item.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="text-lg font-medium text-charcoal hover:text-emerald-dark transition-colors"
+                      className="text-base font-medium text-charcoal hover:text-emerald-dark transition-colors py-2.5"
                     >
                       {item.label}
                     </a>
                   )
                 ))}
+
+                {/* Mobile Dropdown */}
+                <div className="mt-4 pt-4 border-t border-emerald-dark/10">
+                  <button
+                    onClick={() => setIsMobileDropdownOpen(!isMobileDropdownOpen)}
+                    className="w-full flex items-center justify-between text-base font-semibold text-emerald-dark py-2.5"
+                  >
+                    Ashara Relay Centre Update
+                    <ChevronDown
+                      size={16}
+                      className={`transition-transform duration-300 ${isMobileDropdownOpen ? 'rotate-180' : ''}`}
+                    />
+                  </button>
+
+                  <AnimatePresence>
+                    {isMobileDropdownOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="pl-4 space-y-1 pb-2">
+                          {dropdownItems.map((item) => (
+                            <button
+                              key={item.href}
+                              onClick={() => handleDropdownItemClick(item)}
+                              className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-left hover:bg-white transition-colors"
+                            >
+                              <div className="w-8 h-8 rounded-lg bg-emerald-dark/5 flex items-center justify-center shrink-0">
+                                <item.icon size={14} className="text-emerald-dark" />
+                              </div>
+                              <div>
+                                <p className="text-sm font-medium text-charcoal flex items-center gap-1.5">
+                                  {item.label}
+                                  {item.external && (
+                                    <span className="text-[8px] bg-green-500/10 text-green-600 px-1.5 py-0.5 rounded-full font-bold">WA</span>
+                                  )}
+                                </p>
+                                <p className="text-[10px] text-charcoal/40">{item.desc}</p>
+                              </div>
+                            </button>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </div>
 
-              <div className="mt-auto p-6 bg-white/50 border-t border-emerald-dark/10">
+              <div className="p-6 bg-white/50 border-t border-emerald-dark/10">
                 <div className="flex flex-col gap-4 text-sm text-charcoal">
                   <a href="tel:+919876543210" className="flex items-center gap-2">
                     <div className="w-8 h-8 rounded-full bg-emerald-dark/10 flex items-center justify-center">
