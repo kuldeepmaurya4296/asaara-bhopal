@@ -22,6 +22,18 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Name, email, and message are required.' });
     }
 
+    // Explicitly check for environment variables
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      console.error('Missing Environment Variables', {
+        EMAIL_USER: !!process.env.EMAIL_USER,
+        EMAIL_PASS: !!process.env.EMAIL_PASS
+      });
+      return res.status(500).json({ 
+        success: false, 
+        error: `Server Config Error: EMAIL_USER=${!!process.env.EMAIL_USER}, EMAIL_PASS=${!!process.env.EMAIL_PASS}. Please add these in the Vercel Dashboard and REDEPLOY.` 
+      });
+    }
+
     // Create transporter for each request (serverless = stateless)
     const transporter = nodemailer.createTransport({
       service: 'gmail',
