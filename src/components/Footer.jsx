@@ -2,12 +2,15 @@ import { Mail, Phone, MapPin, Instagram, Twitter, Youtube, Facebook, ChevronRigh
 import { Link } from 'react-router-dom';
 
 const pagesLinks = [
-  { label: 'About Us', href: '/#relay' },
-  { label: 'AES - Burhani Masjid', href: '/#masjids' },
-  { label: 'AET - Iqbal Maidan', href: '/#masjids' },
-  { label: 'AEV - Community Hall', href: '/#masjids' },
-  { label: 'Contact', href: '/contact' },
-  { label: 'Important Information', href: '/#faq' },
+  { label: 'Home', href: '/' },
+  { label: 'Accommodations', href: '/accommodations' },
+  { label: 'Transport', href: '/transport' },
+  { label: 'Relay Zones', href: '/relay-zones' },
+  { label: 'Volunteers & Community', href: '/volunteers' },
+  { label: 'Dawoodi Bohras of Bhopal', href: '/about' },
+  { label: 'Gallery', href: '/gallery' },
+  { label: 'FAQ', href: '/faq' },
+  { label: 'Contact Us', href: '/contact' },
 ];
 
 export default function Footer() {
@@ -27,9 +30,11 @@ export default function Footer() {
             {/* Col 1: About Us & Logo */}
             <div className="flex flex-col h-full">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 rounded-full bg-emerald-dark flex items-center justify-center border border-gold/30 shrink-0">
-                  <span className="text-gold font-heading text-xl font-bold">B</span>
-                </div>
+                <img 
+                  src="/bhplLogo.png" 
+                  alt="Bhopal Ashara Logo" 
+                  className="h-12 w-auto object-contain" 
+                />
                 <div>
                   <h3 className="font-heading text-lg text-emerald-dark font-bold leading-tight">Bhopal Ashara</h3>
                   <p className="text-gold text-xs font-semibold uppercase tracking-wider">Mubarak Relay Centre</p>
@@ -124,11 +129,27 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Copyright Text */}
-        <div className="py-8 border-t border-cream/20 border-dashed text-center">
-          <p className="text-cream text-[13px] font-medium tracking-wide">
-            Copyright {new Date().getFullYear()} Bhopal Ashara Mubarak Relay Centre, All Rights Reserved
+        {/* Bottom Copyright Text & Attribution */}
+        <div className="py-8 border-t border-cream/20 border-dashed flex flex-col md:flex-row items-center justify-between gap-6">
+          <p className="text-cream/80 text-[13px] font-medium tracking-wide text-center md:text-left">
+            Copyright {new Date().getFullYear()} Bhopal Ashara Mubarak Relay Centre. All Rights Reserved.
           </p>
+
+          <div className="flex flex-col sm:flex-row items-center gap-3 text-cream/80 text-[13px]">
+            <span className="tracking-wide">Developed & Managed by</span>
+            <a
+              href="https://www.fakhriitservices.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-80 hover:-translate-y-0.5 transition-all duration-300"
+            >
+              <img
+                src="/Fakhri_White.png"
+                alt="Fakhri IT Services"
+                className="h-4 object-contain"
+              />
+            </a>
+          </div>
         </div>
       </div>
     </footer>

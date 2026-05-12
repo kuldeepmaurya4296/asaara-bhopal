@@ -104,9 +104,11 @@ export default function Header() {
           <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-3 gap-4">
             {/* Left – Logo / Title */}
             <Link to="/" className="flex items-center gap-3 shrink-0">
-              <div className="w-10 h-10 rounded-full bg-emerald-dark flex items-center justify-center">
-                <span className="text-gold font-heading text-lg font-bold">B</span>
-              </div>
+              <img 
+                src="/bhplLogo.png" 
+                alt="Bhopal Ashara Logo" 
+                className="h-10 w-auto object-contain" 
+              />
               <div className="hidden sm:block">
                 <h1 className="text-sm font-heading font-bold text-emerald-dark leading-tight">Bhopal Ashara</h1>
                 <p className="text-xs text-gold font-medium">Relay Centre</p>
