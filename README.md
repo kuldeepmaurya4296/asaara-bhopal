@@ -4,7 +4,7 @@ A premium, full-featured web portal for the **Bhopal Ashara Mubarak Relay Centre
 
 > **Developed & Managed by [Fakhri IT Services](https://www.fakhriitservices.com/)**
 
----
+--- 
 
 ## ✨ Features
 
