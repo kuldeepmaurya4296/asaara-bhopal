@@ -1,32 +1,9 @@
 import { useState } from 'react';
-import { ChevronDown, MessageCircleQuestion } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ChevronDown, MessageCircleQuestion, ArrowRight } from 'lucide-react';
+import { getFeaturedFaqs } from '../data/faq';
 
-const faqs = [
-  {
-    q: 'How to reach the relay center?',
-    a: 'Take the main road towards Iqbal Maidan and follow the signboards. Dedicated parking and volunteer-assisted drop-off points are available at the main entrance.',
-  },
-  {
-    q: 'What are the waaz timings?',
-    a: 'Waaz Mubarak starts daily at 10:00 AM and again at 5:00 PM. Timings may change — please check the announcement bar for the latest updates.',
-  },
-  {
-    q: 'Where is parking available?',
-    a: 'Dedicated parking zones are marked near each masjid and at the main relay centre entrance. Volunteers will guide you to the nearest available spot.',
-  },
-  {
-    q: 'How to access live relay?',
-    a: 'You can access the live relay at any of the registered relay centres in Bhopal. Online streaming links will be shared via the official communication channels.',
-  },
-  {
-    q: 'Emergency support number?',
-    a: 'For emergencies, call our 24/7 helpline at +91-9876543210. Medical teams and ambulance services are on standby throughout Ashara Mubarak.',
-  },
-  {
-    q: 'Accommodation support details?',
-    a: 'We provide verified guest houses with transport facilities. Contact the Accommodation desk at the relay centre or call the helpline for advance booking.',
-  },
-];
+const faqs = getFeaturedFaqs(5);
 
 export default function FAQ() {
   const [openIdx, setOpenIdx] = useState(null);
@@ -46,7 +23,7 @@ export default function FAQ() {
         </div>
 
         {/* Accordion */}
-        <div className="space-y-3">
+        <div className="space-y-3 mb-10">
           {faqs.map((faq, i) => {
             const isOpen = openIdx === i;
             return (
@@ -86,6 +63,17 @@ export default function FAQ() {
               </div>
             );
           })}
+        </div>
+        
+        {/* View All Button */}
+        <div className="text-center">
+          <Link
+            to="/faq"
+            className="inline-flex items-center gap-2 bg-gold text-emerald-dark font-heading font-semibold px-8 py-3.5 rounded-full hover:bg-gold-light hover:shadow-lg hover:shadow-gold/20 transition-all duration-300 text-sm tracking-wide group"
+          >
+            View All FAQs
+            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
+          </Link>
         </div>
       </div>
     </section>

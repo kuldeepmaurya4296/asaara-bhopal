@@ -8,6 +8,8 @@ import AccommodationsPage from './pages/AccommodationsPage';
 import TransportPage from './pages/TransportPage';
 import RelayZonesPage from './pages/RelayZonesPage';
 import VolunteersPage from './pages/VolunteersPage';
+import GalleryPage from './pages/GalleryPage';
+import FAQPage from './pages/FAQPage';
 import SmoothScroll from './components/SmoothScroll';
 import ScrollToHashElement from './components/ScrollToHashElement';
 
@@ -22,6 +24,8 @@ function App() {
           <Route path="/umoor/:slug" element={<UmoorPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/faq" element={<FAQPage />} />
           <Route path="/accommodations" element={<AccommodationsPage />} />
           <Route path="/transport" element={<TransportPage />} />
           <Route path="/relay-zones" element={<RelayZonesPage />} />
