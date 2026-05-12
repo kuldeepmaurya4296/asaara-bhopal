@@ -126,9 +126,9 @@ export default function Header() {
             {/* Right – Contact & Mobile Menu Toggle */}
             <div className="flex items-center gap-4 text-sm text-charcoal shrink-0">
               <div className="hidden lg:flex items-center gap-4">
-                <a href="tel:+919876543210" className="flex items-center gap-1.5 hover:text-emerald-dark transition-colors">
+                <a href="tel:+918982675004" className="flex items-center gap-1.5 hover:text-emerald-dark transition-colors">
                   <Phone size={14} className="text-gold" />
-                  <span>+91-9876543210</span>
+                  <span>+91 89826 75004</span>
                 </a>
                 <a href="mailto:info@asharamubarak.in" className="flex items-center gap-1.5 hover:text-emerald-dark transition-colors">
                   <Mail size={14} className="text-gold" />
@@ -353,11 +353,11 @@ export default function Header() {
 
               <div className="p-6 bg-white/50 border-t border-emerald-dark/10">
                 <div className="flex flex-col gap-4 text-sm text-charcoal">
-                  <a href="tel:+919876543210" className="flex items-center gap-2">
+                  <a href="tel:+918982675004" className="flex items-center gap-2">
                     <div className="w-8 h-8 rounded-full bg-emerald-dark/10 flex items-center justify-center">
                       <Phone size={14} className="text-emerald-dark" />
                     </div>
-                    <span>+91-9876543210</span>
+                    <span>+91 89826 75004</span>
                   </a>
                   <a href="mailto:info@asharamubarak.in" className="flex items-center gap-2">
                     <div className="w-8 h-8 rounded-full bg-emerald-dark/10 flex items-center justify-center">

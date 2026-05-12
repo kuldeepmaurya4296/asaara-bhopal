@@ -105,8 +105,8 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-emerald-dark">Phone</h4>
-                      <a href="tel:+919876543210" className="text-charcoal/70 mt-1 hover:text-gold transition-colors block">
-                        +91 98765 43210
+                      <a href="tel:+918982675004" className="text-charcoal/70 mt-1 hover:text-gold transition-colors block">
+                        +91 89826 75004
                       </a>
                     </div>
                   </div>

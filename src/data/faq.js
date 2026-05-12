@@ -17,7 +17,7 @@ export const faqs = [
   },
   {
     q: 'Emergency support number?',
-    a: 'For emergencies, call our 24/7 helpline at +91-9876543210. Medical teams and ambulance services are on standby throughout Ashara Mubarak.',
+    a: 'For emergencies, call our 24/7 helpline at +91 89826 75004. Medical teams and ambulance services are on standby throughout Ashara Mubarak.',
   },
   {
     q: 'Accommodation support details?',

@@ -59,6 +59,6 @@ export const aboutContent = {
   contact: {
     title: 'Get in Touch',
     description: 'Have questions about Ashara Mubarak in Bhopal? Reach out to our team — we\'re here to help.',
-    phone: '+919876543210',
+    phone: '+918982675004',
   },
 };
