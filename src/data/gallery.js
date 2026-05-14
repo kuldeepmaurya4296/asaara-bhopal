@@ -3,7 +3,7 @@
  *
  * Categories:
  *  1. Ashara Ohbat – Majlis 1447
- *  2. Ashara Mubarakaa Preparation
+ *  2. Ashara  Preparation
  *     a. Mawaid / Niyaz
  *     b. Relay Centre
  *     c. Zones

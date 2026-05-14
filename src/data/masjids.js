@@ -24,7 +24,7 @@ export const masjids = [
       clinicName: 'Mahal us Shifa',
       location: '2nd Floor, Tajul Masajid Relay Centre, Bhopal',
       timings: '9:30 AM to 4:30 PM',
-      desc: 'During these auspicious days of Ashara Mubarakaah, Mahal us Shifa is being made available for Mumineen. Services include dental check-ups, 2D Echo for heart evaluation, physiotherapy, and body composition analysis.',
+      desc: 'During these auspicious days of Ashara Mubarakah, Mahal us Shifa is being made available for Mumineen. Services include dental check-ups, 2D Echo for heart evaluation, physiotherapy, and body composition analysis.',
       services: ['Dental Check-ups', '2D Echo (Heart)', 'Physiotherapy', 'Nutrition & BCA', 'General OPD'],
     },
     nearbyHospitals: [
