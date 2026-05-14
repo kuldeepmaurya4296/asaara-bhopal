@@ -7,9 +7,9 @@ export const coreValues = [
 
 export const communityHighlights = [
   { label: 'Community Members', value: '6,500+' },
-  { label: 'Masjids in Bhopal', value: '5' },
-  { label: 'Relay Centres', value: '18+' },
-  { label: 'Active Volunteers', value: '500+' },
+  { label: 'Masajids in Bhopal', value: '4' },
+  { label: 'Relay Centres', value: '12+' },
+  { label: 'Active Volunteers', value: '2000+' },
 ];
 
 export const asharaServices = [
@@ -24,11 +24,11 @@ export const asharaServices = [
 ];
 
 export const masjidsList = [
-  { name: 'Tajul Masajid', area: 'Kohefiza', desc: 'One of the largest mosques in Asia – a historic landmark' },
-  { name: 'Saifee Masjid', area: 'Nawab Siddiqui Road', desc: 'Heart of the Bohra community in Bhopal' },
-  { name: 'Moti Masjid', area: 'Hawai Mahal', desc: 'The Pearl Mosque by the lakeside' },
-  { name: 'Iqbal Maidan Masjid', area: 'Iqbal Maidan', desc: 'Central hub and primary relay centre' },
-  { name: 'Burhani Masjid', area: 'Old Bhopal', desc: 'Historic community masjid in old city' },
+  { name: 'Haideri Masjid', area: 'Aliganj', desc: 'A prominent Dawoodi Bohra mosque and community center in Bhopal’s' },
+  { name: 'Husaini Masjid', area: 'Malipura', desc: 'Located in Malipura, Husaini Masjid serves as a central place of worship and a hub for community activities.' },
+  { name: 'Badri Masjid', area: 'Saifia College Road', desc: 'Serving the Dawoodi Bohra community along Saifia College Road as a dedicated place of worship and gathering.' },
+  { name: 'Burhani Masjid', area: 'Saeed Colony', desc: 'A key masjid and relay center serving the Dawoodi Bohra community in Bhopal.' }
+
 ];
 
 export const aboutContent = {
