@@ -55,11 +55,11 @@ export default function GalleryPage() {
 
   return (
     <div className="font-body bg-cream text-charcoal min-h-screen">
-      <SEO title="Gallery" description="Browse the complete Ashara Mubarak photo gallery – Majlis, Mawaid, Relay Centres, Volunteers, Masajid, and more." />
+      <SEO title="Gallery" description="Browse the complete Ashara Mubaraka photo gallery – Majlis, Mawaid, Relay Centres, Volunteers, Masajid, and more." />
       <Header />
       <PageHero
         title="Image Gallery"
-        subtitle="Relive the blessed moments of Ashara Mubarak — Majlis, preparations, community, and beyond"
+        subtitle="Relive the blessed moments of Ashara Mubaraka — Majlis, preparations, community, and beyond"
         icon={Images}
         breadcrumbs={[{ label: 'Gallery' }]}
       />

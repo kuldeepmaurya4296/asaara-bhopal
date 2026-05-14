@@ -4,7 +4,7 @@ import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-
 import { Link, useNavigate } from 'react-router-dom';
 
 const announcements = [
-  "✦ Ashara Mubarak 1448H – Live Relay Active ✦",
+  "✦ Ashara Mubaraka 1448H – Live Relay Active ✦",
   "✦ Emergency Support Available 24/7 ✦",
   "✦ Waaz Timing Updated – Check Schedule ✦",
   "✦ Volunteer Registration Now Open ✦",
@@ -132,9 +132,9 @@ export default function Header() {
                   <Phone size={14} className="text-gold" />
                   <span>+91 89826 75004</span>
                 </a>
-                <a href="mailto:info@asharamubarak.in" className="flex items-center gap-1.5 hover:text-emerald-dark transition-colors">
+                <a href="mailto:info@asharaMubaraka.in" className="flex items-center gap-1.5 hover:text-emerald-dark transition-colors">
                   <Mail size={14} className="text-gold" />
-                  <span>info@asharamubarak.in</span>
+                  <span>info@asharaMubaraka.in</span>
                 </a>
               </div>
 
@@ -361,11 +361,11 @@ export default function Header() {
                     </div>
                     <span>+91 89826 75004</span>
                   </a>
-                  <a href="mailto:info@asharamubarak.in" className="flex items-center gap-2">
+                  <a href="mailto:info@asharaMubaraka.in" className="flex items-center gap-2">
                     <div className="w-8 h-8 rounded-full bg-emerald-dark/10 flex items-center justify-center">
                       <Mail size={14} className="text-emerald-dark" />
                     </div>
-                    <span>info@asharamubarak.in</span>
+                    <span>info@asharaMubaraka.in</span>
                   </a>
                 </div>
               </div>

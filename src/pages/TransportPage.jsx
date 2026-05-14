@@ -24,7 +24,7 @@ export default function TransportPage() {
 
   return (
     <div className="font-body bg-cream text-charcoal min-h-screen">
-      <SEO title="Transport" description="Complete guide to reaching Bhopal and getting around the city during Ashara Mubarak." />
+      <SEO title="Transport" description="Complete guide to reaching Bhopal and getting around the city during Ashara Mubaraka." />
       <Header />
       <PageHero
         title="Transport Guide"

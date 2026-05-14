@@ -5,7 +5,7 @@ export const faqs = [
   },
   {
     q: 'What are the waaz timings?',
-    a: 'Waaz Mubarak starts daily at 10:00 AM and again at 5:00 PM. Timings may change — please check the announcement bar for the latest updates.',
+    a: 'Waaz Mubaraka starts daily at 10:00 AM and again at 5:00 PM. Timings may change — please check the announcement bar for the latest updates.',
   },
   {
     q: 'Where is parking available?',
@@ -17,7 +17,7 @@ export const faqs = [
   },
   {
     q: 'Emergency support number?',
-    a: 'For emergencies, call our 24/7 helpline at +91 89826 75004. Medical teams and ambulance services are on standby throughout Ashara Mubarak.',
+    a: 'For emergencies, call our 24/7 helpline at +91 89826 75004. Medical teams and ambulance services are on standby throughout Ashara Mubaraka.',
   },
   {
     q: 'Accommodation support details?',
@@ -28,7 +28,7 @@ export const faqs = [
     a: 'Yes, Mahlus Shifa medical camps are set up at all major relay centres. Ambulances and emergency medical teams are on standby 24/7.',
   },
   {
-    q: 'How can I volunteer for Ashara Mubarak?',
+    q: 'How can I volunteer for Ashara Mubaraka?',
     a: 'You can register at the Central Markaz volunteer desk or contact your local community representative. Volunteers are needed across 23 different departments.',
   },
   {

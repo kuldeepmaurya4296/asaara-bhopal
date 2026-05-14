@@ -53,7 +53,7 @@ export const transportData = {
   cityTransport: {
     title: 'Inside City Transport',
     icon: 'Bus',
-    description: 'Multiple options available for getting around Bhopal city during Ashara Mubaraka.',
+    description: 'Multiple options available for getting around Bhopal city during Ashara Mubarakaa.',
     modes: [
       { name: 'City Bus (BCLL)', icon: 'Bus', description: 'Bhopal City Link Limited operates AC and non-AC buses covering major routes across the city. Affordable and well-networked.', fare: '₹10 – ₹30', availability: '6:00 AM – 10:00 PM', tips: 'Use Google Maps for real-time bus tracking. Major stops: Habibganj, MP Nagar, Old City, Bhadbhada.' },
       { name: 'Auto Rickshaw', icon: 'Bike', description: 'Three-wheelers available throughout the city. Both meter and fixed-fare autos are common.', fare: '₹30 – ₹200 (based on distance)', availability: '24/7', tips: 'Negotiate fare before boarding. Meter autos charge ~₹25 base + ₹15/km.' },

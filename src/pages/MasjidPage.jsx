@@ -211,7 +211,7 @@ export default function MasjidPage() {
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-dark via-gold to-emerald-dark" />
             <h3 className="font-heading text-2xl text-cream mb-3">Need Help?</h3>
             <p className="text-cream/50 text-sm mb-6 max-w-md mx-auto">
-              Our volunteer team is available 24/7 during Ashara Mubarak. Don't hesitate to reach out.
+              Our volunteer team is available 24/7 during Ashara Mubaraka. Don't hesitate to reach out.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a

@@ -11,11 +11,11 @@ export default function FAQPage() {
 
   return (
     <div className="font-body bg-cream text-charcoal min-h-screen">
-      <SEO title="FAQ" description="Frequently Asked Questions about Bhopal Ashara Mubarak, relay centres, transport, accommodation, and volunteering." />
+      <SEO title="FAQ" description="Frequently Asked Questions about Bhopal Ashara Mubaraka, relay centres, transport, accommodation, and volunteering." />
       <Header />
       <PageHero
         title="Frequently Asked Questions"
-        subtitle="Find answers to common questions about services, arrangements, and facilities for Ashara Mubarak in Bhopal"
+        subtitle="Find answers to common questions about services, arrangements, and facilities for Ashara Mubaraka in Bhopal"
         icon={MessageCircleQuestion}
         breadcrumbs={[{ label: 'FAQ' }]}
       />

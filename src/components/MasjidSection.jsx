@@ -9,7 +9,7 @@ export default function MasjidSection() {
         {/* Section Header */}
         <div className="text-center mb-14">
           <span className="text-gold text-xs tracking-[0.3em] uppercase font-semibold">Holy Places</span>
-          <h2 className="font-heading text-3xl sm:text-4xl text-emerald-dark mt-2 mb-4">Masjids in Bhopal</h2>
+          <h2 className="font-heading text-3xl sm:text-4xl text-emerald-dark mt-2 mb-4">Masajids in Bhopal</h2>
           <div className="w-20 h-1 bg-gold mx-auto rounded-full" />
         </div>
 

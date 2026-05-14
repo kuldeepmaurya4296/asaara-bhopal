@@ -1,7 +1,7 @@
 import { Megaphone } from 'lucide-react';
 
 const announcements = [
-  "✦ Ashara Mubarak 1448H – Live Relay Active ✦",
+  "✦ Ashara Mubaraka 1448H – Live Relay Active ✦",
   "✦ Emergency Support Available 24/7 ✦",
   "✦ Waaz Timing Updated – Check Schedule ✦",
   "✦ Volunteer Registration Now Open ✦",

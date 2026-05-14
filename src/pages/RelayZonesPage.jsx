@@ -23,11 +23,11 @@ export default function RelayZonesPage() {
 
   return (
     <div className="font-body bg-cream text-charcoal min-h-screen">
-      <SEO title="Relay Centre & Zones" description="Explore Ashara Mubarak relay centres across 4 zones in Bhopal with locations, contacts, and coordinators." />
+      <SEO title="Relay Centre & Zones" description="Explore Ashara Mubaraka relay centres across 4 zones in Bhopal with locations, contacts, and coordinators." />
       <Header />
       <PageHero
         title="Relay Centre & Zones"
-        subtitle="4 zones across Bhopal — each with dedicated relay centres for seamless Ashara Mubarak experience"
+        subtitle="4 zones across Bhopal — each with dedicated relay centres for seamless Ashara Mubaraka experience"
         icon={Layers}
         breadcrumbs={[{ label: 'Relay Centre & Zones' }]}
       />

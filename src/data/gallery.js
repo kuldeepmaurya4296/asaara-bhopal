@@ -1,9 +1,9 @@
 /**
- * Gallery Data – Ashara Mubarak Bhopal
+ * Gallery Data – Ashara Mubaraka Bhopal
  *
  * Categories:
  *  1. Ashara Ohbat – Majlis 1447
- *  2. Ashara Mubaraka Preparation
+ *  2. Ashara Mubarakaa Preparation
  *     a. Mawaid / Niyaz
  *     b. Relay Centre
  *     c. Zones
@@ -29,7 +29,7 @@ export const galleryCategories = [
 
 export const galleryImages = [
   // ── Ashara Ohbat – Majlis 1447 ──
-  { id: 1, url: 'https://www.blrjmt.com/wp-content/uploads/sb-instagram-feed-images/642557896_18078047006373522_3613359581573383587_n.heiclow.webp', category: 'majlis', title: 'Waaz Mubarak – Ashara 1447H', featured: true },
+  { id: 1, url: 'https://www.blrjmt.com/wp-content/uploads/sb-instagram-feed-images/642557896_18078047006373522_3613359581573383587_n.heiclow.webp', category: 'majlis', title: 'Waaz Mubaraka – Ashara 1447H', featured: true },
   { id: 2, url: 'https://www.blrjmt.com/wp-content/uploads/sb-instagram-feed-images/622701576_18073706855373522_5838723358977877538_nfull.webp', category: 'majlis', title: 'Majlis Gathering – Day 1' },
   { id: 3, url: 'https://www.blrjmt.com/wp-content/uploads/sb-instagram-feed-images/534304307_18057192359373522_5961789652225816845_nfull.webp', category: 'majlis', title: 'Mumineen at Ashara Majlis', featured: true },
 

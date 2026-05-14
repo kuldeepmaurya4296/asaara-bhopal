@@ -13,7 +13,7 @@ export const communityHighlights = [
 ];
 
 export const asharaServices = [
-  'Live Relay of Waaz Mubarak with HD quality',
+  'Live Relay of Waaz Mubaraka with HD quality',
   'Accommodation assistance for visiting mumineen',
   'Medical facilities – Mahal us Shifa clinics',
   'Volunteer coordination across 23 departments',
@@ -34,7 +34,7 @@ export const masjidsList = [
 export const aboutContent = {
   seo: {
     title: 'About Us',
-    description: 'Learn about the Dawoodi Bohra community of Bhopal, the Ashara Mubarak Relay Centre, and our commitment to service and hospitality.',
+    description: 'Learn about the Dawoodi Bohra community of Bhopal, the Ashara Mubaraka Relay Centre, and our commitment to service and hospitality.',
   },
   hero: {
     title: 'About Us',
@@ -48,17 +48,17 @@ export const aboutContent = {
       'The people of Bhopal hold immense love and devotion for Maula, and this mohabbat can be seen in their culture, gatherings, service, and everyday interactions. The community is recognized for its sincerity, humble nature, and the spirit of serving others with happiness and respect.',
       'Bhopal itself is a city filled with heritage, peace, and culture, famously known as the "City of Lakes." The warmth of its people beautifully reflects in the Dawoodi Bohra community as well, making the city a memorable place for all those who visit.',
       'A unique aspect of the Bohra community in Bhopal is the beautiful use of Lisaan ud-Dawat along with Urdu, both spoken with sweetness and elegance. These languages not only preserve tradition but also reflect the rich cultural identity of the community.',
-      'The city is home to five Dawoodi Bohra masjids, which serve as important centres of spirituality, unity, learning, and community connection. As thousands of mumineen visit Bhopal for Ashara Mubarak, they will experience the true essence of the city — heartfelt hospitality, strong community spirit, and above all, the mohabbat and ikhlaas that define the people of Bhopal.',
+      'The city is home to five Dawoodi Bohra masjids, which serve as important centres of spirituality, unity, learning, and community connection. As thousands of mumineen visit Bhopal for Ashara Mubaraka, they will experience the true essence of the city — heartfelt hospitality, strong community spirit, and above all, the mohabbat and ikhlaas that define the people of Bhopal.',
     ],
   },
   relayCentre: {
     image: '/Ashara1447.jpg',
-    imageAlt: 'Ashara Mubarak 1447H',
-    description: 'The Bhopal Ashara Mubarak Relay Centre offers a comprehensive suite of services for mumineen, ensuring comfort, safety, and spiritual fulfillment throughout the blessed period of Ashara Mubarak. Our dedicated team of volunteers works around the clock to provide world-class facilities.',
+    imageAlt: 'Ashara Mubaraka 1447H',
+    description: 'The Bhopal Ashara Mubaraka Relay Centre offers a comprehensive suite of services for mumineen, ensuring comfort, safety, and spiritual fulfillment throughout the blessed period of Ashara Mubaraka. Our dedicated team of volunteers works around the clock to provide world-class facilities.',
   },
   contact: {
     title: 'Get in Touch',
-    description: 'Have questions about Ashara Mubarak in Bhopal? Reach out to our team — we\'re here to help.',
+    description: 'Have questions about Ashara Mubaraka in Bhopal? Reach out to our team — we\'re here to help.',
     phone: '+918982675004',
   },
 };

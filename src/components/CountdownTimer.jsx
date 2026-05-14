@@ -42,7 +42,7 @@ export default function CountdownTimer() {
             Approaching
           </span>
           <h2 className="font-heading text-2xl sm:text-3xl text-emerald-dark">
-            Ashara Mubarak
+            Ashara Mubaraka
           </h2>
         </div>
 

@@ -1,12 +1,11 @@
 import { CheckCircle, Navigation } from 'lucide-react';
 
 const features = [
-  'Live Relay Support',
-  'Accommodation Assistance',
-  'Medical Help',
-  'Volunteer Coordination',
-  'Transport Guidance',
-  'Emergency Support',
+  'Accommodations',
+  'Transport',
+  'Relay Centre & Zones',
+  'Volunteers & Community',
+  'Instant Ashara Update'
 ];
 
 export default function AsharaSection() {
@@ -36,7 +35,7 @@ export default function AsharaSection() {
             <div className="relative">
               <img
                 src="/Ashara1447.jpg"
-                alt="Ashara Mubarak 1447H"
+                alt="Ashara Mubaraka 1447H"
                 className="w-full rounded-2xl shadow-xl object-contain border border-gold/20"
               />
               {/* Decorative corner */}
@@ -48,13 +47,13 @@ export default function AsharaSection() {
           {/* Right – Text */}
           <div className="lg:w-1/2 space-y-6">
             <p className="text-cream/80 text-lg leading-relaxed">
-              The Bhopal Ashara Mubarak Relay Centre offers a comprehensive suite of services
+              The Bhopal Ashara Mubaraka Relay Centre offers a comprehensive suite of services
               for mumineen, ensuring comfort, safety, and spiritual fulfillment throughout the
-              blessed period of Ashara Mubarak.
+              blessed period of Ashara Mubaraka.
             </p>
             <p className="text-cream/60 leading-relaxed">
               Our dedicated team of volunteers works around the clock to provide world-class
-              facilities including live relay of waaz mubarak, transportation, medical care,
+              facilities including live relay of waaz Mubaraka, transportation, medical care,
               and much more.
             </p>
 

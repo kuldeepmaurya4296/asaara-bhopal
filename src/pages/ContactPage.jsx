@@ -57,7 +57,7 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-cream flex flex-col font-sans">
-      <SEO title="Contact Us" description="Get in touch with the Bhopal Ashara Mubarak Relay Centre for any queries regarding services, accommodations, and support." />
+      <SEO title="Contact Us" description="Get in touch with the Bhopal Ashara Mubaraka Relay Centre for any queries regarding services, accommodations, and support." />
       <Header />
 
       <main className="flex-grow pb-20">
@@ -80,7 +80,7 @@ export default function ContactPage() {
                 Contact Us
               </h1>
               <p className="text-cream/80 max-w-2xl mx-auto">
-                We are here to assist you with any queries regarding Ashara Mubarak services, accommodations, and general support.
+                We are here to assist you with any queries regarding Ashara Mubaraka services, accommodations, and general support.
               </p>
             </FadeIn>
           </div>
@@ -96,7 +96,7 @@ export default function ContactPage() {
                 <div>
                   <h3 className="font-heading text-2xl text-emerald-dark mb-6">Reach Out to Us</h3>
                   <p className="text-charcoal/80 leading-relaxed mb-8">
-                    Our dedicated team at the Bhopal Ashara Mubarak Relay Centre is available to answer your questions and provide support for all community events and services.
+                    Our dedicated team at the Bhopal Ashara Mubaraka Relay Centre is available to answer your questions and provide support for all community events and services.
                   </p>
                 </div>
 
@@ -129,8 +129,8 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-emerald-dark">Email</h4>
-                      <a href="mailto:info@asharamubarak.in" className="text-charcoal/70 mt-1 hover:text-gold transition-colors block">
-                        info@asharamubarak.in
+                      <a href="mailto:info@asharaMubaraka.in" className="text-charcoal/70 mt-1 hover:text-gold transition-colors block">
+                        info@asharaMubaraka.in
                       </a>
                     </div>
                   </div>

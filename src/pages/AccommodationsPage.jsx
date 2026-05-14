@@ -25,11 +25,11 @@ export default function AccommodationsPage() {
 
   return (
     <div className="font-body bg-cream text-charcoal min-h-screen">
-      <SEO title="Accommodations" description="Find the best hotels and accommodations in Bhopal for Ashara Mubarak – from luxury 5-star to budget stays." />
+      <SEO title="Accommodations" description="Find the best hotels and accommodations in Bhopal for Ashara Mubaraka – from luxury 5-star to budget stays." />
       <Header />
       <PageHero
         title="Accommodations"
-        subtitle="Find the perfect stay in Bhopal during Ashara Mubarak – from luxury resorts to budget-friendly hotels"
+        subtitle="Find the perfect stay in Bhopal during Ashara Mubaraka – from luxury resorts to budget-friendly hotels"
         icon={Hotel}
         breadcrumbs={[{ label: 'Accommodations' }]}
       />

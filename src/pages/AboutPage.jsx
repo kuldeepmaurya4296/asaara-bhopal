@@ -171,7 +171,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Section 5: Masjids in Bhopal */}
+        {/* Section 5:  */}
         <section className="mb-20">
           <SectionTitle icon={Building2} label="Our Masjids" title="5 Masjids of Bhopal" />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">

@@ -14,7 +14,7 @@ import SEO from '../components/SEO';
 export default function HomePage() {
   return (
     <div className="font-body bg-cream text-charcoal min-h-screen">
-      <SEO title="Home" description="Welcome to the Bhopal Ashara Mubarak Relay Centre. Stay updated with the latest events, services, and live relays." />
+      <SEO title="Home" description="Welcome to the Bhopal Ashara Mubaraka Relay Centre. Stay updated with the latest events, services, and live relays." />
       <Header />
       <main>
         <section id="home"><HeroSlider /></section>

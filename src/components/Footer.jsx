@@ -68,12 +68,9 @@ export default function Footer() {
                 </div>
               </div>
               <p className="text-[13px] text-charcoal/70 leading-relaxed mb-6">
-                Premium Islamic event management and live relay platform serving the community during the sacred period of Ashara Mubarak.
+                The Bhopal Ashara Mubaraka Relay Centre has been arranged with the spirit of khidmat, mohabbat, and ikhlaas to provide mumineen with a peaceful and well-organized environment during Ashara Mubarakah. Managed by the Dawoodi Bohra community of Bhopal, the centre is designed to ensure a comfortable and memorable experience for all visitors.
               </p>
-              <div className="mt-auto flex items-center gap-2 text-[13px] text-charcoal/60 font-medium pt-4">
-                <MapPin size={14} className="text-gold shrink-0" />
-                Iqbal Maidan, Bhopal, India
-              </div>
+              
             </div>
 
             {/* Col 2: Contact Info */}
@@ -94,7 +91,7 @@ export default function Footer() {
                 </li>
                 <li className="flex items-start gap-3 text-[13px] text-charcoal/70 border-b border-charcoal/5 pb-4">
                   <MapPin size={14} className="text-gold shrink-0 mt-0.5" />
-                  Iqbal Maidan, Bhopal, Madhya Pradesh, India
+                  Qasr-e-Saifee, Bhopal Talkies Rd, near Bank Of India Bank, near Saifia College Road, Bhopal, Madhya Pradesh 462001
                 </li>
               </ul>
               <div className="flex items-center gap-4 mt-8 pl-1">

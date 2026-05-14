@@ -5,7 +5,7 @@ import TextReveal from './animations/TextReveal';
 
 const slides = [
   {
-    title: 'Ashara Mubarak 1448H',
+    title: 'Ashara Mubarakaa 1448H',
     subtitle: 'Experience the sacred blessings through our premium live relay service',
     btn: { text: 'Watch Live', icon: Play, href: '#countdown' },
     gradient: 'from-emerald-dark/80 via-emerald-dark/70 to-emerald-dark/80',

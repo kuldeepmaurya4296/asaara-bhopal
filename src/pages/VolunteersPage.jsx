@@ -36,11 +36,11 @@ export default function VolunteersPage() {
 
   return (
     <div className="font-body bg-cream text-charcoal min-h-screen">
-      <SEO title="Volunteers & Community" description="23 departments powering Ashara Mubarak in Bhopal — from PMO to Medical, Transport to IT." />
+      <SEO title="Volunteers & Community" description="23 departments powering Ashara Mubaraka in Bhopal — from PMO to Medical, Transport to IT." />
       <Header />
       <PageHero
         title="Volunteers & Community"
-        subtitle="23 dedicated departments working together to deliver a seamless Ashara Mubarak experience"
+        subtitle="23 dedicated departments working together to deliver a seamless Ashara Mubaraka experience"
         icon={Users}
         breadcrumbs={[{ label: 'Volunteers & Community' }]}
       />

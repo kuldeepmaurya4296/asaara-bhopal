@@ -1,6 +1,6 @@
-# 🕌 Bhopal Ashara Mubarak — Relay Centre Portal
+# 🕌 Bhopal Ashara Mubaraka — Relay Centre Portal
 
-A premium, full-featured web portal for the **Bhopal Ashara Mubarak Relay Centre** — serving the Dawoodi Bohra community with live relay updates, masjid information, accommodations, transport, volunteer coordination, and more.
+A premium, full-featured web portal for the **Bhopal Ashara Mubaraka Relay Centre** — serving the Dawoodi Bohra community with live relay updates, masjid information, accommodations, transport, volunteer coordination, and more.
 
 > **Developed & Managed by [Fakhri IT Services](https://www.fakhriitservices.com/)**
 
