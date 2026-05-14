@@ -63,8 +63,8 @@ export default function Footer() {
                   className="h-12 w-auto object-contain" 
                 />
                 <div>
-                  <h3 className="font-heading text-lg text-emerald-dark font-bold leading-tight">Bhopal Ashara</h3>
-                  <p className="text-gold text-xs font-semibold uppercase tracking-wider">Mubarak Relay Centre</p>
+                  <h3 className="font-heading text-lg text-emerald-dark font-bold leading-tight">Dawoodi Bohra</h3>
+                  <p className="text-gold text-xs font-semibold uppercase tracking-wider">Jamat Bhopal</p>
                 </div>
               </div>
               <p className="text-[13px] text-charcoal/70 leading-relaxed mb-6">
@@ -175,7 +175,7 @@ export default function Footer() {
         {/* Bottom Copyright Text & Attribution */}
         <div className="py-8 border-t border-cream/20 border-dashed flex flex-col md:flex-row items-center justify-between gap-6">
           <p className="text-cream/80 text-[13px] font-medium tracking-wide text-center md:text-left">
-            Copyright {new Date().getFullYear()} Bhopal Ashara Mubarak Relay Centre. All Rights Reserved.
+            Copyright {new Date().getFullYear()} Dawoodi Bohra Jamat Bhopal. All Rights Reserved.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-3 text-cream/80 text-[13px]">

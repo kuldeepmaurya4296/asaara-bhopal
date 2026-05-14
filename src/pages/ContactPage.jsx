@@ -96,7 +96,7 @@ export default function ContactPage() {
                 <div>
                   <h3 className="font-heading text-2xl text-emerald-dark mb-6">Reach Out to Us</h3>
                   <p className="text-charcoal/80 leading-relaxed mb-8">
-                    Our dedicated team at the Bhopal Ashara Mubaraka Relay Centre is available to answer your questions and provide support for all community events and services.
+                    Our dedicated team at the Dawoodi Bohra Jamat Bhopal is available to answer your questions and provide support for all community events and services.
                   </p>
                 </div>
 

@@ -110,8 +110,8 @@ export default function Header() {
                 className="h-10 w-auto object-contain" 
               />
               <div className="hidden sm:block">
-                <h1 className="text-sm font-heading font-bold text-emerald-dark leading-tight">Bhopal Ashara</h1>
-                <p className="text-xs text-gold font-medium">Relay Centre</p>
+                <h1 className="text-sm font-heading font-bold text-emerald-dark leading-tight">Dawoodi Bohra</h1>
+                <p className="text-xs text-gold font-medium">Jamat Bhopal</p>
               </div>
             </Link>
 
