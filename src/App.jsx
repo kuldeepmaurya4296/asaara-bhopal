@@ -11,6 +11,7 @@ import VolunteersPage from './pages/VolunteersPage';
 import GalleryPage from './pages/GalleryPage';
 import FAQPage from './pages/FAQPage';
 import ReportPage from './pages/ReportPage';
+import CreateReportPage from './pages/CreateReportPage';
 import SmoothScroll from './components/SmoothScroll';
 import ScrollToHashElement from './components/ScrollToHashElement';
 
@@ -32,6 +33,7 @@ function App() {
           <Route path="/relay-zones" element={<RelayZonesPage />} />
           <Route path="/volunteers" element={<VolunteersPage />} />
           <Route path="/report" element={<ReportPage />} />
+          <Route path="/create-report" element={<CreateReportPage />} />
         </Routes>
       </SmoothScroll>
     </BrowserRouter>

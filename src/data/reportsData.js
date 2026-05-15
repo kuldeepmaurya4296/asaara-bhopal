@@ -77,6 +77,7 @@ export const reportsData = [
         futureGoals: "Establish a vocational training institute for advanced IT skills.",
         representative: {
           name: "Dr. Saifuddin",
+          image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&q=80",
           contact: "+91-9876543220",
           designation: "Education Lead"
         }
@@ -87,6 +88,7 @@ export const reportsData = [
         futureGoals: "Open a specialized diagnostic center with subsidized rates.",
         representative: {
           name: "Dr. Fatima",
+          image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&q=80",
           contact: "+91-9876543221",
           designation: "Health & Welfare Head"
         }
@@ -123,6 +125,7 @@ export const reportsData = [
         futureGoals: "Develop a new residential complex with modern amenities.",
         representative: {
           name: "Johar Bhai",
+          image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&q=80",
           contact: "+91-9876543230",
           designation: "Property & Estate Manager"
         }
@@ -133,6 +136,7 @@ export const reportsData = [
         futureGoals: "Establish a permanent community kitchen facility.",
         representative: {
           name: "Abbas Bhai",
+          image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&q=80",
           contact: "+91-9876543231",
           designation: "Philanthropy Head"
         }
@@ -143,6 +147,7 @@ export const reportsData = [
         futureGoals: "Create a digital booking system for community venues.",
         representative: {
           name: "Mustafa Bhai",
+          image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&q=80",
           contact: "+91-9876543232",
           designation: "Events Coordinator"
         }
@@ -177,6 +182,7 @@ export const reportsData = [
         futureGoals: "Host an annual trade fair to showcase local products.",
         representative: {
           name: "Burhan Bhai",
+          image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&q=80",
           contact: "+91-9876543240",
           designation: "Business & Trade Head"
         }
@@ -187,6 +193,7 @@ export const reportsData = [
         futureGoals: "Launch a community portal for seamless communication.",
         representative: {
           name: "Yusuf Bhai",
+          image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&q=80",
           contact: "+91-9876543241",
           designation: "Internal Affairs Manager"
         }
