@@ -11,6 +11,7 @@ import PageHero from '../components/PageHero';
 import SEO from '../components/SEO';
 import FadeIn from '../components/animations/FadeIn';
 import { relayArazCopyData } from '../data/relayArazCopy';
+import RelayArazHero from '../components/RelayArazHero';
 
 const iconMap = { Hotel, Bus, Layers, Users };
 
@@ -63,8 +64,9 @@ export default function RelayArazCopyPage() {
   const { seo, hero, whatWhen, whyBhopal, whereContent } = relayArazCopyData;
 
   return (
-    <div className="font-body bg-cream text-charcoal min-h-screen">
+    <div className="font-body bg-cream text-charcoal min-h-screen pt-16">
       <SEO title={seo.title} description={seo.description} />
+      <RelayArazHero />
       <Header />
       <PageHero
         title={hero.title}
