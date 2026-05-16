@@ -204,10 +204,14 @@ export default function RelayArazPage() {
                         onClick={() => setExpandedSafar(expandedSafar === person.id ? null : person.id)}
                       >
                         <div className="flex items-start gap-5">
-                          <div className="w-16 h-16 rounded-2xl bg-emerald-dark flex items-center justify-center shrink-0 shadow-lg">
-                            <span className="text-gold font-heading font-bold text-2xl">
-                              {person.personName.charAt(0)}
-                            </span>
+                          <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-3xl bg-emerald-dark/5 flex items-center justify-center shrink-0 shadow-md overflow-hidden border-2 border-gold/20 group-hover:border-gold/50 transition-colors duration-300">
+                            {person.image ? (
+                              <img src={person.image} alt={person.personName} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                            ) : (
+                              <span className="text-gold font-heading font-bold text-2xl">
+                                {person.personName.charAt(0)}
+                              </span>
+                            )}
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 mb-1">

@@ -42,7 +42,7 @@ export const relayArazData = {
         title: '51st Dai al-Mutlaq (1915–1965)',
         about:
           'A visionary leader who traveled far more extensively than any of his predecessors, aided by the expansion of the Indian railway network and the advent of air travel. He championed modern education while preserving spiritual traditions, establishing hundreds of schools and institutions globally.',
-        image: 'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?w=600&q=80',
+        image: '/syeda tahir.jpg',
         safars: [
           {
             name: 'Educational Mission — Bhopal',
@@ -76,7 +76,7 @@ export const relayArazData = {
         title: '52nd Dai al-Mutlaq (1965–2014)',
         about:
           'During his 49-year tenure, Syedna Mohammed Burhanuddin RA conducted numerous safars to cities across India and the world. He established the Faiz al-Mawaid al-Burhaniyah (community kitchen) program and led a resurgence in community engagement, education, and identity preservation.',
-        image: 'https://images.unsplash.com/photo-1604580864964-0462f5d5b1a8?w=600&q=80',
+        image: '/Syedna_Mufaddal_Saifuddin.jpg',
         safars: [
           {
             name: 'Safar Mubarak — Central India',
@@ -126,7 +126,7 @@ export const relayArazData = {
         title: '53rd Dai al-Mutlaq',
         about:
           'The current spiritual leader of the Dawoodi Bohra community, Syedna Mufaddal Saifuddin TUS has traveled extensively across the globe to connect with mumineen, guide them in faith, and inspire community development through education, enterprise, and service.',
-        image: 'https://images.unsplash.com/photo-1585129777188-94600bc7b4b3?w=600&q=80',
+        image: '/sayeda mohammed.jpg',
         safars: [
           {
             name: 'Safar Mubarak — Bhopal 2024',
