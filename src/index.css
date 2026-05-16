@@ -2,7 +2,8 @@
 
 @font-face {
   font-family: 'Kanz';
-  src: url('/KANZ-AL-MARJAAN.TTF') format('truetype');
+  src: url('/KANZ-AL-MARJAAN.woff2') format('woff2'),
+       url('/KANZ-AL-MARJAAN.TTF') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
