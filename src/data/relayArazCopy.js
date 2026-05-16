@@ -193,7 +193,7 @@ export const relayArazCopyData = {
         category: 'Heritage',
         description:
           'One of the largest mosques in Asia, Taj-ul-Masajid is an architectural masterpiece with its iconic pink facade, three grand domes, and two towering minarets. The vast courtyard can accommodate thousands of worshippers, making it a breathtaking symbol of Islamic architecture in India.',
-        image: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?w=800&q=80',
+        image: '/Images/Why Bhopal /taj ul mashjid.jpg',
         highlights: ['Largest mosque in India', 'Pink sandstone facade', '3 grand white domes'],
       },
       {
@@ -202,7 +202,7 @@ export const relayArazCopyData = {
         category: 'Nature',
         description:
           'Created in the 11th century by King Bhoj, the Upper Lake is the lifeline of Bhopal and one of the oldest man-made lakes in India. Spanning over 31 sq km, it offers mesmerizing sunset views, boat rides, and a peaceful atmosphere that defines the city\'s character.',
-        image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
+        image: '/Images/Why Bhopal /upper lake.jpg',
         highlights: ['11th century heritage', '31 sq km expanse', 'Iconic sunset views'],
       },
       {
@@ -211,7 +211,7 @@ export const relayArazCopyData = {
         category: 'Heritage',
         description:
           'The Pearl Mosque, built by Sikander Jahan Begum in 1860, is an elegant tribute to the Jama Masjid of Delhi. Its pristine white marble facade and understated beauty reflect the refined taste of the Begums of Bhopal who ruled the city with wisdom and grace.',
-        image: 'https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=800&q=80',
+        image: '/Images/Why Bhopal /Moti Masjid.jpeg',
         highlights: ['Built by Begum in 1860', 'White marble elegance', 'Delhi Jama Masjid inspired'],
       },
       {
@@ -220,7 +220,7 @@ export const relayArazCopyData = {
         category: 'Nature',
         description:
           'Nestled along the banks of the Upper Lake, Van Vihar is a unique national park right within the city limits. Home to tigers, lions, leopards, and crocodiles, this park offers a rare blend of wildlife and urban accessibility that few cities in the world can boast.',
-        image: 'https://images.unsplash.com/photo-1549366021-9f761d450615?w=800&q=80',
+        image: '/Images/Why Bhopal /Van Vihar National Park.jpg',
         highlights: ['In-city national park', 'Tigers & leopards', 'Upper Lake shoreline'],
       },
       {
@@ -229,7 +229,7 @@ export const relayArazCopyData = {
         category: 'Culture',
         description:
           'Designed by the legendary architect Charles Correa, Bharat Bhavan is one of India\'s finest multi-arts complexes. It houses galleries, theatres, and libraries dedicated to visual and performing arts, showcasing the best of Indian creativity and cultural heritage.',
-        image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&q=80',
+        image: '/Images/Why Bhopal /Bharat Bhavan.webp',
         highlights: ['Charles Correa design', 'Multi-arts complex', 'Cultural landmark'],
       },
       {
@@ -238,7 +238,7 @@ export const relayArazCopyData = {
         category: 'Heritage',
         description:
           'An architectural marvel that uniquely blends post-Renaissance European design with Islamic architecture. Shaukat Mahal stands out in Bhopal\'s old city as a testimony to the cosmopolitan vision of the Nawabs who welcomed diverse artistic influences.',
-        image: 'https://images.unsplash.com/photo-1590080876351-941da357a4e4?w=800&q=80',
+        image: '/Images/Why Bhopal /sadar manjil.webp',
         highlights: ['Indo-European fusion', 'Nawabi era heritage', 'Unique architectural blend'],
       },
       {
@@ -247,25 +247,79 @@ export const relayArazCopyData = {
         category: 'Heritage',
         description:
           'Built by the first woman ruler of Bhopal, Qudsia Begum (Gauhar Mahal means "Palace of Jewels"), this 19th-century palace on the shores of Upper Lake blends Hindu and Mughal architectural styles in a stunning lakeside setting.',
-        image: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?w=800&q=80',
+        image: '/Images/Why Bhopal /Gauhar Mahal.jpeg',
         highlights: ['Built by Qudsia Begum', 'Lakeside palace', 'Hindu-Mughal blend'],
       },
       {
-        id: 'birla-mandir',
-        name: 'Birla Mandir',
-        category: 'Heritage',
-        description:
-          'Perched atop Arera Hills, the Lakshmi Narayan Temple (Birla Mandir) offers a breathtaking panoramic view of the entire city including both lakes. Built with red sandstone, this modern temple is a testament to Bhopal\'s spiritual diversity and harmony.',
-        image: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800&q=80',
-        highlights: ['Panoramic city views', 'Red sandstone architecture', 'Arera Hills summit'],
-      },
+  id: 'taj-hotel',
+  name: 'Taj Lakefront Bhopal',
+  category: 'Hospitality',
+  description:
+    'A premium luxury hotel located near the Upper Lake, Taj Lakefront Bhopal represents the city’s modern hospitality and royal charm. With elegant architecture, lake-facing views, and world-class facilities, it adds a refined and welcoming experience for visitors coming to Bhopal.',
+  image: '/Images/Why Bhopal /Taj Lakefront Bhopal.jpeg',
+  highlights: ['Luxury lakefront hotel', 'Premium hospitality', 'Upper Lake views'],
+},
+{
+  id: 'db-mall',
+  name: 'DB City Mall',
+  category: 'Lifestyle',
+  description:
+    'One of the largest and most popular shopping destinations in Bhopal, DB City Mall is a modern lifestyle hub featuring national and international brands, food courts, entertainment zones, and multiplex facilities. It reflects the urban and vibrant side of the city.',
+  image: '/Images/Why Bhopal /DB City Mall.jpeg',
+  highlights: ['Popular shopping destination', 'Food and entertainment hub', 'Modern city lifestyle'],
+},
+{
+  id: 'bhopal-metro',
+  name: 'Bhopal Metro',
+  category: 'Connectivity',
+  description:
+    'Bhopal Metro is a major step toward modern urban transport in the city. Designed to improve public mobility, reduce traffic congestion, and connect important city zones, the metro project highlights Bhopal’s growing infrastructure and future-ready development.',
+  image: '/Images/Why Bhopal /Bhopal Metro.avif',
+  highlights: ['Modern urban transport', 'Improved city connectivity', 'Future-ready infrastructure'],
+},
+{
+  id: 'bhopal-airport',
+  name: 'Raja Bhoj Airport',
+  category: 'Connectivity',
+  description:
+    'Raja Bhoj Airport serves as the main air gateway to Bhopal, connecting the city with major destinations across India. Located on the outskirts of the city, the airport plays an important role in making Bhopal easily accessible for visitors, guests, and business travellers.',
+  image: '/Images/Why Bhopal /Raja Bhoj Airport.jpg',
+  highlights: ['Main airport of Bhopal', 'Domestic air connectivity', 'Easy access for visitors'],
+},
+{
+  id: 'golghar',
+  name: 'Golghar',
+  category: 'Heritage',
+  description:
+    'Golghar is one of Bhopal’s notable heritage structures, known for its unique circular architecture and historical importance. It reflects the old-world charm of the city and stands as a reminder of Bhopal’s rich architectural and cultural legacy.',
+  image: '/Images/Why Bhopal /Golghar.avif',
+  highlights: ['Historic circular structure', 'Architectural landmark', 'Old Bhopal heritage'],
+},
+{
+  id: 'vip-road',
+  name: 'VIP Road',
+  category: 'Scenic',
+  description:
+    'VIP Road is one of the most beautiful and scenic routes in Bhopal, running alongside the Upper Lake. Known for its peaceful lake views, evening atmosphere, and smooth connectivity, it is a popular stretch for both locals and visitors to experience the charm of the City of Lakes.',
+  image: '/Images/Why Bhopal /VIP ROAD.png',
+  highlights: ['Scenic lake-side road', 'Upper Lake views', 'Popular evening spot'],
+},
+{
+  id: 'bhopal-junction',
+  name: 'Bhopal Junction',
+  category: 'Connectivity',
+  description:
+    'Bhopal Junction is one of the city’s major railway stations and an important transport hub for travellers. It connects Bhopal with several major cities across India and plays a key role in welcoming visitors, guests, and passengers to the heart of Madhya Pradesh.',
+  image: '/Images/Why Bhopal /Bhopal Junction.jpg',
+  highlights: ['Major railway station', 'Important transport hub', 'Strong rail connectivity'],
+},
       {
         id: 'lower-lake',
         name: 'Lower Lake',
         category: 'Nature',
         description:
           'Connected to the Upper Lake by a bridge, the Lower Lake offers a tranquil retreat with lush green surroundings, paddle boating, and walking trails. Together, the twin lakes create the iconic landscape that earned Bhopal its title of "City of Lakes."',
-        image: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&q=80',
+        image: '/Images/Why Bhopal /Lower Lake.jpg',
         highlights: ['Twin lake system', 'Paddle boating', 'Lush green trails'],
       },
       {
@@ -274,7 +328,7 @@ export const relayArazCopyData = {
         category: 'Culture',
         description:
           'A vibrant and immersive museum that brings alive the rich tribal heritage of Madhya Pradesh. With life-sized exhibits, traditional art installations, and interactive displays, the museum offers a deep dive into the indigenous cultures that have shaped the region.',
-        image: 'https://images.unsplash.com/photo-1566054757468-0b11d23a2e22?w=800&q=80',
+        image: '/Images/Why Bhopal /MP Tribal Museum.jpg',
         highlights: ['Immersive exhibits', 'Tribal art & culture', 'Life-sized installations'],
       },
       {
@@ -283,7 +337,7 @@ export const relayArazCopyData = {
         category: 'Heritage',
         description:
           'The city\'s oldest surviving palace, built in the early 18th century by the Gond queen Kamlapati. This seven-storied structure overlooks the Upper Lake and stands as a poignant reminder of Bhopal\'s pre-Nawabi history and the resilience of its people.',
-        image: 'https://images.unsplash.com/photo-1598091383021-15ddea10925d?w=800&q=80',
+        image: '/Images/Why Bhopal /Rani Kamlapati Palace.webp',
         highlights: ['Oldest palace in Bhopal', 'Seven-storied structure', 'Gond dynasty heritage'],
       },
       {
@@ -292,7 +346,7 @@ export const relayArazCopyData = {
         category: 'Heritage',
         description:
           'A UNESCO World Heritage Site just 45 km from Bhopal, Bhimbetka houses over 500 rock shelters with prehistoric cave paintings dating back 30,000 years. These vivid depictions of ancient life are among the oldest known evidence of human artistic expression.',
-        image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
+        image: 'public/Images/Why Bhopal /Bhimbetka Rock Shelters.jpg',
         highlights: ['UNESCO World Heritage', '30,000-year-old art', '500+ rock shelters'],
       },
     ],

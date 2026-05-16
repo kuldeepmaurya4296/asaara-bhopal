@@ -167,7 +167,7 @@ export const relayArazData = {
         category: 'Heritage',
         description:
           'One of the largest mosques in Asia, Taj-ul-Masajid is an architectural masterpiece with its iconic pink facade, three grand domes, and two towering minarets. The vast courtyard can accommodate thousands of worshippers, making it a breathtaking symbol of Islamic architecture in India.',
-        image: 'https://images.unsplash.com/photo-1599661046289-e31897846e41?w=800&q=80',
+        image: '/Images/Why Bhopal /Moti Masjid.jpeg',
         highlights: ['Largest mosque in India', 'Pink sandstone facade', '3 grand white domes'],
       },
       {
