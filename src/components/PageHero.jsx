@@ -11,6 +11,18 @@ export default function PageHero({ title, subtitle, breadcrumbs = [], icon: Icon
   });
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
+  const renderMixedText = (text) => {
+    if (typeof text !== 'string') return text;
+    // Split by Arabic text blocks
+    const parts = text.split(/([\u0600-\u06FF][\u0600-\u06FF\s]*[\u0600-\u06FF]|[\u0600-\u06FF]+)/g);
+    return parts.map((part, i) => {
+      if (/[\u0600-\u06FF]/.test(part)) {
+        return <span key={i} className="font-kanz font-normal text-[1.1em] px-2">{part}</span>;
+      }
+      return part;
+    });
+  };
+
   return (
     <div ref={heroRef} className="relative py-6 sm:py-10 overflow-hidden">
       {/* Background */}
@@ -64,7 +76,7 @@ export default function PageHero({ title, subtitle, breadcrumbs = [], icon: Icon
               transition={{ duration: 0.6 }}
               className="font-heading text-3xl sm:text-4xl md:text-5xl text-cream font-bold drop-shadow-lg"
             >
-              {title}
+              {renderMixedText(title)}
             </motion.h1>
             {subtitle && (
               <motion.p

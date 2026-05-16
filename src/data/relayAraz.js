@@ -8,7 +8,7 @@ export const relayArazData = {
       'Discover the story behind Ashara Mubaraka in Bhopal — the historical safar of Duat Mutlaqeen, the glory of Bhopal, and the comprehensive arrangements for mumineen.',
   },
   hero: {
-    title: 'Relay Araz',
+    title: 'Relay Araz العشرة المباركة اهبة ',
     subtitle:
       'The story, the city, the vision — understanding why Bhopal has been chosen and how we serve mumineen during Ashara Mubaraka',
   },
