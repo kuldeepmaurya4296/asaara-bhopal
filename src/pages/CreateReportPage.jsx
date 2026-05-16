@@ -9,7 +9,6 @@ const emptyUmoor = {
   futureGoals: "",
   representative: {
     name: "",
-    contact: "",
     designation: "",
     image: ""
   }
@@ -147,7 +146,7 @@ export default function CreateReportPage() {
     // Check umoors
     for (const umoor of formData.umoors) {
       if (!umoor.name.trim() || !umoor.keyAchievement.trim() || !umoor.futureGoals.trim()) return false;
-      if (!umoor.representative.name.trim() || !umoor.representative.contact.trim() || !umoor.representative.designation.trim() || !umoor.representative.image.trim()) return false;
+      if (!umoor.representative.name.trim() || !umoor.representative.designation.trim() || !umoor.representative.image.trim()) return false;
     }
 
     return true;
@@ -402,10 +401,6 @@ export default function CreateReportPage() {
                       <div>
                         <label className="block text-xs font-bold text-charcoal/60 mb-1">Name <span className="text-red-500">*</span></label>
                         <input required type="text" value={umoor.representative.name} onChange={(e) => handleUmoorChange(e, index, 'representative', 'name')} className="w-full px-3 py-2 text-sm rounded-md border border-gray-300 focus:border-emerald-dark outline-none" placeholder="Name" />
-                      </div>
-                      <div>
-                        <label className="block text-xs font-bold text-charcoal/60 mb-1">Contact <span className="text-red-500">*</span></label>
-                        <input required type="text" value={umoor.representative.contact} onChange={(e) => handleUmoorChange(e, index, 'representative', 'contact')} className="w-full px-3 py-2 text-sm rounded-md border border-gray-300 focus:border-emerald-dark outline-none" placeholder="Phone or Email" />
                       </div>
                       <div>
                         <label className="block text-xs font-bold text-charcoal/60 mb-1">Designation <span className="text-red-500">*</span></label>

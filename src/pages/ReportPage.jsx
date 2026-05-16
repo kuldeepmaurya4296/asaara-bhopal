@@ -311,10 +311,6 @@ export default function ReportPage() {
                         <div>
                           <p className="font-bold text-emerald-dark text-sm">{umoor.representative.name}</p>
                           <p className="text-xs text-charcoal/60 mb-1">{umoor.representative.designation}</p>
-                          <div className="flex items-center gap-1 text-xs font-medium text-emerald-dark/70">
-                            <Phone size={12} />
-                            <span>{umoor.representative.contact}</span>
-                          </div>
                         </div>
                       </div>
                     </div>
