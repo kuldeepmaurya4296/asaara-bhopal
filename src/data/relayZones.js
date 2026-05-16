@@ -2,7 +2,7 @@ export const relayZones = [
   {
     id: 'zone-a',
     name: 'Zone A',
-    title: 'Central Bhopal',
+    title: 'Mufaddal ',
     color: 'emerald',
     description: 'Covers the heart of old Bhopal including Tajul Masajid and surrounding areas. The largest zone with maximum mumineen capacity.',
     relayCentres: [
@@ -10,13 +10,13 @@ export const relayZones = [
       { name: 'Kohefiza Community Hall', location: 'Kohefiza Main Road, Bhopal, MP 462001', contact: '+91-98765-43221', coordinator: 'Bhai Mustafa bhai Saifuddin', coordinatorPhone: '+91-98765-11002', mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.8!2d77.351!3d23.238!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sKohefiza+Bhopal!5e0!3m2!1sen!2sin!4v1', capacity: '800' },
       { name: 'Ibrahimpura Centre', location: 'Ibrahimpura, Old Bhopal, MP 462001', contact: '+91-98765-43231', coordinator: 'Bhai Taher bhai Burhanuddin', coordinatorPhone: '+91-98765-11003', mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.8!2d77.353!3d23.239!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sIbrahimpura+Bhopal!5e0!3m2!1sen!2sin!4v1', capacity: '600' },
       { name: 'Shahjahanabad Relay Point', location: 'Shahjahanabad, Near Police Station, Bhopal, MP 462001', contact: '+91-98765-43241', coordinator: 'Bhai Abbas bhai Rashid', coordinatorPhone: '+91-98765-11004', mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.8!2d77.355!3d23.241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sShahjahanabad+Bhopal!5e0!3m2!1sen!2sin!4v1', capacity: '500' },
-      { name: 'Budhwara Centre', location: 'Budhwara, Central Bhopal, MP 462001', contact: '+91-98765-43251', coordinator: 'Bhai Murtaza bhai Ali', coordinatorPhone: '+91-98765-11005', mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.8!2d77.357!3d23.243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sBudhwara+Bhopal!5e0!3m2!1sen!2sin!4v1', capacity: '450' },
+      { name: 'Budhwara Centre', location: 'Budhwara, mufaddal , MP 462001', contact: '+91-98765-43251', coordinator: 'Bhai Murtaza bhai Ali', coordinatorPhone: '+91-98765-11005', mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.8!2d77.357!3d23.243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sBudhwara+Bhopal!5e0!3m2!1sen!2sin!4v1', capacity: '450' },
     ],
   },
   {
     id: 'zone-b',
     name: 'Zone B',
-    title: 'Old City & Lakeside',
+    title: 'Haidery',
     color: 'gold',
     description: 'Covers the historic old city areas around Moti Masjid, Chowk Bazaar, and the lakefront regions.',
     relayCentres: [
@@ -29,7 +29,7 @@ export const relayZones = [
   {
     id: 'zone-c',
     name: 'Zone C',
-    title: 'New Bhopal',
+    title: 'Husaini',
     color: 'emerald-light',
     description: 'Covers MP Nagar, Arera Hills, and the modern commercial and residential areas of New Bhopal.',
     relayCentres: [
@@ -43,7 +43,7 @@ export const relayZones = [
   {
     id: 'zone-d',
     name: 'Zone D',
-    title: 'Outer Bhopal',
+    title: 'Burhani Nagar',
     color: 'charcoal',
     description: 'Covers Habibganj, Bairagarh, and the outer residential areas extending towards the outskirts.',
     relayCentres: [

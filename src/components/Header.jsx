@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Phone, Mail, Search, Menu, X, Megaphone, ChevronDown, Hotel, Bus, Layers, Users, MessageCircle } from 'lucide-react';
-import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 
 const announcements = [
@@ -12,13 +12,14 @@ const announcements = [
 
 const navItems = [
   { label: 'Home', href: '/' },
-  { type: 'dropdown', label: 'Ashara Relay Centre Update' },
+  // { type: 'dropdown', label: 'Ashara Relay Centre Update' },
+  { label: 'Relay Araz', href: '/relay-araz' },
   // { label: "Dawoodi Bohra's of Bhopal", href: '/about' },
-  { label: 'About Us', href: '/about' },
-  { label: 'Gallery', href: '/gallery' },
+  // { label: 'About Us', href: '/about' },
+  // { label: 'Gallery', href: '/gallery' },
   // { label: 'Reports', href: '/report' },
-  { label: 'FAQ', href: '/faq' },
-  { label: 'Contact Us', href: '/contact' },
+  // { label: 'FAQ', href: '/faq' },
+  // { label: 'Contact Us', href: '/contact' },
 ];
 
 const dropdownItems = [
@@ -30,23 +31,12 @@ const dropdownItems = [
 ];
 
 export default function Header() {
-  const { scrollY } = useScroll();
-  const [hidden, setHidden] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
   const dropdownTimeoutRef = useRef(null);
   const navigate = useNavigate();
-
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    const previous = scrollY.getPrevious();
-    if (latest > previous && latest > 150) {
-      setHidden(true);
-    } else {
-      setHidden(false);
-    }
-  });
 
   // Close dropdown on outside click
   useEffect(() => {
@@ -79,15 +69,7 @@ export default function Header() {
 
   return (
     <>
-      <motion.div
-        variants={{
-          visible: { y: 0 },
-          hidden: { y: "-100%" },
-        }}
-        animate={hidden ? "hidden" : "visible"}
-        transition={{ duration: 0.35, ease: "easeInOut" }}
-        className="fixed top-0 w-full z-50 flex flex-col shadow-md"
-      >
+      <header className="fixed top-0 w-full z-50 flex flex-col shadow-md">
         {/* Announcement Marquee */}
         <div className="bg-emerald-dark text-gold py-2.5 overflow-hidden whitespace-nowrap relative">
           <div className="flex items-center animate-marquee">
@@ -101,9 +83,8 @@ export default function Header() {
         </div>
 
         {/* Top Header (Logo, Search, Contact) */}
-        <div className="bg-white/95 backdrop-blur-md border-b border-emerald-dark/10">
+        {/* <div className="bg-white/95 backdrop-blur-md border-b border-emerald-dark/10">
           <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-3 gap-4">
-            {/* Left – Logo / Title */}
             <Link to="/" className="flex items-center gap-3 shrink-0">
               <img 
                 src="/bhplLogo.png" 
@@ -116,7 +97,7 @@ export default function Header() {
               </div>
             </Link>
 
-            {/* Center – Search */}
+          
             <div className="relative w-full max-w-xs hidden md:block">
               <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-charcoal/40" />
               <input
@@ -126,7 +107,6 @@ export default function Header() {
               />
             </div>
 
-            {/* Right – Contact & Mobile Menu Toggle */}
             <div className="flex items-center gap-4 text-sm text-charcoal shrink-0">
               <div className="hidden lg:flex items-center gap-4">
                 <a href="tel:+918982675004" className="flex items-center gap-1.5 hover:text-emerald-dark transition-colors">
@@ -139,7 +119,7 @@ export default function Header() {
                 </a>
               </div>
 
-              {/* Hamburger Button */}
+              
               <button
                 className="md:hidden p-2 text-charcoal hover:text-emerald-dark transition-colors"
                 onClick={() => setIsMobileMenuOpen(true)}
@@ -148,7 +128,7 @@ export default function Header() {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Bottom Navbar (Links) */}
         <nav className="bg-emerald-dark/95 backdrop-blur-md border-b border-gold/20 hidden md:block">
@@ -243,10 +223,10 @@ export default function Header() {
             </ul>
           </div>
         </nav>
-      </motion.div>
+      </header>
 
       {/* Spacer to push content down since header is now fixed */}
-      <div className="h-[104px] md:h-[148px]" />
+      <div className="h-[40px] md:h-[93px]" />
 
       {/* Mobile Drawer Overlay */}
       <AnimatePresence>

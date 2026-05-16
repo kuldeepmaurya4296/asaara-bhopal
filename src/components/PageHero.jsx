@@ -12,7 +12,7 @@ export default function PageHero({ title, subtitle, breadcrumbs = [], icon: Icon
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
   return (
-    <div ref={heroRef} className="relative py-20 sm:py-28 overflow-hidden">
+    <div ref={heroRef} className="relative py-6 sm:py-10 overflow-hidden">
       {/* Background */}
       <motion.div
         className="absolute inset-0 bg-gradient-to-br from-emerald-dark via-emerald-light/90 to-emerald-dark w-full h-[150%] -top-[25%]"

@@ -8,6 +8,7 @@ const pagesLinks = [
   { label: 'Transport', href: '/transport' },
   { label: 'Relay Zones', href: '/relay-zones' },
   { label: 'Volunteers & Community', href: '/volunteers' },
+  { label: 'Relay Araz', href: '/relay-araz' },
   { label: 'Dawoodi Bohras of Bhopal', href: '/about' },
   { label: 'Gallery', href: '/gallery' },
   { label: 'FAQ', href: '/faq' },

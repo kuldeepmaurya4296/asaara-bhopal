@@ -12,6 +12,7 @@ import GalleryPage from './pages/GalleryPage';
 import FAQPage from './pages/FAQPage';
 import ReportPage from './pages/ReportPage';
 import CreateReportPage from './pages/CreateReportPage';
+import RelayArazPage from './pages/RelayArazPage';
 import SmoothScroll from './components/SmoothScroll';
 import ScrollToHashElement from './components/ScrollToHashElement';
 
@@ -32,6 +33,7 @@ function App() {
           <Route path="/transport" element={<TransportPage />} />
           <Route path="/relay-zones" element={<RelayZonesPage />} />
           <Route path="/volunteers" element={<VolunteersPage />} />
+          <Route path="/relay-araz" element={<RelayArazPage />} />
           <Route path="/report" element={<ReportPage />} />
           <Route path="/create-report" element={<CreateReportPage />} />
         </Routes>

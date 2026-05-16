@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, Phone, User, Users, ChevronDown, ChevronUp, Layers } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { MapPin, Phone, User, Users, ChevronDown, ChevronUp, ChevronRight, Layers, Hotel, Bus, ArrowRight } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import PageHero from '../components/PageHero';
@@ -42,11 +43,10 @@ export default function RelayZonesPage() {
               <button
                 key={z.id}
                 onClick={() => { setActiveZone(z.id); setExpandedCentre(null); }}
-                className={`text-left p-5 rounded-2xl border-2 transition-all duration-300 ${
-                  isActive
-                    ? `${zc.bg} text-white border-transparent shadow-xl scale-[1.02]`
-                    : `bg-white ${zc.border} hover:shadow-md hover:-translate-y-0.5`
-                }`}
+                className={`text-left p-5 rounded-2xl border-2 transition-all duration-300 ${isActive
+                  ? `${zc.bg} text-white border-transparent shadow-xl scale-[1.02]`
+                  : `bg-white ${zc.border} hover:shadow-md hover:-translate-y-0.5`
+                  }`}
               >
                 <div className={`text-xs tracking-[0.2em] uppercase font-bold mb-1 ${isActive ? 'text-gold' : zc.text}`}>
                   {z.name}
@@ -171,9 +171,81 @@ export default function RelayZonesPage() {
             </motion.div>
           )}
         </AnimatePresence>
+        {/* Quick Links */}
+        <div className="grid sm:grid-cols-2 gap-6 mt-16 border-t border-emerald-dark/10 pt-12">
+          {/* Accommodation Link */}
+          <Link
+            to="/accommodations"
+            target='_blank'
+            className="block bg-white rounded-2xl border border-emerald-dark/5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden group"
+          >
+            <div className="h-1.5 bg-gradient-to-r from-emerald-dark via-gold to-emerald-dark" />
+            <div className="p-6">
+              <div className="flex items-start gap-5">
+                <div className="w-14 h-14 rounded-2xl bg-emerald-dark/5 flex items-center justify-center shrink-0 group-hover:bg-gold/10 transition-colors">
+                  <Hotel size={24} className="text-emerald-dark group-hover:text-gold transition-colors" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-heading text-lg font-bold text-emerald-dark mb-1 flex items-center gap-2">
+                    Accommodations
+                    <ArrowRight size={16} className="text-gold opacity-0 group-hover:opacity-100 transition-opacity transform -translate-x-2 group-hover:translate-x-0" />
+                  </h3>
+                  <p className="text-xs text-charcoal/50 leading-relaxed mb-4">
+                    Find luxury 5-star resorts and comfortable budget stays for Ashara Mubaraka.
+                  </p>
+
+                  <div className="flex items-center gap-3">
+                    <div className="bg-cream rounded-lg px-3 py-2">
+                      <p className="font-heading text-xl font-bold text-emerald-dark">18+</p>
+                      <p className="text-[9px] text-charcoal/40 uppercase tracking-wider">Hotels Listed</p>
+                    </div>
+                    <span className="inline-flex items-center gap-1 text-xs text-gold font-semibold group-hover:underline">
+                      Explore <ChevronRight size={14} />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Link>
+
+          {/* Transport Link */}
+          <Link
+            to="/transport"
+            target='_blank'
+            className="block bg-white rounded-2xl border border-emerald-dark/5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden group"
+          >
+            <div className="h-1.5 bg-gradient-to-r from-emerald-dark via-gold to-emerald-dark" />
+            <div className="p-6">
+              <div className="flex items-start gap-5">
+                <div className="w-14 h-14 rounded-2xl bg-emerald-dark/5 flex items-center justify-center shrink-0 group-hover:bg-gold/10 transition-colors">
+                  <Bus size={24} className="text-emerald-dark group-hover:text-gold transition-colors" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-heading text-lg font-bold text-emerald-dark mb-1 flex items-center gap-2">
+                    Transport Guide
+                    <ArrowRight size={16} className="text-gold opacity-0 group-hover:opacity-100 transition-opacity transform -translate-x-2 group-hover:translate-x-0" />
+                  </h3>
+                  <p className="text-xs text-charcoal/50 leading-relaxed mb-4">
+                    Complete guide to reaching Bhopal via rail, air, road and city transport options.
+                  </p>
+
+                  <div className="flex items-center gap-3">
+                    <div className="bg-cream rounded-lg px-3 py-2">
+                      <p className="font-heading text-xl font-bold text-emerald-dark">4</p>
+                      <p className="text-[9px] text-charcoal/40 uppercase tracking-wider">Transport Modes</p>
+                    </div>
+                    <span className="inline-flex items-center gap-1 text-xs text-gold font-semibold group-hover:underline">
+                      Explore <ChevronRight size={14} />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Link>
+        </div>
       </main>
 
-      <footer id="footer"><Footer /></footer>
+      {/* <footer id="footer"><Footer /></footer> */}
     </div>
   );
 }
