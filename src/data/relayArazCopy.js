@@ -346,7 +346,7 @@ export const relayArazCopyData = {
         category: 'Heritage',
         description:
           'A UNESCO World Heritage Site just 45 km from Bhopal, Bhimbetka houses over 500 rock shelters with prehistoric cave paintings dating back 30,000 years. These vivid depictions of ancient life are among the oldest known evidence of human artistic expression.',
-        image: 'public/WhyBhopal/Bhimbetka Rock Shelters.jpg',
+        image: '/WhyBhopal/Bhimbetka Rock Shelters.jpg',
         highlights: ['UNESCO World Heritage', '30,000-year-old art', '500+ rock shelters'],
       },
     ],
