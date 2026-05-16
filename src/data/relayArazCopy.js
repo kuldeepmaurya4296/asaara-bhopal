@@ -301,7 +301,7 @@ export const relayArazCopyData = {
         category: 'Scenic',
         description:
           'VIP Road is one of the most beautiful and scenic routes in Bhopal, running alongside the Upper Lake. Known for its peaceful lake views, evening atmosphere, and smooth connectivity, it is a popular stretch for both locals and visitors to experience the charm of the City of Lakes.',
-        image: '/WhyBhopal/VIP ROAD.png',
+        image: '/WhyBhopal/VIP.png',
         highlights: ['Scenic lake-side road', 'Upper Lake views', 'Popular evening spot'],
       },
       {
