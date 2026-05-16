@@ -1,6 +1,6 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {
   BookOpen, MapPin, Clock, ChevronRight, ChevronDown, ChevronUp,
   Star, Camera, Hotel, Bus, Layers, Users, Heart, Compass,
@@ -27,8 +27,15 @@ const categoryColors = {
 };
 
 export default function RelayArazCopyPage() {
-  const [activeTab, setActiveTab] = useState('whatWhen');
+  const location = useLocation();
+  const [activeTab, setActiveTab] = useState(location.state?.tab || 'whatWhen');
   const mainRef = useRef(null);
+
+  useEffect(() => {
+    if (location.state?.tab) {
+      setActiveTab(location.state.tab);
+    }
+  }, [location.state]);
 
   const scrollToTop = (behavior = 'smooth') => {
     if (mainRef.current) {

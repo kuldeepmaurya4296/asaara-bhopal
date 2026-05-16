@@ -1,57 +1,143 @@
 export const relayZones = [
   {
     id: 'zone-a',
-    name: 'Zone A',
-    title: 'Mufaddal ',
+    name: 'Zone 1',
+    title: 'مفضل ',
     color: 'emerald',
-    description: 'Covers the heart of old Bhopal including Tajul Masajid and surrounding areas. The largest zone with maximum mumineen capacity.',
-    relayCentres: [
-      { name: 'Tajul Masajid Relay Centre', location: 'Kohefiza, Near Tajul Masajid, Bhopal, MP 462001', contact: '+91-98765-43211', coordinator: 'Bhai Husain bhai Zakir', coordinatorPhone: '+91-98765-11001', mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.8!2d77.3492!3d23.2371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sTajul+Masajid!5e0!3m2!1sen!2sin!4v1', capacity: '2000+' },
-      { name: 'Kohefiza Community Hall', location: 'Kohefiza Main Road, Bhopal, MP 462001', contact: '+91-98765-43221', coordinator: 'Bhai Mustafa bhai Saifuddin', coordinatorPhone: '+91-98765-11002', mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.8!2d77.351!3d23.238!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sKohefiza+Bhopal!5e0!3m2!1sen!2sin!4v1', capacity: '800' },
-      { name: 'Ibrahimpura Centre', location: 'Ibrahimpura, Old Bhopal, MP 462001', contact: '+91-98765-43231', coordinator: 'Bhai Taher bhai Burhanuddin', coordinatorPhone: '+91-98765-11003', mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.8!2d77.353!3d23.239!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sIbrahimpura+Bhopal!5e0!3m2!1sen!2sin!4v1', capacity: '600' },
-      { name: 'Shahjahanabad Relay Point', location: 'Shahjahanabad, Near Police Station, Bhopal, MP 462001', contact: '+91-98765-43241', coordinator: 'Bhai Abbas bhai Rashid', coordinatorPhone: '+91-98765-11004', mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.8!2d77.355!3d23.241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sShahjahanabad+Bhopal!5e0!3m2!1sen!2sin!4v1', capacity: '500' },
-      { name: 'Budhwara Centre', location: 'Budhwara, mufaddal , MP 462001', contact: '+91-98765-43251', coordinator: 'Bhai Murtaza bhai Ali', coordinatorPhone: '+91-98765-11005', mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.8!2d77.357!3d23.243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sBudhwara+Bhopal!5e0!3m2!1sen!2sin!4v1', capacity: '450' },
-    ],
+    description: `A German Hangar Dome is proposed to be constructed on a 3.1 Acre land parcel, subject to the raza and approval of Shehzada Husain Bhaisaheb. The planning has been prepared in accordance with the guidance received from Hazrat Aliya.`,
+    capacity: '12,300 Operational Capacity',
+    tables: [
+      {
+        title: '',
+        headers: ['Category', 'Area', 'Capacity'],
+        data: [
+          { particulars: 'Total Venue Area', details: '96,831 Sq. Ft', remarks: '-' },
+          { particulars: 'Gents Seating', details: '55,678 Sq. Ft.', remarks: '4,539' },
+          { particulars: 'Ladies Seating', details: '36,312 Sq. Ft.', remarks: '6,959' },
+          { particulars: 'Rahat Seating', details: '4,841 Sq. Ft.', remarks: '605' },
+          { particulars: 'TOTAL OPERATIONAL CAPACITY', details: '', remarks: '12,300' },
+        ]
+      }
+    ]
   },
   {
     id: 'zone-b',
-    name: 'Zone B',
-    title: 'Haidery',
+    name: 'Zone 2',
+    title: 'حسيني',
     color: 'gold',
-    description: 'Covers the historic old city areas around Moti Masjid, Chowk Bazaar, and the lakefront regions.',
-    relayCentres: [
-      { name: 'Moti Masjid Relay Centre', location: 'Hawai Mahal, Near Upper Lake, Bhopal, MP 462001', contact: '+91-98765-43311', coordinator: 'Bhai Qaid Johar bhai Hatim', coordinatorPhone: '+91-98765-12001', mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.8!2d77.40!3d23.26!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sMoti+Masjid+Bhopal!5e0!3m2!1sen!2sin!4v1', capacity: '1200' },
-      { name: 'Chowk Bazaar Hall', location: 'Chowk Bazaar, Old Bhopal, MP 462001', contact: '+91-98765-43321', coordinator: 'Bhai Abdeali bhai Shabbir', coordinatorPhone: '+91-98765-12002', mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.8!2d77.402!3d23.262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sChowk+Bazaar+Bhopal!5e0!3m2!1sen!2sin!4v1', capacity: '700' },
-      { name: 'Peer Gate Relay Point', location: 'Peer Gate, Near Jama Masjid, Bhopal, MP 462001', contact: '+91-98765-43331', coordinator: 'Bhai Juzer bhai Hakim', coordinatorPhone: '+91-98765-12003', mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.8!2d77.404!3d23.264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sPeer+Gate+Bhopal!5e0!3m2!1sen!2sin!4v1', capacity: '550' },
-      { name: 'Kamla Park Centre', location: 'Kamla Park, Near Lake, Bhopal, MP 462001', contact: '+91-98765-43341', coordinator: 'Bhai Yusuf bhai Najmuddin', coordinatorPhone: '+91-98765-12004', mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.8!2d77.406!3d23.266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sKamla+Park+Bhopal!5e0!3m2!1sen!2sin!4v1', capacity: '400' },
+    description: '',
+    capacity: '4,623 Operational Capacity',
+    tables: [
+      {
+        title: '',
+        headers: ['Mawaid Area', 'Per Thok ', 'Capacity'],
+        data: [
+          { particulars: 'Ground Floor', details: '1,700 Sq. Ft.', remarks: '300 Gents' },
+          { particulars: 'First Floor', details: '1,000 Sq. Ft. ', remarks: '200 Ladies' },
+          { particulars: 'Second Floor', details: '1,000 Sq. Ft.', remarks: '200 Ladies' },
+          { particulars: 'Sehen Area ', details: '2,000 Sq. Ft.', remarks: '350 Gents' },
+          { particulars: 'Courtyard Area', details: '810 Sq. Ft.', remarks: '150 Rahat' },
+          { particulars: 'TOTAL CAPACITY', details: '-', remarks: '1,200' },
+        ]
+      },
+      {
+        title: '',
+        headers: ['Mawaid Area', 'Per Thok ', 'Total Capacity'],
+        data: [
+          { particulars: 'Husaini Sehen', details: '280', remarks: '640' },
+          { particulars: 'Husaini Basement ', details: '280', remarks: '640' },
+        ]
+      },
+
     ],
+
   },
   {
     id: 'zone-c',
-    name: 'Zone C',
-    title: 'Husaini',
-    color: 'emerald-light',
-    description: 'Covers MP Nagar, Arera Hills, and the modern commercial and residential areas of New Bhopal.',
-    relayCentres: [
-      { name: 'Saifee Masjid Relay Centre', location: 'Nawab Siddiqui Road, Bhopal, MP 462001', contact: '+91-98765-43411', coordinator: 'Bhai Husain bhai Moiz', coordinatorPhone: '+91-98765-13001', mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.8!2d77.41!3d23.26!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSaifee+Masjid+Bhopal!5e0!3m2!1sen!2sin!4v1', capacity: '1500' },
-      { name: 'MP Nagar Community Centre', location: 'Zone-II, MP Nagar, Bhopal, MP 462011', contact: '+91-98765-43421', coordinator: 'Bhai Taha bhai Idris', coordinatorPhone: '+91-98765-13002', mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.8!2d77.434!3d23.231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sMP+Nagar+Bhopal!5e0!3m2!1sen!2sin!4v1', capacity: '900' },
-      { name: 'Arera Hills Hall', location: 'E-5, Arera Hills, Bhopal, MP 462011', contact: '+91-98765-43431', coordinator: 'Bhai Ali Asghar bhai Wali', coordinatorPhone: '+91-98765-13003', mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.8!2d77.432!3d23.233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sArera+Hills+Bhopal!5e0!3m2!1sen!2sin!4v1', capacity: '650' },
-      { name: 'Shivaji Nagar Centre', location: 'Shivaji Nagar, Bhopal, MP 462016', contact: '+91-98765-43441', coordinator: 'Bhai Burhanuddin bhai Hakimuddin', coordinatorPhone: '+91-98765-13004', mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.8!2d77.42!3d23.25!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sShivaji+Nagar+Bhopal!5e0!3m2!1sen!2sin!4v1', capacity: '500' },
-      { name: 'Kolar Road Relay Point', location: 'Kolar Road, Bhopal, MP 462042', contact: '+91-98765-43451', coordinator: 'Bhai Ammar bhai Shujauddin', coordinatorPhone: '+91-98765-13005', mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.8!2d77.44!3d23.22!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sKolar+Road+Bhopal!5e0!3m2!1sen!2sin!4v1', capacity: '450' },
-    ],
+    name: 'Zone 3',
+    title: 'حيدري',
+    color: 'emerald',
+    description: '',
+    capacity: '1,200 Operational Capacity',
+    tables: [
+      {
+        title: '',
+        headers: ['Haidery Masjid Area', 'Approx. Area', 'Capacity'],
+        data: [
+          { particulars: 'Ground Floor', details: '3,168 Sq. Ft', remarks: '742 Gents' },
+          { particulars: 'First Floor', details: '2,684 Sq. Ft', remarks: '525 Gents' },
+          { particulars: 'Second Floor', details: '2,684 Sq. Ft', remarks: '525 Gents' },
+          { particulars: 'Sehen', details: '874 Sq. Ft.', remarks: '131 Seating' }
+        ]
+      },
+      {
+        title: '',
+        headers: ['Haidery Mawaid', 'Approx. Area', 'Capacity'],
+        data: [
+          { particulars: 'Ground Floor', details: '10,900 Sq. Ft.', remarks: '920 Ladies' },
+          { particulars: 'First Floor', details: '10,880 Sq. Ft.', remarks: '920 Ladies' },
+        ]
+      },
+      {
+        title: '',
+        headers: ['Badri Masjid Area', 'Approx. Area', 'Capacity'],
+        data: [
+          { particulars: 'Ground Floor', details: '1,664 Sq. Ft.', remarks: '400 Rahat' },
+          { particulars: 'First Floor', details: '1,400 Sq. Ft.', remarks: '150 Ladies' },
+          { particulars: 'Second Floor', details: '1,400 Sq. Ft. ', remarks: '150 Ladies' },
+          { particulars: 'Sehen', details: '972 Sq. Ft', remarks: '160 Rahat' }
+        ]
+      },
+      {
+        title: '',
+        headers: ['Mawaid Area', 'Per Thok', 'Total Capacity'],
+        data: [
+          { particulars: 'Haidery GF', details: '920', remarks: '1,840' },
+          { particulars: 'Haidery 1st Floor', details: '920', remarks: '1,840' },
+          { particulars: 'Badri Mawaid', details: '450', remarks: '900' },
+          { particulars: 'TOTAL ZONE 3 CAPACITY', details: '-', remarks: '4623' },
+
+        ]
+      },
+    ]
   },
   {
     id: 'zone-d',
-    name: 'Zone D',
-    title: 'Burhani Nagar',
-    color: 'charcoal',
-    description: 'Covers Habibganj, Bairagarh, and the outer residential areas extending towards the outskirts.',
-    relayCentres: [
-      { name: 'Iqbal Maidan Relay Centre', location: 'Iqbal Maidan, Bhopal, MP 462001', contact: '+91-98765-43511', coordinator: 'Bhai Aliasgar bhai Husain', coordinatorPhone: '+91-98765-14001', mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.8!2d77.42!3d23.25!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sIqbal+Maidan+Bhopal!5e0!3m2!1sen!2sin!4v1', capacity: '2500' },
-      { name: 'Habibganj Community Hall', location: 'Near Rani Kamlapati Station, Habibganj, MP 462024', contact: '+91-98765-43521', coordinator: 'Bhai Zoher bhai Mufaddal', coordinatorPhone: '+91-98765-14002', mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.9!2d77.438!3d23.229!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sHabibganj+Bhopal!5e0!3m2!1sen!2sin!4v1', capacity: '800' },
-      { name: 'Bairagarh Relay Point', location: 'Bairagarh, Near Airport Road, Bhopal, MP 462036', contact: '+91-98765-43531', coordinator: 'Bhai Juzer bhai Abbas', coordinatorPhone: '+91-98765-14003', mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.5!2d77.337!3d23.287!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sBairagarh+Bhopal!5e0!3m2!1sen!2sin!4v1', capacity: '600' },
-      { name: 'Bawadia Kalan Centre', location: 'Bawadia Kalan, E-8, Bhopal, MP 462039', contact: '+91-98765-43541', coordinator: 'Bhai Qutbuddin bhai Tayyeb', coordinatorPhone: '+91-98765-14004', mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3667!2d77.45!3d23.21!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sBawadia+Kalan+Bhopal!5e0!3m2!1sen!2sin!4v1', capacity: '500' },
-    ],
+    name: 'Zone 4',
+    title: 'برهاني ',
+    color: 'gold',
+    description: '',
+    capacity: '2,877 Operational Capacity',
+    tables: [
+      {
+        title: '',
+        headers: ['Burhani Masjid Area', 'Approx. Area', 'Capacity'],
+        data: [
+          { particulars: 'Ground Floor', details: '3,744 Sq. Ft.', remarks: '900 Gents' },
+          { particulars: 'First Floor', details: '2,745 Sq. Ft. ', remarks: '650 Ladies' },
+          { particulars: 'Second Floor', details: '2,745 Sq. Ft.', remarks: '650 Ladies' },
+          { particulars: 'Sehen', details: '1,200 Sq. Ft.', remarks: '300 Gents' },
+        ]
+      },
+      {
+        title: '',
+        headers: ['Hakimi Markaz ', 'Approx. Area', 'Capacity'],
+        data: [
+          { particulars: 'Hakimi Markaz', details: '2,800 Sq. Ft.', remarks: '377 Total' },
+        ]
+      },
+      {
+        title: '',
+        headers: ['Mawaid Venue', 'Per Thok', 'Total Capacity'],
+        data: [
+          { particulars: 'Burhani Mawaid A', details: '1,120 ', remarks: '2,240' },
+          { particulars: 'Burhani Mawaid B', details: '800 ', remarks: '1,600' },
+          { particulars: 'Hakimi Markaz', details: '-', remarks: '377' },
+          { particulars: 'TOTAL ZONE 4 CAPACITY', details: '-', remarks: '2877' },
+        ]
+      },
+
+    ]
   },
 ];
 

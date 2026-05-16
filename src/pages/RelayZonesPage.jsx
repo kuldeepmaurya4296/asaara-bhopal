@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, User, Users, ChevronDown, ChevronUp, ChevronRight, Layers, Hotel, Bus, ArrowRight } from 'lucide-react';
+import { MapPin, Phone, User, Users, ChevronDown, ChevronUp, ChevronRight, Layers, Hotel, Bus, ArrowRight, ArrowLeft } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import PageHero from '../components/PageHero';
@@ -56,10 +56,12 @@ export default function RelayZonesPage() {
         breadcrumbs={[{ label: 'Relay Centre & Zones' }]}
       />
 
-      <main ref={mainRef} className="max-w-7xl mx-auto px-4 py-12">
+      <main ref={mainRef} className="max-w-7xl mx-auto px-4 py-8">
+
+
         {/* Zone Selector Cards */}
         <div className="sticky top-[40px] md:top-[93px] z-30 bg-cream/95 backdrop-blur-md py-4 -mx-4 px-4 mb-8 border-b border-emerald-dark/5">
-          <div className="flex overflow-x-auto no-scrollbar gap-3 snap-x pb-2">
+          <div className="flex overflow-x-auto gap-3 snap-x pb-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {relayZones.map((z) => {
               const zc = zoneColors[z.color] || zoneColors.emerald;
               const isActive = activeZone === z.id;
@@ -72,18 +74,18 @@ export default function RelayZonesPage() {
                     : `bg-white ${zc.border} hover:shadow-md hover:-translate-y-0.5`
                     }`}
                 >
-                <div className={`text-xs tracking-[0.2em] uppercase font-bold mb-1 ${isActive ? 'text-gold' : zc.text}`}>
-                  {z.name}
-                </div>
-                <h3 className={`font-heading text-lg font-bold mb-1 ${isActive ? 'text-white' : 'text-charcoal'}`}>
-                  {z.title}
-                </h3>
-                <p className={`text-xs leading-relaxed ${isActive ? 'text-white/70' : 'text-charcoal/50'}`}>
-                  {z.relayCentres.length} Relay Centres
-                </p>
-              </button>
-            );
-          })}
+                  <div className={`text-xs tracking-[0.2em] uppercase font-bold mb-4 ${isActive ? (z.color === 'gold' ? 'text-white' : 'text-gold') : zc.text}`}>
+                    {z.name}
+                  </div>
+                  <h3 className={`font-kanz text-5xl font-bold mb-6 mt-2 leading-none ${isActive ? 'text-white' : 'text-charcoal'}`}>
+                    {z.title}
+                  </h3>
+                  <p className={`text-xs leading-relaxed ${isActive ? 'text-white/70' : 'text-charcoal/50'}`}>
+                    {z.capacity}
+                  </p>
+                </button>
+              );
+            })}
           </div>
         </div>
 
@@ -98,101 +100,50 @@ export default function RelayZonesPage() {
               transition={{ duration: 0.4 }}
             >
               {/* Zone Header */}
-              <div className="mb-8">
-                <div className="flex items-center gap-2 mb-1">
+              <div className="mb-10 flex flex-col items-center text-center">
+                <div className="flex items-center justify-center gap-2 mb-1">
                   <Layers size={14} className="text-gold" />
                   <span className="text-gold text-xs tracking-[0.3em] uppercase font-semibold">{zone.name}</span>
                 </div>
-                <h2 className="font-heading text-2xl sm:text-3xl text-emerald-dark mb-2">{zone.title}</h2>
-                <div className="w-16 h-1 bg-gold rounded-full mb-3" />
-                <p className="text-sm text-charcoal/60 max-w-2xl">{zone.description}</p>
+                <h2 className="font-kanz text-4xl sm:text-7xl text-emerald-dark my-4">{zone.title}</h2>
+                <div className="w-16 h-1 bg-gold rounded-full mb-4" />
+                {zone.description && (
+                  <p className="text-sm text-charcoal/60 max-w-2xl mx-auto">{zone.description}</p>
+                )}
               </div>
 
-              {/* Relay Centres */}
-              <div className="space-y-4">
-                {zone.relayCentres.map((centre, i) => (
-                  <motion.div
-                    key={centre.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.08 }}
-                    className="bg-white rounded-2xl border border-emerald-dark/5 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden"
-                  >
-                    <div
-                      className="p-6 cursor-pointer"
-                      onClick={() => setExpandedCentre(expandedCentre === centre.name ? null : centre.name)}
-                    >
-                      <div className="flex items-start justify-between gap-4">
-                        <div className="flex items-start gap-4">
-                          <div className={`w-12 h-12 rounded-xl ${colors.light} flex items-center justify-center shrink-0`}>
-                            <MapPin size={20} className={colors.text} />
-                          </div>
-                          <div>
-                            <h3 className="font-heading text-base font-bold text-emerald-dark mb-1">{centre.name}</h3>
-                            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-charcoal/50">
-                              <span className="flex items-center gap-1"><MapPin size={11} className="text-gold" />{centre.location}</span>
-                              <span className="flex items-center gap-1"><Phone size={11} className="text-gold" />{centre.contact}</span>
-                              {centre.capacity && (
-                                <span className="flex items-center gap-1"><Users size={11} className="text-gold" />Capacity: {centre.capacity}</span>
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                        <button className="p-2 text-charcoal/30 hover:text-emerald-dark transition-colors shrink-0">
-                          {expandedCentre === centre.name ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
-                        </button>
-                      </div>
+              {/* Data Tables */}
+              {zone.tables && zone.tables.map((table, tIndex) => (
+                <div key={tIndex} className={`bg-white rounded-2xl shadow-sm overflow-hidden mt-8 border-2 ${colors.border.replace(/\/[0-9]+/, '')} `}>
+                  {table.title && (
+                    <div className={`px-6 py-4 border-b ${colors.border} ${colors.bg}`}>
+                      <h3 className="font-heading font-semibold text-white">{table.title}</h3>
                     </div>
-
-                    {/* Expanded content */}
-                    <AnimatePresence>
-                      {expandedCentre === centre.name && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: 'auto', opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3 }}
-                          className="overflow-hidden"
-                        >
-                          <div className="px-6 pb-6 border-t border-emerald-dark/5 pt-4">
-                            <div className="grid lg:grid-cols-2 gap-6">
-                              {/* Coordinator Info */}
-                              <div className="bg-cream rounded-xl p-5">
-                                <h4 className="font-heading text-sm font-semibold text-emerald-dark mb-3 flex items-center gap-2">
-                                  <User size={14} className="text-gold" /> Zone Coordinator
-                                </h4>
-                                <div className="flex items-center gap-4">
-                                  <div className="w-12 h-12 rounded-full bg-emerald-dark flex items-center justify-center">
-                                    <span className="text-gold font-heading font-bold text-lg">{centre.coordinator.charAt(0)}</span>
-                                  </div>
-                                  <div>
-                                    <p className="font-semibold text-sm text-charcoal">{centre.coordinator}</p>
-                                    <a href={`tel:${centre.coordinatorPhone}`} className="text-xs text-gold hover:text-emerald-dark transition-colors flex items-center gap-1">
-                                      <Phone size={11} />{centre.coordinatorPhone}
-                                    </a>
-                                  </div>
-                                </div>
-                              </div>
-
-                              {/* Map */}
-                              <div className="rounded-xl overflow-hidden border border-emerald-dark/10 h-48 lg:h-auto">
-                                <iframe
-                                  src={centre.mapEmbed}
-                                  className="w-full h-full min-h-[192px]"
-                                  allowFullScreen
-                                  loading="lazy"
-                                  title={centre.name}
-                                  style={{ border: 0 }}
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </motion.div>
-                ))}
-              </div>
+                  )}
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left border-collapse">
+                      <thead>
+                        <tr className={colors.bg}>
+                          {table.headers && table.headers.map((header, i) => (
+                            <th key={i} className={`border ${colors.border} py-3 px-5 font-heading font-semibold text-white text-sm tracking-wider uppercase`}>
+                              {header}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {table.data && table.data.map((row, index) => (
+                          <tr key={index} className="hover:bg-cream/50 transition-colors">
+                            <td className={`border ${colors.border} py-3 px-5 text-sm font-medium text-charcoal`}>{row.particulars}</td>
+                            <td className={`border ${colors.border} py-3 px-5 text-sm text-charcoal/80`}>{row.details}</td>
+                            <td className={`border ${colors.border} py-3 px-5 text-sm text-charcoal/60`}>{row.remarks}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              ))}
             </motion.div>
           )}
         </AnimatePresence>
@@ -266,6 +217,16 @@ export default function RelayZonesPage() {
                 </div>
               </div>
             </div>
+          </Link>
+        </div>
+        <div className="my-4">
+          <Link
+            to="/relay-araz-copy"
+            state={{ tab: 'where' }}
+            className="inline-flex items-center gap-2 text-emerald-dark hover:text-gold transition-colors font-medium bg-emerald-dark/5 hover:bg-emerald-dark/10 px-4 py-2 rounded-full text-sm"
+          >
+            <ArrowLeft size={16} />
+            Back to Where & How
           </Link>
         </div>
       </main>
