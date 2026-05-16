@@ -1,7 +1,7 @@
 // ─── Relay Araz Page Data ───────────────────────────────────────────────────
 // Structured data for the Relay Araz page — What & When, Why Bhopal, Where
 
-export const relayArazData = {
+export const relayArazCopyData = {
   seo: {
     title: 'Relay Araz',
     description:

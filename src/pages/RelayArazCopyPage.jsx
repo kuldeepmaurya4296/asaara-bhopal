@@ -10,7 +10,7 @@ import Header from '../components/Header';
 import PageHero from '../components/PageHero';
 import SEO from '../components/SEO';
 import FadeIn from '../components/animations/FadeIn';
-import { relayArazData } from '../data/relayAraz';
+import { relayArazCopyData } from '../data/relayArazCopy';
 
 const iconMap = { Hotel, Bus, Layers, Users };
 
@@ -26,7 +26,7 @@ const categoryColors = {
   Culture: 'bg-purple-100 text-purple-700',
 };
 
-export default function RelayArazPage() {
+export default function RelayArazCopyPage() {
   const [activeTab, setActiveTab] = useState('whatWhen');
   const mainRef = useRef(null);
 
@@ -53,7 +53,7 @@ export default function RelayArazPage() {
   };
   const [expandedSafar, setExpandedSafar] = useState(null);
   const [expandedPlace, setExpandedPlace] = useState(null);
-  const { seo, hero, whatWhen, whyBhopal, whereContent } = relayArazData;
+  const { seo, hero, whatWhen, whyBhopal, whereContent } = relayArazCopyData;
 
   return (
     <div className="font-body bg-cream text-charcoal min-h-screen">

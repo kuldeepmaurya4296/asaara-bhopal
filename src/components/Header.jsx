@@ -20,6 +20,7 @@ const navItems = [
   // { label: 'Reports', href: '/report' },
   // { label: 'FAQ', href: '/faq' },
   // { label: 'Contact Us', href: '/contact' },
+  { label: "Relay Araz 2", href: '/relay-araz-copy' }
 ];
 
 const dropdownItems = [
