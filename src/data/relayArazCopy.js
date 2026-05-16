@@ -10,7 +10,7 @@ export const relayArazCopyData = {
   hero: {
     title: 'عشرة مباركة – بهوثثال – ريلسس سينضضر عرض',
     subtitle:
-      'The story, the city, the vision — understanding why Bhopal has been chosen and how we serve mumineen during Ashara Mubaraka',
+      'Understanding why Bhopal has been chosen and how we serve mumineen during Ashara Mubaraka',
   },
 
   // ─── WHAT & WHEN ───────────────────────────────────────────────────────────
