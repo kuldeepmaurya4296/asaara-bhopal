@@ -16,7 +16,7 @@ const navItems = [
   // { label: "Dawoodi Bohra's of Bhopal", href: '/about' },
   { label: 'About Us', href: '/about' },
   { label: 'Gallery', href: '/gallery' },
-  { label: 'Reports', href: '/report' },
+  // { label: 'Reports', href: '/report' },
   { label: 'FAQ', href: '/faq' },
   { label: 'Contact Us', href: '/contact' },
 ];
