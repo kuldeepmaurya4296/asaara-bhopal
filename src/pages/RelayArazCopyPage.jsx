@@ -15,9 +15,9 @@ import { relayArazCopyData } from '../data/relayArazCopy';
 const iconMap = { Hotel, Bus, Layers, Users };
 
 const tabs = [
-  { key: 'whatWhen', label: 'What & When', icon: BookOpen },
-  { key: 'why', label: 'Why Bhopal', icon: Star },
-  { key: 'where', label: 'Where', icon: MapPin },
+  { key: 'whatWhen', arabicLabel: 'ماهي   و  متى هي', englishLabel: 'What & When', icon: BookOpen },
+  { key: 'why', arabicLabel: 'لماذا هي', englishLabel: 'Why Bhopal', icon: Star },
+  { key: 'where', arabicLabel: 'كيف ما هي  و اينما هي ', englishLabel: 'Where and How', icon: MapPin },
 ];
 
 const categoryColors = {
@@ -68,18 +68,21 @@ export default function RelayArazCopyPage() {
 
       <main ref={mainRef} className="max-w-7xl mx-auto px-4 py-12">
         {/* ── Section Tabs ── */}
-        <div className="flex flex-wrap gap-3 mb-12 sticky z-30 bg-cream/95 backdrop-blur-md py-4 -mx-4 px-4 border-b border-emerald-dark/5 transition-all duration-300 top-[40px] md:top-[93px]">
+        <div className="flex flex-wrap gap-3 mb-12 sticky z-30 bg-cream/95 backdrop-blur-md py-4 -mx-4 px-4 border-b border-emerald-dark/5 transition-all duration-300 top-[40px] md:top-[93px] justify-center">
           {tabs.map((tab) => (
             <button
               key={tab.key}
               onClick={() => handleTabChange(tab.key)}
-              className={`flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 border ${activeTab === tab.key
+              className={`flex items-center gap-3 px-8 py-4 rounded-xl font-semibold transition-all duration-300 border ${activeTab === tab.key
                 ? 'bg-emerald-dark text-gold border-emerald-dark shadow-lg shadow-emerald-dark/20'
                 : 'bg-white text-charcoal/60 border-charcoal/10 hover:border-emerald-dark/30 hover:text-emerald-dark'
                 }`}
             >
-              <tab.icon size={16} />
-              {tab.label}
+              <tab.icon size={22} className="shrink-0" />
+              <div className="flex flex-col items-center gap-2">
+                <span className="font-kanz text-xl sm:text-2xl pt-1 leading-none">{tab.arabicLabel}</span>
+                <span className="font-heading text-xs sm:text-sm uppercase tracking-widest opacity-80 leading-none">{tab.englishLabel}</span>
+              </div>
             </button>
           ))}
         </div>
@@ -124,18 +127,18 @@ export default function RelayArazCopyPage() {
 
                   {/* Text */}
                   <div className="lg:w-7/12 space-y-5">
-                    <div>
-                      <span className="text-gold text-xs tracking-[0.3em] uppercase font-semibold">
+                    <div className="text-right">
+                      <span className="block text-gold text-xs tracking-[0.3em] uppercase font-semibold">
                         The Sacred Legacy
                       </span>
-                      <h2 className="font-heading text-2xl sm:text-3xl text-cream mt-1 mb-1">
+                      <h2 className="font-kanz text-2xl sm:text-4xl text-cream mt-1 mb-1 leading-relaxed">
                         {whatWhen.mainStory.name}
                       </h2>
                       <p className="text-gold/80 text-sm font-medium">{whatWhen.mainStory.title}</p>
-                      <div className="w-16 h-1 bg-gold rounded-full mt-3" />
+                      <div className="w-16 h-1 bg-gold rounded-full mt-3 ml-auto" />
                     </div>
                     {whatWhen.mainStory.paragraphs.map((p, i) => (
-                      <p key={i} className="text-cream/80 text-sm leading-relaxed">{p}</p>
+                      <p key={i} className="text-cream/80 text-sm leading-relaxed ">{p}</p>
                     ))}
                   </div>
                 </div>
@@ -170,26 +173,25 @@ export default function RelayArazCopyPage() {
               <div className="relative bg-gradient-to-r from-emerald-dark to-emerald-light rounded-2xl p-8 sm:p-10 mb-12 overflow-hidden">
                 <PatternOverlay />
                 <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-gold/10 pointer-events-none" />
-                <div className="relative z-10 max-w-3xl">
-                  <span className="text-gold text-xs tracking-[0.3em] uppercase font-semibold">Sacred Footsteps</span>
-                  <h2 className="font-heading text-2xl sm:text-3xl text-cream mt-2 mb-3">
-                    Journeys of Barakat
-                  </h2>
-                  <div className="w-16 h-1 bg-gold rounded-full mb-4" />
-                  <p className="text-cream/80 text-sm leading-relaxed">
+                <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center text-center">
+                  {/* <span className="text-gold text-xs tracking-[0.3em] uppercase font-semibold">Sacred Footsteps</span> */}
+                  <h2 className="font-kanz text-3xl sm:text-6xl text-cream mt-2 mb-4 leading-relaxed">
+                    بهوثثال – ثقافة ، تاريخ انسس بركات نا خزائن                   </h2>
+                  <div className="w-20 h-1 bg-gold rounded-full mb-6" />
+                  <p className="text-cream/80 text-sm sm:text-base leading-relaxed">
                     Discover the historical timeline of Duat Mutlaqeen (RA) gracing the city of Bhopal with their holy presence over the decades, bringing immense barakat and guidance to mumineen.
                   </p>
                 </div>
               </div>
 
               {/* ── Safar Timeline ── */}
-              <div className="mb-8">
-                <div className="flex items-center gap-2 mb-1">
+              <div className="mb-8 flex flex-col items-center text-center">
+                <div className="flex items-center justify-center gap-2 mb-1">
                   <Calendar size={14} className="text-gold" />
                   <span className="text-gold text-xs tracking-[0.3em] uppercase font-semibold">Timeline</span>
                 </div>
-                <h2 className="font-heading text-2xl sm:text-3xl text-emerald-dark mb-2">
-                  Historical Safar of Duat Mutlaqeen
+                <h2 className="font-kanz text-2xl sm:text-4xl text-emerald-dark mb-2 leading-relaxed">
+                  دعاة مطلقين  ع م نا  اسفار مبارك ني  تاريخ
                 </h2>
                 <div className="w-16 h-1 bg-gold rounded-full mb-8" />
               </div>
@@ -215,11 +217,11 @@ export default function RelayArazCopyPage() {
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 mb-1">
-                              <span className="text-[10px] font-bold text-gold bg-gold/10 px-2 py-0.5 rounded-full">
+                              {/* <span className="text-[10px] font-bold text-gold  px-2 py-0.5 rounded-full w-full text-center">
                                 {person.title}
-                              </span>
+                              </span> */}
                             </div>
-                            <h3 className="font-heading text-lg font-bold text-emerald-dark">
+                            <h3 className="font-kanz text-3xl font-bold text-emerald-dark w-full text-center ">
                               {person.personName}
                             </h3>
                             <p className="text-xs text-charcoal/50 leading-relaxed mt-1 line-clamp-2">
@@ -295,9 +297,9 @@ export default function RelayArazCopyPage() {
               <div className="relative bg-gradient-to-r from-emerald-dark to-emerald-light rounded-2xl p-8 sm:p-10 mb-12 overflow-hidden">
                 <PatternOverlay />
                 <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-gold/10 pointer-events-none" />
-                <div className="relative z-10 max-w-3xl">
+                <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center text-center">
                   <span className="text-gold text-xs tracking-[0.3em] uppercase font-semibold">City of Lakes</span>
-                  <h2 className="font-heading text-2xl sm:text-3xl text-cream mt-2 mb-3">
+                  <h2 className="font-kanz text-2xl sm:text-5xl text-cream mt-2 mb-3">
                     {whyBhopal.intro.title}
                   </h2>
                   <div className="w-16 h-1 bg-gold rounded-full mb-4" />
@@ -322,7 +324,7 @@ export default function RelayArazCopyPage() {
               </div>
 
               {/* Places Grid */}
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {whyBhopal.places
                   .filter((p) => !expandedPlace || expandedPlace === 'All' || expandedPlace === null || p.category === expandedPlace)
                   .map((place, i) => (
@@ -470,8 +472,8 @@ export default function RelayArazCopyPage() {
 
 function SectionHeader({ icon: Icon, label, title }) {
   return (
-    <div className="mb-8">
-      <div className="flex items-center gap-2 mb-1">
+    <div className="mb-8 flex flex-col items-center text-center">
+      <div className="flex items-center justify-center gap-2 mb-1">
         <Icon size={14} className="text-gold" />
         <span className="text-gold text-xs tracking-[0.3em] uppercase font-semibold">{label}</span>
       </div>

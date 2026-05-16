@@ -8,7 +8,7 @@ export const relayArazCopyData = {
       'Discover the story behind Ashara Mubaraka in Bhopal — the historical safar of Duat Mutlaqeen, the glory of Bhopal, and the comprehensive arrangements for mumineen.',
   },
   hero: {
-    title: 'Relay Araz',
+    title: 'عشرة مباركة – بهوثثال – ريلسس سينضضر عرض',
     subtitle:
       'The story, the city, the vision — understanding why Bhopal has been chosen and how we serve mumineen during Ashara Mubaraka',
   },
@@ -19,7 +19,7 @@ export const relayArazCopyData = {
     sectionSubtitle: 'The Sacred Legacy — A Story of Faith, Devotion & Visionary Leadership',
 
     mainStory: {
-      name: 'Syedna Mufaddal Saifuddin TUS',
+      name: 'الداعي الاجل الفاطمي سيدنا و مولانا ابو جعفر الصادق عالي قدر مفصل سيف الدين طول الله عمره الشريف الى يوم الدين ',
       title: '53rd Dai al-Mutlaq',
       image: '/Dr-Syedna-Mufaddal-Saifuddin.jpeg',
       paragraphs: [
@@ -28,17 +28,43 @@ export const relayArazCopyData = {
         'The Bhopal Ashara Relay Centre embodies the mohabbat, ikhlaas, and khidmat that define the Dawoodi Bohra community. It represents the collective effort of thousands of volunteers working tirelessly to ensure every mumineen experiences the blessed period with comfort, dignity, and spiritual fulfillment.',
       ],
       highlights: [
-        { label: 'Community Members', value: '6,500+' },
-        { label: 'Relay Centres', value: '18+' },
-        { label: 'Volunteer Departments', value: '23' },
-        { label: 'Years of Service', value: '50+' },
+        { label: 'Community Members', value: '7,200+' },
+        { label: 'Zone', value: '4' },
+        { label: 'Hr Departments', value: '23' },
+        { label: 'Volunteers', value: '1000+' },
       ],
     },
 
     safars: [
       {
+        id: 'syedna-mufaddal',
+        personName: 'الداعي الاجل الفاطمي سيدنا و مولانا عبد القادر نجم الدين رضوان الله عليه',
+        title: '53rd Dai al-Mutlaq',
+        about:
+          'The current spiritual leader of the Dawoodi Bohra community, Syedna Mufaddal Saifuddin TUS has traveled extensively across the globe to connect with mumineen, guide them in faith, and inspire community development through education, enterprise, and service.',
+        image: '/sayeda mohammed.jpg',
+        safars: [
+          {
+            name: 'Safar Mubarak — Bhopal 2024',
+            year: '2024',
+            location: 'Bhopal, Madhya Pradesh',
+            description:
+              'Arrived in Bhopal on November 16, 2024 as part of a five-day tour across Madhya Pradesh. Visited MSB Educational Institute, delivered sermons on peace and education, and met with thousands of community members.',
+            image: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&q=80',
+          },
+          {
+            name: 'Safar Mubarak — MP Tour',
+            year: '2024',
+            location: 'Ashta, Sehore, Itarsi, Narmadapuram',
+            description:
+              'Extended the blessed journey across multiple cities in Madhya Pradesh, visiting local communities, offering guidance on righteousness, and strengthening the bonds of faith and brotherhood.',
+            image: 'https://images.unsplash.com/photo-1548013146-72479768bada?w=600&q=80',
+          },
+        ],
+      },
+      {
         id: 'syedna-taher',
-        personName: 'Syedna Taher Saifuddin RA',
+        personName: 'الداعي الاجل الفاطمي سيدنا و مولانا طاهر سيف الدين رضوان الله عليه',
         title: '51st Dai al-Mutlaq (1915–1965)',
         about:
           'A visionary leader who traveled far more extensively than any of his predecessors, aided by the expansion of the Indian railway network and the advent of air travel. He championed modern education while preserving spiritual traditions, establishing hundreds of schools and institutions globally.',
@@ -72,7 +98,7 @@ export const relayArazCopyData = {
       },
       {
         id: 'syedna-burhanuddin',
-        personName: 'Syedna Mohammed Burhanuddin RA',
+        personName: 'الداعي الاجل الفاطمي سيدنا و مولانا ابو القائد جوهر محمد برهان الدين رضوان الله عليه',
         title: '52nd Dai al-Mutlaq (1965–2014)',
         about:
           'During his 49-year tenure, Syedna Mohammed Burhanuddin RA conducted numerous safars to cities across India and the world. He established the Faiz al-Mawaid al-Burhaniyah (community kitchen) program and led a resurgence in community engagement, education, and identity preservation.',
@@ -122,7 +148,7 @@ export const relayArazCopyData = {
       },
       {
         id: 'syedna-mufaddal',
-        personName: 'Syedna Mufaddal Saifuddin TUS',
+        personName: 'الداعي الاجل الفاطمي سيدنا و مولانا ابو جعفر الصادق عالي قدر مفصل سيف الدين طول الله عمره الشريف الى يوم الدين ',
         title: '53rd Dai al-Mutlaq',
         about:
           'The current spiritual leader of the Dawoodi Bohra community, Syedna Mufaddal Saifuddin TUS has traveled extensively across the globe to connect with mumineen, guide them in faith, and inspire community development through education, enterprise, and service.',
@@ -156,7 +182,7 @@ export const relayArazCopyData = {
     sectionTitle: 'Why Bhopal',
     sectionSubtitle: 'The City of Lakes — Where Heritage, Nature & Culture Unite',
     intro: {
-      title: 'The Glory of Bhopal',
+      title: 'بهوثثال – تهذيب انسس اخلاق نو شهر',
       description:
         'Bhopal, the magnificent capital of Madhya Pradesh, is a city where centuries of heritage seamlessly blend with stunning natural beauty. Known as the "City of Lakes," Bhopal\'s rich Nawabi legacy, architectural marvels, and warm hospitality make it the perfect host for Ashara Mubaraka.',
     },

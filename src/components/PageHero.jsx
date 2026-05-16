@@ -45,10 +45,10 @@ export default function PageHero({ title, subtitle, breadcrumbs = [], icon: Icon
       <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-gold/5 pointer-events-none" />
       <div className="absolute -bottom-16 -left-16 w-48 h-48 rounded-full bg-white/5 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 relative z-10 flex flex-col items-center text-center">
         {/* Breadcrumb */}
         {breadcrumbs.length > 0 && (
-          <nav className="flex items-center gap-2 text-cream/50 text-sm mb-6">
+          <nav className="flex items-center justify-center flex-wrap gap-2 text-cream/50 text-sm mb-6">
             <Link to="/" className="hover:text-gold transition-colors">Home</Link>
             {breadcrumbs.map((bc, i) => (
               <span key={i} className="flex items-center gap-2">
@@ -63,18 +63,18 @@ export default function PageHero({ title, subtitle, breadcrumbs = [], icon: Icon
           </nav>
         )}
 
-        <div className="flex items-center gap-5">
-          {Icon && (
-            <div className="w-14 h-14 rounded-2xl bg-gold/20 border-2 border-gold/30 flex items-center justify-center backdrop-blur-sm">
-              <Icon size={28} className="text-gold" />
+        <div className="flex flex-col items-center gap-4 max-w-4xl">
+          {/* {Icon && (
+            <div className="w-16 h-16 rounded-2xl bg-gold/20 border-2 border-gold/30 flex items-center justify-center backdrop-blur-sm mb-2">
+              <Icon size={32} className="text-gold" />
             </div>
-          )}
-          <div>
+          )} */}
+          <div className="flex flex-col items-center">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="font-heading text-3xl sm:text-4xl md:text-5xl text-cream font-bold drop-shadow-lg"
+              className="font-heading text-3xl sm:text-4xl md:text-6xl text-cream font-bold drop-shadow-lg"
             >
               {renderMixedText(title)}
             </motion.h1>
@@ -83,7 +83,7 @@ export default function PageHero({ title, subtitle, breadcrumbs = [], icon: Icon
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-cream/70 text-base sm:text-lg mt-2"
+                className="text-cream/70 text-base sm:text-lg mt-2 px-10"
               >
                 {subtitle}
               </motion.p>
