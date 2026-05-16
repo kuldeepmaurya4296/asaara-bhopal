@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, User, Users, ChevronDown, ChevronUp, ChevronRight, Layers, Hotel, Bus, ArrowRight } from 'lucide-react';
@@ -18,6 +18,29 @@ const zoneColors = {
 export default function RelayZonesPage() {
   const [activeZone, setActiveZone] = useState('zone-a');
   const [expandedCentre, setExpandedCentre] = useState(null);
+  const mainRef = useRef(null);
+
+  const scrollToTop = (behavior = 'smooth') => {
+    if (mainRef.current) {
+      const headerOffset = window.innerWidth >= 768 ? 93 : 40;
+      const elementPosition = mainRef.current.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior
+      });
+    }
+  };
+
+  const handleZoneChange = (zoneId) => {
+    if (activeZone === zoneId) {
+      scrollToTop('smooth');
+      return;
+    }
+    setActiveZone(zoneId);
+    setExpandedCentre(null);
+  };
 
   const zone = relayZones.find((z) => z.id === activeZone);
   const colors = zoneColors[zone?.color] || zoneColors.emerald;
@@ -33,21 +56,22 @@ export default function RelayZonesPage() {
         breadcrumbs={[{ label: 'Relay Centre & Zones' }]}
       />
 
-      <main className="max-w-7xl mx-auto px-4 py-12">
+      <main ref={mainRef} className="max-w-7xl mx-auto px-4 py-12">
         {/* Zone Selector Cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-          {relayZones.map((z) => {
-            const zc = zoneColors[z.color] || zoneColors.emerald;
-            const isActive = activeZone === z.id;
-            return (
-              <button
-                key={z.id}
-                onClick={() => { setActiveZone(z.id); setExpandedCentre(null); }}
-                className={`text-left p-5 rounded-2xl border-2 transition-all duration-300 ${isActive
-                  ? `${zc.bg} text-white border-transparent shadow-xl scale-[1.02]`
-                  : `bg-white ${zc.border} hover:shadow-md hover:-translate-y-0.5`
-                  }`}
-              >
+        <div className="sticky top-[40px] md:top-[93px] z-30 bg-cream/95 backdrop-blur-md py-4 -mx-4 px-4 mb-8 border-b border-emerald-dark/5">
+          <div className="flex overflow-x-auto no-scrollbar gap-3 snap-x pb-2">
+            {relayZones.map((z) => {
+              const zc = zoneColors[z.color] || zoneColors.emerald;
+              const isActive = activeZone === z.id;
+              return (
+                <button
+                  key={z.id}
+                  onClick={() => handleZoneChange(z.id)}
+                  className={`text-left shrink-0 w-[240px] lg:w-auto lg:flex-1 p-4 sm:p-5 rounded-2xl border-2 transition-all duration-300 snap-start ${isActive
+                    ? `${zc.bg} text-white border-transparent shadow-xl scale-[1.02]`
+                    : `bg-white ${zc.border} hover:shadow-md hover:-translate-y-0.5`
+                    }`}
+                >
                 <div className={`text-xs tracking-[0.2em] uppercase font-bold mb-1 ${isActive ? 'text-gold' : zc.text}`}>
                   {z.name}
                 </div>
@@ -60,10 +84,11 @@ export default function RelayZonesPage() {
               </button>
             );
           })}
+          </div>
         </div>
 
         {/* Active Zone Content */}
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait" onExitComplete={() => scrollToTop('auto')}>
           {zone && (
             <motion.div
               key={zone.id}
