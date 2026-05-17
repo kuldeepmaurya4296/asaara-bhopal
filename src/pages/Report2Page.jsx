@@ -4,7 +4,7 @@ import {
   ChevronLeft, ChevronRight, ChevronDown, ChevronUp,
   CheckCircle, AlertTriangle, Image as ImageIcon, X
 } from 'lucide-react';
-import { reportsData2, cities, umoors, cityHasData, TAGS_META, commonData } from '../data/reportsData2';
+import { reportsData2, TAGS_META, commonData } from '../data/reportsData2';
 import PageHero from '../components/PageHero';
 import SEO from '../components/SEO';
 import Header from '../components/Header';
@@ -468,6 +468,15 @@ export default function Report2Page() {
     setActiveCityId('all');
   };
 
+  // Derive flat lists from reportsData2
+  const umoors = useMemo(() => reportsData2.map(u => ({ id: u.id, nameEn: u.nameEn, nameUr: u.nameUr })), []);
+  
+  const allCities = useMemo(() => {
+    const cityMap = new Map();
+    reportsData2.forEach(u => u.cities?.forEach(c => cityMap.set(c.id, { id: c.id, nameEn: c.nameEn, nameUr: c.nameUr })));
+    return Array.from(cityMap.values());
+  }, []);
+
   const scrollTabs = (ref, direction) => {
     if (ref.current) {
       ref.current.scrollBy({ left: direction === 'left' ? -200 : 200, behavior: 'smooth' });
@@ -500,75 +509,73 @@ export default function Report2Page() {
     const ach = [];
     const imp = [];
     const imgs = [];
-    const acc = [];
 
     const umoorsToShow = activeUmoorId === 'all'
       ? reportsData2
-      : reportsData2.filter((u) => u.id === activeUmoorId);
+      : reportsData2.filter(u => u.id === activeUmoorId);
 
-    umoorsToShow.forEach((umoor) => {
+    umoorsToShow.forEach(umoor => {
       const citiesToShow = activeCityId === 'all'
-        ? umoor.cities.filter((c) => cityHasData(c))
-        : umoor.cities.filter((c) => c.cityId === activeCityId && cityHasData(c));
+        ? umoor.cities || []
+        : (umoor.cities || []).filter(c => c.id === activeCityId);
 
-      citiesToShow.forEach((cityEntry) => {
-        // Achievements
-        if (cityEntry.achievements?.en?.items) {
-          cityEntry.achievements.en.items.forEach((itemEn, idx) => {
-            const itemUr = cityEntry.achievements.ur?.items?.[idx];
-            ach.push({
-              id: `ach-${umoor.id}-${cityEntry.cityId}-${idx}`,
-              textEn: itemEn.text,
-              textUr: itemUr ? itemUr.text : '',
-              tags: itemEn.tags || (itemEn.tagId ? [itemEn.tagId] : ['community']),
-              umoorId: umoor.id,
-              cityId: cityEntry.cityId,
-            });
+      citiesToShow.forEach(city => {
+        city.achievements?.forEach((item, idx) => {
+          ach.push({
+            id: `ach-${umoor.id}-${city.id}-${idx}`,
+            textEn: item.textEn,
+            textUr: item.textUr,
+            tags: item.tags,
+            umoorId: umoor.id,
+            cityId: city.id
           });
-        }
+        });
 
-        // Improvements
-        if (cityEntry.improvements?.en?.items) {
-          cityEntry.improvements.en.items.forEach((itemEn, idx) => {
-            const itemUr = cityEntry.improvements.ur?.items?.[idx];
-            imp.push({
-              id: `imp-${umoor.id}-${cityEntry.cityId}-${idx}`,
-              textEn: itemEn.text,
-              textUr: itemUr ? itemUr.text : '',
-              tags: itemEn.tags || (itemEn.tagId ? [itemEn.tagId] : ['infrastructure']),
-              umoorId: umoor.id,
-              cityId: cityEntry.cityId,
-            });
+        city.improvements?.forEach((item, idx) => {
+          imp.push({
+            id: `imp-${umoor.id}-${city.id}-${idx}`,
+            textEn: item.textEn,
+            textUr: item.textUr,
+            tags: item.tags,
+            umoorId: umoor.id,
+            cityId: city.id
           });
-        }
+        });
 
-        // Images
-        if (cityEntry.images && cityEntry.images.length > 0) {
-          imgs.push(...cityEntry.images);
-        }
-
-        // Accordions
-        if (cityEntry.accordions && cityEntry.accordions.length > 0) {
-          acc.push(...cityEntry.accordions);
+        if (city.images?.length > 0) {
+          imgs.push(...city.images);
         }
       });
     });
 
-    return { achievements: ach, improvements: imp, images: imgs, accordions: acc };
+    return { achievements: ach, improvements: imp, images: imgs };
   }, [activeUmoorId, activeCityId]);
 
   const availableCities = useMemo(() => {
     if (activeUmoorId === 'all') {
       const allCityIds = new Set();
-      reportsData2.forEach(u => u.cities.forEach(c => {
-        if (cityHasData(c)) allCityIds.add(c.cityId);
-      }));
-      return cities.filter(c => allCityIds.has(c.id));
+      reportsData2.forEach(u => u.cities?.forEach(c => allCityIds.add(c.id)));
+      return allCities.filter(c => allCityIds.has(c.id));
     }
     const umoor = reportsData2.find(u => u.id === activeUmoorId);
     if (!umoor) return [];
-    return cities.filter(c => umoor.cities.some(uc => uc.cityId === c.id && cityHasData(uc)));
-  }, [activeUmoorId]);
+    const cityIds = new Set((umoor.cities || []).map(c => c.id));
+    return allCities.filter(c => cityIds.has(c.id));
+  }, [activeUmoorId, allCities]);
+  
+  // Dynamic Accordion / Summary details
+  const dynamicAccordion = useMemo(() => {
+    let accordionData = commonData.accordion[0]; // fallback global accordion
+    if (activeUmoorId !== 'all' && activeCityId !== 'all') {
+      const umoor = reportsData2.find(u => u.id === activeUmoorId);
+      const city = umoor?.cities?.find(c => c.id === activeCityId);
+      if (city?.accordion) accordionData = city.accordion;
+    } else if (activeUmoorId !== 'all') {
+      const umoor = reportsData2.find(u => u.id === activeUmoorId);
+      if (umoor?.accordion) accordionData = umoor.accordion;
+    }
+    return accordionData;
+  }, [activeUmoorId, activeCityId]);
 
   return (
     <div className="font-body bg-cream min-h-screen flex flex-col">
@@ -656,42 +663,27 @@ export default function Report2Page() {
           </div>
         </div>
 
-        {/* ── Dynamic Accordion Section ── */}
-        {(() => {
-          const accordionsToShow = (activeUmoorId === 'all' && activeCityId === 'all')
-            ? commonData.accordion
-            : aggregatedData.accordions;
-
-          if (accordionsToShow.length === 0) return null;
-
-          return (
-            <div className="max-w-4xl mx-auto px-4 py-8 md:py-10 w-full z-10 relative">
-              <FadeIn>
-                <div className="text-center mb-8 flex flex-col items-center justify-center">
-                  <h2 className="text-3xl md:text-4xl font-heading font-bold text-emerald-dark text-center uppercase tracking-widest">
-                    {activeUmoorId === 'all' && activeCityId === 'all' ? 'QAZA E RASIYAH' : ' QAZA E RASIYAH'}
-                  </h2>
-                  <p className="mt-4 text-base text-charcoal/70 text-center">
-                    {activeUmoorId === 'all' && activeCityId === 'all'
-                      ? 'Detailed program overviews and strategic future goals.'
-                      : 'Strategic insights and program highlights based on selected filters.'}
-                  </p>
-                  <div className="w-16 h-1 bg-gold mx-auto mt-4 rounded-full"></div>
-                </div>
-                <div className="space-y-4">
-                  {accordionsToShow.map((item, idx) => (
-                    <AccordionItem
-                      key={idx}
-                      item={item}
-                      isOpen={openAccordionIdx === idx}
-                      onToggle={() => setOpenAccordionIdx(openAccordionIdx === idx ? null : idx)}
-                    />
-                  ))}
-                </div>
-              </FadeIn>
+        {/* ── Dynamic Single Accordion Section ── */}
+        <div className="max-w-4xl mx-auto px-4 py-8 md:py-10 w-full z-10 relative">
+          <FadeIn>
+            <div className="text-center mb-8 flex flex-col items-center justify-center">
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-emerald-dark text-center uppercase tracking-widest">
+                {dynamicAccordion.headingEn}
+              </h2>
+              <p className="mt-4 text-base text-charcoal/70 text-center max-w-2xl">
+                {dynamicAccordion.contentEn}
+              </p>
+              <div className="w-16 h-1 bg-gold mx-auto mt-4 rounded-full"></div>
             </div>
-          );
-        })()}
+            <div className="space-y-4">
+              <AccordionItem
+                item={dynamicAccordion}
+                isOpen={openAccordionIdx === 0}
+                onToggle={() => setOpenAccordionIdx(openAccordionIdx === 0 ? null : 0)}
+              />
+            </div>
+          </FadeIn>
+        </div>
 
         {/* ── 3-Card Dashboard ── */}
         <div className="max-w-[1600px] w-full mx-auto px-4 py-8 lg:py-10 flex-1 flex flex-col">
@@ -705,7 +697,7 @@ export default function Report2Page() {
                 icon={CheckCircle}
                 theme="emerald"
                 items={aggregatedData.achievements}
-                summaryData={commonData.accordion[0]}
+                summaryData={dynamicAccordion}
               />
 
               {/* Card 2: Need to Improve */}
@@ -715,13 +707,13 @@ export default function Report2Page() {
                 icon={AlertTriangle}
                 theme="#E8C84A"
                 items={aggregatedData.improvements}
-                summaryData={commonData.accordion[1]}
+                summaryData={dynamicAccordion}
               />
 
               {/* Card 3: Gallery Reel */}
               <VerticalGalleryCard
                 images={aggregatedData.images}
-                summaryData={commonData.accordion[2]}
+                summaryData={dynamicAccordion}
               />
 
             </div>
