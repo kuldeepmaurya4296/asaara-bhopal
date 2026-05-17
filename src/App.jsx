@@ -35,10 +35,10 @@ function App() {
           <Route path="/transport" element={<TransportPage />} />
           <Route path="/relay-zones" element={<RelayZonesPage />} />
           <Route path="/volunteers" element={<VolunteersPage />} />
-          <Route path="/relay-araz" element={<RelayArazPage />} />
-          <Route path="/relay-araz-copy" element={<RelayArazCopyPage />} />
-          <Route path="/report" element={<ReportPage />} />
-          <Route path="/report-2" element={<Report2Page />} />
+          <Route path="/relay-araz-old" element={<RelayArazPage />} />
+          <Route path="/relay-araz" element={<RelayArazCopyPage />} />
+          <Route path="/report-old" element={<ReportPage />} />
+          <Route path="/report" element={<Report2Page />} />
           <Route path="/create-report" element={<CreateReportPage />} />
         </Routes>
       </SmoothScroll>

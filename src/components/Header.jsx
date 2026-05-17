@@ -13,15 +13,17 @@ const announcements = [
 const navItems = [
   { label: 'Home', href: '/' },
   // { type: 'dropdown', label: 'Ashara Relay Centre Update' },
-  { label: 'Relay Araz', href: '/relay-araz' },
   // { label: "Dawoodi Bohra's of Bhopal", href: '/about' },
   // { label: 'About Us', href: '/about' },
   // { label: 'Gallery', href: '/gallery' },
   // { label: 'Reports', href: '/report' },
   // { label: 'FAQ', href: '/faq' },
   // { label: 'Contact Us', href: '/contact' },
-  { label: "Relay Araz 2", href: '/relay-araz-copy' },
-  { label: "Report 2", href: '/report-2' }
+  { label: 'Relay Araz', href: '/relay-araz' },
+  // { label: "Relay Araz Old", href: '/relay-araz-old' },
+  // { label: "Report Old", href: '/report-old' },
+  { label: "Report", href: '/report' }
+
 ];
 
 const dropdownItems = [

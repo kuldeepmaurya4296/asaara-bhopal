@@ -7,9 +7,9 @@ export default function SmoothScroll({ children }) {
   const location = useLocation();
 
   useEffect(() => {
-    // Disable Lenis smooth scrolling completely for the report-2 page 
+    // Disable Lenis smooth scrolling completely for the report page 
     // to allow internal overflow-y-auto scrolling and native dialog scrolling.
-    if (location.pathname === '/report-2') {
+    if (location.pathname === '/report' || location.pathname === '/report-2') {
       return;
     }
     const lenis = new Lenis({
