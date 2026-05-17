@@ -14,6 +14,7 @@ import ReportPage from './pages/ReportPage';
 import CreateReportPage from './pages/CreateReportPage';
 import RelayArazPage from './pages/RelayArazPage';
 import RelayArazCopyPage from './pages/RelayArazCopyPage';
+import Report2Page from './pages/Report2Page';
 import SmoothScroll from './components/SmoothScroll';
 import ScrollToHashElement from './components/ScrollToHashElement';
 
@@ -37,6 +38,7 @@ function App() {
           <Route path="/relay-araz" element={<RelayArazPage />} />
           <Route path="/relay-araz-copy" element={<RelayArazCopyPage />} />
           <Route path="/report" element={<ReportPage />} />
+          <Route path="/report-2" element={<Report2Page />} />
           <Route path="/create-report" element={<CreateReportPage />} />
         </Routes>
       </SmoothScroll>
