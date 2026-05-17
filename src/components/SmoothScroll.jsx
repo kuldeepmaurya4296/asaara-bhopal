@@ -1,9 +1,17 @@
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
 
 export default function SmoothScroll({ children }) {
+  const location = useLocation();
+
   useEffect(() => {
+    // Disable Lenis smooth scrolling completely for the report-2 page 
+    // to allow internal overflow-y-auto scrolling and native dialog scrolling.
+    if (location.pathname === '/report-2') {
+      return;
+    }
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -26,7 +34,7 @@ export default function SmoothScroll({ children }) {
     return () => {
       lenis.destroy();
     };
-  }, []);
+  }, [location.pathname]);
 
   return <>{children}</>;
 }

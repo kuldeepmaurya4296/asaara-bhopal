@@ -1,114 +1,404 @@
-import { useState, useRef, useCallback, useEffect } from 'react';
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
+import { useState, useRef, useMemo, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   ChevronLeft, ChevronRight, ChevronDown, ChevronUp,
-  CheckCircle, AlertTriangle, FileText, X, BarChart3,
-  Image as ImageIcon, Download
+  CheckCircle, AlertTriangle, Image as ImageIcon, X
 } from 'lucide-react';
-import { reportsData2, cities, umoors, cityHasData, getCityMeta, commonData } from '../data/reportsData2';
+import { reportsData2, cities, umoors, cityHasData, TAGS_META, commonData } from '../data/reportsData2';
 import PageHero from '../components/PageHero';
 import SEO from '../components/SEO';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import FadeIn from '../components/animations/FadeIn';
 
-// ─── Global Image Gallery (3 Card Slider) ──────────────────────────────────
-function GlobalGallery({ images = [] }) {
-  const scrollRef = useRef(null);
-  const timerRef = useRef(null);
+// ─── Data Card Component (Achievements / Improvements) ──────────────────────
+function DataCard({ title, icon: Icon, theme, items, summaryData }) {
+  const [activeTags, setActiveTags] = useState([]);
+  const [isSummaryOpen, setIsSummaryOpen] = useState(false);
+  const dragRef = useRef({ isDown: false, startX: 0, scrollLeft: 0 });
 
-  const scroll = (direction) => {
-    if (scrollRef.current) {
-      const scrollAmount = scrollRef.current.clientWidth / 3;
-      scrollRef.current.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
-      handleInteraction();
-    }
+  // Mouse drag handlers for the Tags bar
+  const handleMouseDown = (e) => {
+    const el = e.currentTarget;
+    dragRef.current.isDown = true;
+    dragRef.current.startX = e.pageX - el.offsetLeft;
+    dragRef.current.scrollLeft = el.scrollLeft;
+    el.style.cursor = 'grabbing';
+    el.style.userSelect = 'none';
+  };
+  const handleMouseLeaveOrUp = (e) => {
+    dragRef.current.isDown = false;
+    e.currentTarget.style.cursor = 'grab';
+    e.currentTarget.style.removeProperty('user-select');
+  };
+  const handleMouseMove = (e) => {
+    if (!dragRef.current.isDown) return;
+    e.preventDefault();
+    const el = e.currentTarget;
+    const x = e.pageX - el.offsetLeft;
+    const walk = (x - dragRef.current.startX) * 1.5;
+    el.scrollLeft = dragRef.current.scrollLeft - walk;
   };
 
-  const autoSlide = useCallback(() => {
-    if (scrollRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-      if (scrollLeft + clientWidth >= scrollWidth - 10) {
-        scrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        scrollRef.current.scrollBy({ left: clientWidth / 3, behavior: 'smooth' });
+  // Extract unique tags present in the current filtered items
+  const uniqueTags = useMemo(() => {
+    const tagsSet = new Set();
+    items.forEach(i => {
+      if (i.tags && Array.isArray(i.tags)) {
+        i.tags.forEach(t => tagsSet.add(t));
+      } else if (i.tagId) {
+        tagsSet.add(i.tagId); // Fallback
       }
+    });
+    return Array.from(tagsSet).filter(Boolean);
+  }, [items]);
+
+  // Filter items by selected internal tags
+  const filteredItems = useMemo(() => {
+    if (activeTags.length === 0) return items;
+    return items.filter(i => {
+      const itemTags = (i.tags && Array.isArray(i.tags)) ? i.tags : (i.tagId ? [i.tagId] : []);
+      return itemTags.some(t => activeTags.includes(t));
+    });
+  }, [items, activeTags]);
+
+  // Theme-specific colors
+  const colors = theme === 'emerald'
+    ? {
+      border: 'border-emerald-200',
+      bg: 'bg-emerald-50/50',
+      headerBg: 'bg-emerald-dark',
+      headerText: 'text-gold',
+      tagActive: 'text-emerald-dark',
+      tagHover: 'hover:text-emerald-dark',
+      itemBg: 'bg-white',
+      itemBorder: 'border-emerald-100',
+      footerBg: 'bg-emerald-50',
+      footerText: 'text-emerald-800/60'
     }
-  }, []);
-
-  const handleInteraction = () => {
-    clearInterval(timerRef.current);
-    timerRef.current = setInterval(autoSlide, 5000);
-  };
-
-  useEffect(() => {
-    if (images.length > 0) {
-      timerRef.current = setInterval(autoSlide, 5000);
-    }
-    return () => clearInterval(timerRef.current);
-  }, [images.length, autoSlide]);
-
-  if (!images || images.length === 0) return null;
+    : {
+      border: 'border-[#E8C84A]/40',
+      bg: 'bg-[#E8C84A]/10',
+      headerBg: 'bg-[#E8C84A]',
+      headerText: 'text-gray-900',
+      tagActive: 'text-[#E8C84A]',
+      tagHover: 'hover:text-[#E8C84A]',
+      itemBg: 'bg-white',
+      itemBorder: 'border-[#E8C84A]/30',
+      footerBg: 'bg-[#E8C84A]/10',
+      footerText: 'text-gray-800/60'
+    };
 
   return (
-    <div className="relative group">
-      <button
-        onClick={() => scroll('left')}
-        className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white text-emerald-dark"
-      >
-        <ChevronLeft size={20} />
-      </button>
-
-      <div
-        ref={scrollRef}
-        className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide py-4 px-2"
-        style={{ msOverflowStyle: 'none', scrollbarWidth: 'none' }}
-        onScroll={handleInteraction}
-        onTouchStart={handleInteraction}
-      >
-        {images.map((img, idx) => (
-          <div key={idx} className="shrink-0 w-[85vw] sm:w-[calc(50%-8px)] lg:w-[calc(33.333%-11px)] snap-start">
-            <div className="rounded-2xl overflow-hidden shadow-md aspect-[4/3] group-hover:shadow-lg transition-shadow">
-              <img src={img} alt={`Gallery ${idx + 1}`} className="w-full h-full object-cover" loading="lazy" />
-            </div>
-          </div>
-        ))}
+    <div className={`flex flex-col h-[550px] lg:h-full rounded-2xl border shadow-lg overflow-hidden ${colors.border} bg-white`}>
+      {/* Sticky Header */}
+      <div className={`${colors.headerBg} ${colors.headerText} px-6 py-4 flex items-center justify-between shrink-0 shadow-sm z-10 relative`}>
+        <div className="flex items-center gap-3">
+          <Icon size={22} className="opacity-90" />
+          <h2 className="text-lg font-heading font-bold tracking-wide">{title}</h2>
+        </div>
+        <span className="text-[10px] font-bold uppercase tracking-wider bg-white/20 px-3 py-1.5 rounded-full">
+          {filteredItems.length} items
+        </span>
       </div>
 
-      <button
-        onClick={() => scroll('right')}
-        className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white text-emerald-dark"
-      >
-        <ChevronRight size={20} />
-      </button>
+      {/* Sticky Tags Filter */}
+      {uniqueTags.length > 0 && (
+        <div className="border-b border-gray-100 bg-white shrink-0 shadow-sm z-10 relative">
+          <div
+            className="flex overflow-x-auto scrollbar-hide px-4 py-3 gap-2 cursor-grab"
+            onMouseDown={handleMouseDown}
+            onMouseLeave={handleMouseLeaveOrUp}
+            onMouseUp={handleMouseLeaveOrUp}
+            onMouseMove={handleMouseMove}
+            style={{ msOverflowStyle: 'none', scrollbarWidth: 'none' }}
+          >
+            <button
+              onClick={() => setActiveTags([])}
+              className={`  rounded-full whitespace-nowrap text-[11px] font-bold uppercase tracking-wider transition-all duration-300 px-3 py-1 ${activeTags.length === 0
+                ? colors.tagActive
+                : 'text-charcoal/60 ' + colors.tagHover
+                }`}
+            >
+              All Tags
+            </button>
+            {uniqueTags.map(tagId => {
+              const meta = TAGS_META[tagId] || { en: tagId, ur: tagId };
+              const isActive = activeTags.includes(tagId);
+              return (
+                <button
+                  key={tagId}
+                  onClick={() => {
+                    setActiveTags(prev =>
+                      prev.includes(tagId)
+                        ? prev.filter(t => t !== tagId)
+                        : [...prev, tagId]
+                    );
+                  }}
+                  className={` flex items-center gap-1.5  rounded-full text-[11px] font-bold tracking-wider transition-all duration-300 px-3 py-1 ${isActive
+                    ? colors.tagActive
+                    : 'text-charcoal/60 ' + colors.tagHover
+                    }`}
+                >
+                  <span>#{meta.en}</span>
+                  {isActive && <X size={12} strokeWidth={3} className="opacity-80" />}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* Scrollable Content Container */}
+      <div className={`flex-1 overflow-y-auto p-4 space-y-4 scrollbar-hide ${colors.bg}`}>
+        <AnimatePresence mode="popLayout">
+          {filteredItems.map(item => (
+            <motion.div
+              key={item.id}
+              layout
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.2 } }}
+              transition={{ duration: 0.3 }}
+              className={`rounded-xl p-5 shadow-sm border ${colors.itemBg} ${colors.itemBorder}`}
+            >
+              {/* Item Tag */}
+              <div className="flex justify-between items-start mb-4">
+                <div className="flex flex-wrap gap-2">
+                  {(item.tags || (item.tagId ? [item.tagId] : [])).map(tId => (
+                    <span key={tId} className={`text-[11px] tracking-wide font-extrabold ${theme === 'emerald' ? 'text-emerald-600' : 'text-[#E8C84A]'}`}>
+                      #{TAGS_META[tId]?.en || tId}
+                    </span>
+                  ))}
+                </div>
+                <span className="text-[10px] font-bold text-gray-400 bg-gray-50 px-2 py-0.5 rounded border border-gray-100">
+                  {item.cityId.toUpperCase()}
+                </span>
+              </div>
+              {/* Item Text */}
+              <div className="space-y-3">
+                <p className="font-kanz text-lg leading-relaxed text-right text-gray-800" dir="rtl">{item.textUr}</p>
+                <p className="text-sm text-gray-600 leading-relaxed font-medium">{item.textEn}</p>
+              </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+
+        {filteredItems.length === 0 && (
+          <div className="flex flex-col items-center justify-center h-full text-charcoal/40 text-sm gap-2">
+            <AlertTriangle size={32} className="opacity-20" />
+            <p>No {title.toLowerCase()} found for this selection.</p>
+          </div>
+        )}
+      </div>
+
+      {/* Sticky Footer Summary */}
+      <div className={`${colors.footerBg} ${colors.footerText} border-t border-black/5 flex flex-col shrink-0 z-10 relative transition-all duration-300`}>
+        <button
+          onClick={() => setIsSummaryOpen(!isSummaryOpen)}
+          className="w-full p-3 flex items-center justify-between hover:bg-black/5 transition-colors cursor-pointer"
+        >
+          <span className="text-[11px] font-bold uppercase tracking-widest">
+            {title} Summary
+          </span>
+          {isSummaryOpen ? <ChevronDown size={14} /> : <ChevronUp size={14} />}
+        </button>
+
+        <AnimatePresence>
+          {isSummaryOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              className="overflow-hidden px-4 pb-4 text-left text-[11px] space-y-2"
+            >
+              {summaryData && (
+                <div className="mb-3 pb-3 border-b border-black/10 space-y-2">
+                  <h4 className="font-bold text-[12px] opacity-90">{summaryData.headingEn}</h4>
+                  <p className="leading-relaxed opacity-70">{summaryData.contentEn}</p>
+                  <h4 className="font-kanz font-bold text-[13px] opacity-90 text-right mt-3" dir="rtl">{summaryData.headingUr}</h4>
+                  <p className="font-kanz leading-relaxed opacity-70 text-right" dir="rtl">{summaryData.contentUr}</p>
+                </div>
+              )}
+              <div className="flex justify-between border-b border-black/5 pb-1.5">
+                <span className="font-semibold opacity-80">Total Items:</span>
+                <span className="font-bold">{filteredItems.length}</span>
+              </div>
+              <div className="flex justify-between border-b border-black/5 pb-1.5">
+                <span className="font-semibold opacity-80">Cities Represented:</span>
+                <span className="font-bold">{new Set(filteredItems.map(i => i.cityId)).size}</span>
+              </div>
+              <div className="flex justify-between pb-1">
+                <span className="font-semibold opacity-80">Active Tags:</span>
+                <span className="text-right truncate ml-4 font-bold">
+                  {activeTags.length === 0
+                    ? 'All'
+                    : activeTags.map(tId => TAGS_META[tId]?.en || tId).join(', ')
+                  }
+                </span>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
-  );
+  )
 }
 
-// ─── Accordion Item ─────────────────────────────────────────────────────────
+// ─── Vertical Gallery Reel Component ────────────────────────────────────────
+function VerticalGalleryCard({ images, summaryData }) {
+  const containerRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isSummaryOpen, setIsSummaryOpen] = useState(false);
+
+  // Auto-play logic
+  useEffect(() => {
+    if (images.length <= 1 || isPaused) return;
+    const interval = setInterval(() => {
+      if (containerRef.current) {
+        const el = containerRef.current;
+        const currentScroll = el.scrollTop;
+        const maxScroll = el.scrollHeight - el.clientHeight;
+        const cardHeight = el.clientHeight;
+
+        if (currentScroll >= maxScroll - 10) {
+          el.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          el.scrollBy({ top: cardHeight, behavior: 'smooth' });
+        }
+      }
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [images, isPaused]);
+
+  // Vertical Mouse Drag
+  const dragRef = useRef({ isDown: false, startY: 0, scrollTop: 0 });
+  const handleMouseDown = (e) => {
+    const el = e.currentTarget;
+    dragRef.current.isDown = true;
+    dragRef.current.startY = e.pageY - el.offsetTop;
+    dragRef.current.scrollTop = el.scrollTop;
+    el.style.cursor = 'grabbing';
+    el.style.userSelect = 'none';
+  };
+  const handleMouseUpOrLeave = (e) => {
+    dragRef.current.isDown = false;
+    e.currentTarget.style.cursor = 'grab';
+    e.currentTarget.style.removeProperty('user-select');
+  };
+  const handleMouseMove = (e) => {
+    if (!dragRef.current.isDown) return;
+    e.preventDefault();
+    const el = e.currentTarget;
+    const y = e.pageY - el.offsetTop;
+    const walk = (y - dragRef.current.startY) * 1.5;
+    el.scrollTop = dragRef.current.scrollTop - walk;
+  };
+
+  return (
+    <div className="flex flex-col h-[550px] lg:h-full rounded-2xl border shadow-lg overflow-hidden border-charcoal/20 bg-charcoal">
+      {/* Sticky Header */}
+      <div className="bg-charcoal text-gold px-6 py-4 flex items-center justify-between shrink-0 border-b border-white/10 shadow-sm z-10 relative">
+        <div className="flex items-center gap-3">
+          <ImageIcon size={22} className="opacity-90" />
+          <h2 className="text-lg font-heading font-bold tracking-wide">Gallery Reel</h2>
+        </div>
+        <span className="text-[10px] font-bold uppercase tracking-wider bg-white/10 px-3 py-1.5 rounded-full text-white">
+          {images.length} items
+        </span>
+      </div>
+
+      {/* Scrollable Vertical Reel */}
+      <div
+        ref={containerRef}
+        className="flex-1 overflow-y-auto snap-y snap-mandatory scrollbar-hide cursor-grab relative bg-black/50"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={(e) => {
+          setIsPaused(false);
+          handleMouseUpOrLeave(e);
+        }}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUpOrLeave}
+        onMouseMove={handleMouseMove}
+      >
+        <AnimatePresence>
+          {images.length > 0 ? images.map((img, idx) => (
+            <div key={idx} className="h-full w-full shrink-0 snap-center snap-always flex items-center justify-center p-4">
+              <motion.img
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                src={img}
+                alt={`Gallery Reel ${idx}`}
+                className="w-full h-full object-cover rounded-xl shadow-2xl border border-white/10 pointer-events-none"
+              />
+            </div>
+          )) : (
+            <div className="flex flex-col items-center justify-center h-full text-white/40 text-sm gap-2">
+              <ImageIcon size={32} className="opacity-20" />
+              <p>No images found.</p>
+            </div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* Sticky Footer Summary */}
+      <div className="bg-charcoal border-t border-white/10 flex flex-col shrink-0 z-10 relative transition-all duration-300">
+        <button
+          onClick={() => setIsSummaryOpen(!isSummaryOpen)}
+          className="w-full p-3 flex items-center justify-between hover:bg-white/5 transition-colors cursor-pointer"
+        >
+          <span className="text-[11px] font-bold uppercase tracking-widest text-gold/60">
+            Gallery Summary
+          </span>
+          {isSummaryOpen ? <ChevronDown size={14} className="text-gold/60" /> : <ChevronUp size={14} className="text-gold/60" />}
+        </button>
+
+        <AnimatePresence>
+          {isSummaryOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              className="overflow-hidden px-4 pb-4 text-left text-[11px] space-y-2 text-white/80"
+            >
+              {summaryData && (
+                <div className="mb-3 pb-3 border-b border-white/10 space-y-2">
+                  <h4 className="font-bold text-[12px] text-gold/90">{summaryData.headingEn}</h4>
+                  <p className="leading-relaxed opacity-80">{summaryData.contentEn}</p>
+                  <h4 className="font-kanz font-bold text-[13px] text-gold/90 text-right mt-3" dir="rtl">{summaryData.headingUr}</h4>
+                  <p className="font-kanz leading-relaxed opacity-80 text-right" dir="rtl">{summaryData.contentUr}</p>
+                </div>
+              )}
+              <div className="flex justify-between border-b border-white/10 pb-1.5">
+                <span className="font-semibold text-gold/80">Total Images:</span>
+                <span className="font-bold">{images.length}</span>
+              </div>
+              <div className="flex justify-between pb-1">
+                <span className="font-semibold text-gold/80">Display Mode:</span>
+                <span className="font-bold">Auto-Sliding Reel</span>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </div>
+  )
+}
+
+// ─── Accordion Component ────────────────────────────────────────────────────
 function AccordionItem({ item, isOpen, onToggle }) {
   return (
-    <div className="bg-white rounded-xl border border-emerald-dark/5 overflow-hidden shadow-sm">
+    <div className="bg-white rounded-2xl shadow-sm border border-emerald-dark/10 overflow-hidden">
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-cream/50 transition-colors"
+        className="w-full px-6 py-5 flex items-center justify-between hover:bg-emerald-50/50 transition-colors cursor-pointer"
       >
-        <div className="flex-1 min-w-0">
-          {item.headingUr && (
-            <p className="font-kanz text-base text-emerald-dark leading-relaxed" dir="rtl">
-              {item.headingUr}
-            </p>
-          )}
-          {item.headingEn && (
-            <p className={`text-sm font-semibold text-charcoal/80 ${item.headingUr ? 'mt-1' : ''}`}>
-              {item.headingEn}
-            </p>
-          )}
+        <div className="text-left">
+          <h3 className="font-bold text-lg text-emerald-dark">{item.headingEn}</h3>
+          <p className="font-kanz text-sm text-emerald-dark/70 mt-1" dir="rtl">{item.headingUr}</p>
         </div>
-        <div className="ml-4 shrink-0">
-          {isOpen
-            ? <ChevronUp size={18} className="text-gold" />
-            : <ChevronDown size={18} className="text-charcoal/40" />
-          }
+        <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 bg-gold text-white' : 'bg-emerald-50 text-emerald-dark'}`}>
+          <ChevronDown size={18} />
         </div>
       </button>
 
@@ -118,48 +408,37 @@ function AccordionItem({ item, isOpen, onToggle }) {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.35 }}
             className="overflow-hidden"
           >
-            <div className="px-5 pb-5 space-y-4 border-t border-emerald-dark/5 pt-4">
-              {/* Urdu content first */}
-              {item.contentUr && (
-                <p className="font-kanz text-sm text-charcoal/70 leading-[2]" dir="rtl">
-                  {item.contentUr}
-                </p>
-              )}
-              {/* English content */}
-              {item.contentEn && (
-                <p className="text-sm text-charcoal/70 leading-relaxed">
-                  {item.contentEn}
-                </p>
-              )}
-              {/* Accordion images */}
+            <div className="px-6 pb-6 pt-2 border-t border-emerald-dark/5 space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-3">
+                  <h4 className="font-semibold text-emerald-dark text-sm uppercase tracking-wider">English</h4>
+                  <p className="text-charcoal/80 leading-relaxed text-sm">{item.contentEn}</p>
+                </div>
+                <div className="space-y-3 text-right">
+                  <h4 className="font-semibold text-emerald-dark text-sm uppercase tracking-wider" dir="rtl">اردو</h4>
+                  <p className="font-kanz text-charcoal/80 leading-relaxed text-base" dir="rtl">{item.contentUr}</p>
+                </div>
+              </div>
+
               {item.images && item.images.length > 0 && (
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-3">
-                  {item.images.map((img, i) => (
-                    <img
-                      key={i}
-                      src={img}
-                      alt={`Detail ${i + 1}`}
-                      className="w-full h-28 object-cover rounded-lg"
-                      loading="lazy"
-                    />
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 pt-4">
+                  {item.images.map((img, idx) => (
+                    <img key={idx} src={img} alt="Accordion Content" className="w-full h-48 object-cover rounded-xl shadow-sm" />
                   ))}
                 </div>
               )}
 
-              {/* Document Download Button */}
               {item.docUrl && (
-                <div className="pt-2 mt-4 border-t border-emerald-dark/5">
+                <div className="pt-4 flex justify-center md:justify-start">
                   <a
                     href={item.docUrl}
                     target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-gold/10 text-emerald-dark font-semibold px-4 py-2 rounded-lg text-xs hover:bg-gold hover:shadow-md transition-all"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 bg-emerald-dark text-gold px-6 py-2.5 rounded-full font-bold text-sm hover:bg-emerald-800 transition-colors shadow-md hover:shadow-lg"
                   >
-                    <Download size={14} />
-                    <span>Download Report Document</span>
+                    Download Detailed Report
                   </a>
                 </div>
               )}
@@ -171,205 +450,22 @@ function AccordionItem({ item, isOpen, onToggle }) {
   );
 }
 
-// ─── Dual-Language Content Section ──────────────────────────────────────────
-function DualLangSection({ data, icon: Icon, colorClass, label }) {
-  if (!data) return null;
-  const { en, ur } = data;
-  const hasEn = en && en.items && en.items.length > 0;
-  const hasUr = ur && ur.items && ur.items.length > 0;
-  if (!hasEn && !hasUr) return null;
-
-  return (
-    <div className={`rounded-2xl border p-6 sm:p-8 ${colorClass}`}>
-      <div className="flex items-center gap-2 mb-5">
-        <Icon size={20} className="shrink-0" />
-        <span className="text-xs font-bold uppercase tracking-wider">{label}</span>
-      </div>
-
-      <div className="space-y-6">
-        {/* Urdu first */}
-        {hasUr && (
-          <div dir="rtl">
-            <h4 className="font-kanz text-lg mb-3 font-bold">{ur.heading}</h4>
-            <ul className="space-y-2">
-              {ur.items.map((item, i) => (
-                <li key={i} className="font-kanz text-sm leading-[2] flex items-start gap-2">
-                  <span className="mt-2 text-current/50 shrink-0 text-[10px]">●</span>
-                  <span className="flex-1">{item.text}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {hasUr && hasEn && <div className="border-t border-current/10" />}
-
-        {/* English */}
-        {hasEn && (
-          <div>
-            <h4 className="text-sm font-bold mb-3">{en.heading}</h4>
-            <ul className="space-y-2">
-              {en.items.map((item, i) => (
-                <li key={i} className="text-sm leading-relaxed flex items-start gap-2">
-                  <span className="mt-1.5 text-current/50 shrink-0 text-[10px]">●</span>
-                  <span className="flex-1">{item.text}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
-
-// ─── City Report Card ───────────────────────────────────────────────────────
-function CityReportCard({ cityEntry, umoorMeta, activeContentType }) {
-  const cityMeta = getCityMeta(cityEntry.cityId);
-  if (!cityMeta) return null;
-
-  return (
-    <FadeIn className="h-full">
-      <div className="bg-white rounded-3xl border border-emerald-dark/5 shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
-        
-        {/* Card Header */}
-        <div className="bg-gradient-to-br from-emerald-dark via-emerald-light to-emerald-dark p-6 relative overflow-hidden shrink-0">
-          {/* Pattern */}
-          <div className="absolute inset-0 opacity-10 pointer-events-none">
-            <svg className="w-full h-full" preserveAspectRatio="none">
-              <pattern id={`pat-${cityEntry.cityId}`} x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
-                <path d="M15 0 L30 15 L15 30 L0 15 Z" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-gold" />
-              </pattern>
-              <rect width="100%" height="100%" fill={`url(#pat-${cityEntry.cityId})`} />
-            </svg>
-          </div>
-
-          <div className="relative z-10 flex flex-col space-y-4">
-            <div className="space-y-2">
-              <div dir="rtl" className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                <span className="font-kanz text-gold text-2xl drop-shadow-sm leading-tight">{umoorMeta.nameUr}</span>
-                <span className="text-white/30 text-sm hidden sm:inline">—</span>
-                <span className="font-kanz text-cream/90 text-xl drop-shadow-sm leading-tight">{cityMeta.nameUr}</span>
-              </div>
-              
-              <div className="flex flex-col">
-                <span className="text-gold font-heading text-lg font-bold uppercase tracking-wide drop-shadow-sm leading-tight">{umoorMeta.nameEn}</span>
-                <span className="text-cream font-heading text-2xl font-bold drop-shadow-sm leading-tight mt-0.5">{cityMeta.nameEn}</span>
-              </div>
-            </div>
-
-            {cityEntry.docUrl && (
-              <div className="pt-3 border-t border-white/10 mt-2">
-                <a
-                  href={cityEntry.docUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-gold text-emerald-dark font-semibold px-4 py-2 rounded-full text-xs hover:bg-gold-light hover:shadow-lg hover:shadow-gold/20 transition-all justify-center w-full"
-                >
-                  <FileText size={14} />
-                  <span>Download Report Document</span>
-                </a>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Content Sections */}
-        <div className="p-6 space-y-6 flex-1 flex flex-col">
-          {(activeContentType === 'all' || activeContentType === 'achievements') && (
-            <DualLangSection
-              data={cityEntry.achievements}
-              icon={CheckCircle}
-              colorClass={`bg-emerald-50 border-emerald-200 text-emerald-800 ${activeContentType !== 'all' ? 'flex-1' : ''}`}
-              label="Achievements"
-            />
-          )}
-
-          {(activeContentType === 'all' || activeContentType === 'improvements') && (
-            <DualLangSection
-              data={cityEntry.improvements}
-              icon={AlertTriangle}
-              colorClass={`bg-orange-50 border-orange-200 text-orange-800 ${activeContentType !== 'all' ? 'flex-1' : ''}`}
-              label="Need to Improve"
-            />
-          )}
-        </div>
-
-      </div>
-    </FadeIn>
-  );
-}
-
 // ─── Main Page ──────────────────────────────────────────────────────────────
 export default function Report2Page() {
   const [activeUmoorId, setActiveUmoorId] = useState('all');
   const [activeCityId, setActiveCityId] = useState('all');
-  const [activeContentType, setActiveContentType] = useState('all'); // all, achievements, improvements
-  const [openGlobalAccIdx, setOpenGlobalAccIdx] = useState(null);
   const [isFiltersVisible, setIsFiltersVisible] = useState(true);
+  const [openAccordionIdx, setOpenAccordionIdx] = useState(null);
+
   const umoorScrollRef = useRef(null);
   const cityScrollRef = useRef(null);
   const dragRef = useRef({ isDown: false, startX: 0, scrollLeft: 0 });
 
-  // When umoor changes, reset city filter to 'all'
+  // Filter interaction
   const handleUmoorChange = (umoorId) => {
     setActiveUmoorId(umoorId);
     setActiveCityId('all');
   };
-
-  // Get available cities for the currently selected umoor (only those with data)
-  const getAvailableCities = () => {
-    if (activeUmoorId === 'all') {
-      // Collect all cities that have data in any umoor
-      const cityIds = new Set();
-      reportsData2.forEach((umoor) => {
-        umoor.cities.forEach((c) => {
-          if (cityHasData(c)) cityIds.add(c.cityId);
-        });
-      });
-      return cities.filter((c) => cityIds.has(c.id));
-    } else {
-      const umoor = reportsData2.find((u) => u.id === activeUmoorId);
-      if (!umoor) return [];
-      const cityIds = umoor.cities.filter((c) => cityHasData(c)).map((c) => c.cityId);
-      return cities.filter((c) => cityIds.includes(c.id));
-    }
-  };
-
-  // Get filtered report cards
-  const getFilteredCards = () => {
-    const cards = [];
-    const umoorsToShow = activeUmoorId === 'all' ? reportsData2 : reportsData2.filter((u) => u.id === activeUmoorId);
-
-    umoorsToShow.forEach((umoor) => {
-      const citiesToShow = activeCityId === 'all'
-        ? umoor.cities.filter((c) => cityHasData(c))
-        : umoor.cities.filter((c) => c.cityId === activeCityId && cityHasData(c));
-
-      citiesToShow.forEach((cityEntry) => {
-        let shouldShow = false;
-        const hasAch = cityEntry.achievements && (cityEntry.achievements.en?.items?.length > 0 || cityEntry.achievements.ur?.items?.length > 0);
-        const hasImp = cityEntry.improvements && (cityEntry.improvements.en?.items?.length > 0 || cityEntry.improvements.ur?.items?.length > 0);
-
-        if (activeContentType === 'all') shouldShow = true;
-        if (activeContentType === 'achievements' && hasAch) shouldShow = true;
-        if (activeContentType === 'improvements' && hasImp) shouldShow = true;
-
-        if (shouldShow) {
-          cards.push({
-            key: `${umoor.id}-${cityEntry.cityId}`,
-            umoorMeta: { id: umoor.id, nameEn: umoor.nameEn, nameUr: umoor.nameUr },
-            cityEntry,
-          });
-        }
-      });
-    });
-
-    return cards;
-  };
-
-  const availableCities = getAvailableCities();
-  const filteredCards = getFilteredCards();
 
   const scrollTabs = (ref, direction) => {
     if (ref.current) {
@@ -385,13 +481,11 @@ export default function Report2Page() {
     el.style.cursor = 'grabbing';
     el.style.userSelect = 'none';
   };
-
   const handleMouseLeaveOrUp = (e) => {
     dragRef.current.isDown = false;
     e.currentTarget.style.cursor = 'grab';
     e.currentTarget.style.removeProperty('user-select');
   };
-
   const handleMouseMove = (e) => {
     if (!dragRef.current.isDown) return;
     e.preventDefault();
@@ -401,25 +495,116 @@ export default function Report2Page() {
     el.scrollLeft = dragRef.current.scrollLeft - walk;
   };
 
+  // Aggregation Engine
+  const aggregatedData = useMemo(() => {
+    const ach = [];
+    const imp = [];
+    const imgs = [];
+
+    const umoorsToShow = activeUmoorId === 'all'
+      ? reportsData2
+      : reportsData2.filter((u) => u.id === activeUmoorId);
+
+    umoorsToShow.forEach((umoor) => {
+      const citiesToShow = activeCityId === 'all'
+        ? umoor.cities.filter((c) => cityHasData(c))
+        : umoor.cities.filter((c) => c.cityId === activeCityId && cityHasData(c));
+
+      citiesToShow.forEach((cityEntry) => {
+        // Achievements
+        if (cityEntry.achievements?.en?.items) {
+          cityEntry.achievements.en.items.forEach((itemEn, idx) => {
+            const itemUr = cityEntry.achievements.ur?.items?.[idx];
+            ach.push({
+              id: `ach-${umoor.id}-${cityEntry.cityId}-${idx}`,
+              textEn: itemEn.text,
+              textUr: itemUr ? itemUr.text : '',
+              tags: itemEn.tags || (itemEn.tagId ? [itemEn.tagId] : ['community']),
+              umoorId: umoor.id,
+              cityId: cityEntry.cityId,
+            });
+          });
+        }
+
+        // Improvements
+        if (cityEntry.improvements?.en?.items) {
+          cityEntry.improvements.en.items.forEach((itemEn, idx) => {
+            const itemUr = cityEntry.improvements.ur?.items?.[idx];
+            imp.push({
+              id: `imp-${umoor.id}-${cityEntry.cityId}-${idx}`,
+              textEn: itemEn.text,
+              textUr: itemUr ? itemUr.text : '',
+              tags: itemEn.tags || (itemEn.tagId ? [itemEn.tagId] : ['infrastructure']),
+              umoorId: umoor.id,
+              cityId: cityEntry.cityId,
+            });
+          });
+        }
+
+        // Images
+        if (cityEntry.images && cityEntry.images.length > 0) {
+          imgs.push(...cityEntry.images);
+        }
+      });
+    });
+
+    return { achievements: ach, improvements: imp, images: imgs };
+  }, [activeUmoorId, activeCityId]);
+
+  const availableCities = useMemo(() => {
+    if (activeUmoorId === 'all') {
+      const allCityIds = new Set();
+      reportsData2.forEach(u => u.cities.forEach(c => {
+        if (cityHasData(c)) allCityIds.add(c.cityId);
+      }));
+      return cities.filter(c => allCityIds.has(c.id));
+    }
+    const umoor = reportsData2.find(u => u.id === activeUmoorId);
+    if (!umoor) return [];
+    return cities.filter(c => umoor.cities.some(uc => uc.cityId === c.id && cityHasData(uc)));
+  }, [activeUmoorId]);
+
   return (
     <div className="font-body bg-cream min-h-screen flex flex-col">
       <SEO
         title="Umoor Report | Asaara Bhopal"
-        description="Comprehensive multi-umoor city reports with achievements, areas for improvement, and detailed analytics across Madhya Pradesh."
+        description="Comprehensive reporting for all Umoors and cities under the Bhopal Ashara Mubaraka Relay Centre."
+        keywords="reports, umoor, bhopal, ashara mubaraka, dawoodi bohra"
       />
+
       <Header />
 
-      <main className="flex-1">
+      <main className="flex-1 flex flex-col">
+        {/* Top Hero */}
         <PageHero
-          title="Umoor Report"
-          subtitle="Comprehensive department-wise city reports — achievements, improvements, and detailed analytics."
-          icon={BarChart3}
-          breadcrumbs={[{ label: 'Report 2' }]}
+          title="Umoor Overview Dashboard"
+          subtitle="A unified view of achievements, improvements, and gallery highlights across all active Umoors and cities."
+          breadcrumbs={[{ label: 'Dashboard' }]}
         />
+
+        {/* ── Overall Reports Accordion ── */}
+        <div className="max-w-4xl mx-auto px-4 py-12 md:py-16 w-full">
+          <FadeIn>
+            <div className="text-center mb-10">
+              <h2 className="text-3xl font-heading font-bold text-emerald-dark">QAZA E RASIYAH</h2>
+              <p>Detailed program overviews and strategic future goals.</p>
+              <div className="w-16 h-1 bg-gold mx-auto mt-4 rounded-full"></div>
+            </div>
+            <div className="space-y-4">
+              {commonData.accordion.map((item, idx) => (
+                <AccordionItem
+                  key={idx}
+                  item={item}
+                  isOpen={openAccordionIdx === idx}
+                  onToggle={() => setOpenAccordionIdx(openAccordionIdx === idx ? null : idx)}
+                />
+              ))}
+            </div>
+          </FadeIn>
+        </div>
 
         {/* ── Unified Sticky Filter Panel ── */}
         <div className="sticky z-40 top-[40px] md:top-[93px] flex flex-col shadow-md rounded-b-3xl">
-          
           <AnimatePresence initial={false}>
             {isFiltersVisible && (
               <motion.div
@@ -431,152 +616,52 @@ export default function Report2Page() {
               >
                 {/* ── Umoor Filter Bar ── */}
                 <div className="bg-white/95 backdrop-blur-md border-b border-emerald-dark/10 transition-all duration-300">
-            <div className="max-w-7xl mx-auto px-4 relative group">
-              <button
-                onClick={() => scrollTabs(umoorScrollRef, 'left')}
-                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-gradient-to-r from-white via-white to-transparent pl-3 pr-6 py-4 opacity-0 group-hover:opacity-100 transition-opacity hidden md:block"
-              >
-                <div className="w-7 h-7 rounded-full bg-white shadow-md border border-emerald-dark/10 flex items-center justify-center text-emerald-dark hover:text-gold">
-                  <ChevronLeft size={16} />
+                  <div className="max-w-7xl mx-auto px-4 relative group">
+                    <button onClick={() => scrollTabs(umoorScrollRef, 'left')} className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-gradient-to-r from-white via-white to-transparent pl-3 pr-6 py-4 opacity-0 group-hover:opacity-100 transition-opacity hidden md:block">
+                      <div className="w-7 h-7 rounded-full bg-white shadow-md border border-emerald-dark/10 flex items-center justify-center text-emerald-dark hover:text-gold"><ChevronLeft size={16} /></div>
+                    </button>
+                    <div ref={umoorScrollRef} className="flex items-center gap-2.5 overflow-x-auto py-3 scrollbar-hide px-2 md:px-8 cursor-grab" style={{ msOverflowStyle: 'none', scrollbarWidth: 'none' }} onMouseDown={handleMouseDown} onMouseLeave={handleMouseLeaveOrUp} onMouseUp={handleMouseLeaveOrUp} onMouseMove={handleMouseMove}>
+                      <button onClick={() => handleUmoorChange('all')} className={`flex items-center gap-1.5 px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 shrink-0 border ${activeUmoorId === 'all' ? 'bg-emerald-dark text-gold border-emerald-dark shadow-lg scale-105' : 'bg-white text-charcoal/70 border-emerald-dark/10 hover:border-gold/50 hover:text-emerald-dark'}`}>All Umoors</button>
+                      {umoors.map((umoor) => (
+                        <button key={umoor.id} onClick={() => handleUmoorChange(umoor.id)} className={`flex flex-col items-center px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 shrink-0 border relative overflow-hidden group/btn ${activeUmoorId === umoor.id ? 'bg-emerald-dark text-gold border-emerald-dark shadow-lg scale-105' : 'bg-white text-charcoal/70 border-emerald-dark/10 hover:border-gold/50 hover:text-emerald-dark'}`}>
+                          <span className="font-kanz text-xs leading-tight" dir="rtl">{umoor.nameUr}</span>
+                          <span className="text-[11px] leading-tight mt-0.5">{umoor.nameEn}</span>
+                        </button>
+                      ))}
+                    </div>
+                    <button onClick={() => scrollTabs(umoorScrollRef, 'right')} className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-gradient-to-l from-white via-white to-transparent pr-3 pl-6 py-4 opacity-0 group-hover:opacity-100 transition-opacity hidden md:block">
+                      <div className="w-7 h-7 rounded-full bg-white shadow-md border border-emerald-dark/10 flex items-center justify-center text-emerald-dark hover:text-gold"><ChevronRight size={16} /></div>
+                    </button>
+                  </div>
                 </div>
-              </button>
 
-              <div
-                ref={umoorScrollRef}
-                className="flex items-center gap-2.5 overflow-x-auto py-3 scrollbar-hide px-2 md:px-8 cursor-grab"
-                style={{ msOverflowStyle: 'none', scrollbarWidth: 'none' }}
-                onMouseDown={handleMouseDown}
-                onMouseLeave={handleMouseLeaveOrUp}
-                onMouseUp={handleMouseLeaveOrUp}
-                onMouseMove={handleMouseMove}
-              >
-                {/* All button */}
-                <button
-                  onClick={() => handleUmoorChange('all')}
-                  className={`flex items-center gap-1.5 px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 shrink-0 border ${
-                    activeUmoorId === 'all'
-                      ? 'bg-emerald-dark text-gold border-emerald-dark shadow-lg scale-105'
-                      : 'bg-white text-charcoal/70 border-emerald-dark/10 hover:border-gold/50 hover:text-emerald-dark'
-                  }`}
-                >
-                  All Umoors
-                </button>
-
-                {umoors.map((umoor) => (
-                  <button
-                    key={umoor.id}
-                    onClick={() => handleUmoorChange(umoor.id)}
-                    className={`flex flex-col items-center px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 shrink-0 border relative overflow-hidden group/btn ${
-                      activeUmoorId === umoor.id
-                        ? 'bg-emerald-dark text-gold border-emerald-dark shadow-lg scale-105'
-                        : 'bg-white text-charcoal/70 border-emerald-dark/10 hover:border-gold/50 hover:text-emerald-dark'
-                    }`}
-                  >
-                    <span className="font-kanz text-xs leading-tight" dir="rtl">{umoor.nameUr}</span>
-                    <span className="text-[11px] leading-tight mt-0.5">{umoor.nameEn}</span>
-                  </button>
-                ))}
-              </div>
-
-              <button
-                onClick={() => scrollTabs(umoorScrollRef, 'right')}
-                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-gradient-to-l from-white via-white to-transparent pr-3 pl-6 py-4 opacity-0 group-hover:opacity-100 transition-opacity hidden md:block"
-              >
-                <div className="w-7 h-7 rounded-full bg-white shadow-md border border-emerald-dark/10 flex items-center justify-center text-emerald-dark hover:text-gold">
-                  <ChevronRight size={16} />
+                {/* ── City Filter Bar ── */}
+                <div className="bg-cream/95 backdrop-blur-md border-b border-emerald-dark/5 transition-all duration-300">
+                  <div className="max-w-7xl mx-auto px-4 relative group">
+                    <button onClick={() => scrollTabs(cityScrollRef, 'left')} className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-gradient-to-r from-cream via-cream to-transparent pl-3 pr-6 py-3 opacity-0 group-hover:opacity-100 transition-opacity hidden md:block">
+                      <div className="w-6 h-6 rounded-full bg-cream shadow border border-emerald-dark/10 flex items-center justify-center text-emerald-dark hover:text-gold"><ChevronLeft size={14} /></div>
+                    </button>
+                    <div ref={cityScrollRef} className="flex items-center gap-2 overflow-x-auto py-2.5 scrollbar-hide px-2 md:px-8 cursor-grab" style={{ msOverflowStyle: 'none', scrollbarWidth: 'none' }} onMouseDown={handleMouseDown} onMouseLeave={handleMouseLeaveOrUp} onMouseUp={handleMouseLeaveOrUp} onMouseMove={handleMouseMove}>
+                      <button onClick={() => setActiveCityId('all')} className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 shrink-0 border ${activeCityId === 'all' ? 'bg-gold text-emerald-dark border-gold shadow-md' : 'bg-white text-charcoal/60 border-charcoal/10 hover:border-gold/50 hover:text-emerald-dark'}`}>All Cities</button>
+                      {availableCities.map((city) => (
+                        <button key={city.id} onClick={() => setActiveCityId(city.id)} className={`flex flex-col items-center px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 shrink-0 border ${activeCityId === city.id ? 'bg-gold text-emerald-dark border-gold shadow-md' : 'bg-white text-charcoal/60 border-charcoal/10 hover:border-gold/50 hover:text-emerald-dark'}`}>
+                          <span className="font-kanz text-[10px] leading-tight" dir="rtl">{city.nameUr}</span>
+                          <span className="text-[10px] leading-tight mt-0.5">{city.nameEn}</span>
+                        </button>
+                      ))}
+                    </div>
+                    <button onClick={() => scrollTabs(cityScrollRef, 'right')} className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-gradient-to-l from-cream via-cream to-transparent pr-3 pl-6 py-3 opacity-0 group-hover:opacity-100 transition-opacity hidden md:block">
+                      <div className="w-6 h-6 rounded-full bg-cream shadow border border-emerald-dark/10 flex items-center justify-center text-emerald-dark hover:text-gold"><ChevronRight size={14} /></div>
+                    </button>
+                  </div>
                 </div>
-              </button>
-            </div>
-          </div>
-
-          {/* ── City Filter Bar ── */}
-          <div className="bg-cream/95 backdrop-blur-md border-b border-emerald-dark/5 transition-all duration-300">
-            <div className="max-w-7xl mx-auto px-4 relative group">
-              <button
-                onClick={() => scrollTabs(cityScrollRef, 'left')}
-                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-gradient-to-r from-cream via-cream to-transparent pl-3 pr-6 py-3 opacity-0 group-hover:opacity-100 transition-opacity hidden md:block"
-              >
-                <div className="w-6 h-6 rounded-full bg-cream shadow border border-emerald-dark/10 flex items-center justify-center text-emerald-dark hover:text-gold">
-                  <ChevronLeft size={14} />
-                </div>
-              </button>
-
-              <div
-                ref={cityScrollRef}
-                className="flex items-center gap-2 overflow-x-auto py-2.5 scrollbar-hide px-2 md:px-8 cursor-grab"
-                style={{ msOverflowStyle: 'none', scrollbarWidth: 'none' }}
-                onMouseDown={handleMouseDown}
-                onMouseLeave={handleMouseLeaveOrUp}
-                onMouseUp={handleMouseLeaveOrUp}
-                onMouseMove={handleMouseMove}
-              >
-                <button
-                  onClick={() => setActiveCityId('all')}
-                  className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 shrink-0 border ${
-                    activeCityId === 'all'
-                      ? 'bg-gold text-emerald-dark border-gold shadow-md'
-                      : 'bg-white text-charcoal/60 border-charcoal/10 hover:border-gold/50 hover:text-emerald-dark'
-                  }`}
-                >
-                  All Cities
-                </button>
-
-                {availableCities.map((city) => (
-                  <button
-                    key={city.id}
-                    onClick={() => setActiveCityId(city.id)}
-                    className={`flex flex-col items-center px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 shrink-0 border ${
-                      activeCityId === city.id
-                        ? 'bg-gold text-emerald-dark border-gold shadow-md'
-                        : 'bg-white text-charcoal/60 border-charcoal/10 hover:border-gold/50 hover:text-emerald-dark'
-                    }`}
-                  >
-                    <span className="font-kanz text-[10px] leading-tight" dir="rtl">{city.nameUr}</span>
-                    <span className="text-[10px] leading-tight mt-0.5">{city.nameEn}</span>
-                  </button>
-                ))}
-              </div>
-
-              <button
-                onClick={() => scrollTabs(cityScrollRef, 'right')}
-                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-gradient-to-l from-cream via-cream to-transparent pr-3 pl-6 py-3 opacity-0 group-hover:opacity-100 transition-opacity hidden md:block"
-              >
-                <div className="w-6 h-6 rounded-full bg-cream shadow border border-emerald-dark/10 flex items-center justify-center text-emerald-dark hover:text-gold">
-                  <ChevronRight size={14} />
-                </div>
-              </button>
-            </div>
-          </div>
-
-          {/* ── Content Type Filter Bar ── */}
-          <div className="bg-white/95 backdrop-blur-md border-b border-emerald-dark/5 transition-all duration-300">
-            <div className="max-w-7xl mx-auto px-4 py-2.5 flex items-center gap-2 overflow-x-auto scrollbar-hide">
-              {[
-                { id: 'all', label: 'All Details' },
-                { id: 'achievements', label: 'Achievements Only' },
-                { id: 'improvements', label: 'Need to Improve Only' }
-              ].map((type) => (
-                <button
-                  key={type.id}
-                  onClick={() => setActiveContentType(type.id)}
-                  className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 shrink-0 border ${
-                    activeContentType === type.id
-                      ? 'bg-emerald-dark text-gold border-emerald-dark shadow-md'
-                      : 'bg-white text-charcoal/60 border-charcoal/10 hover:border-gold/50 hover:text-emerald-dark'
-                  }`}
-                >
-                  {type.label}
-                </button>
-              ))}
-            </div>
-          </div>
               </motion.div>
             )}
           </AnimatePresence>
 
           {/* ── Toggle Filters Button ── */}
-          <div className="w-full bg-white/95 backdrop-blur-md flex justify-center py-1.5 border-b border-emerald-dark/10 shadow-sm">
-            <button 
+          <div className="w-full bg-white/95 backdrop-blur-md flex justify-center py-1.5 border-b border-emerald-dark/10 shadow-sm z-20 relative">
+            <button
               onClick={() => setIsFiltersVisible(!isFiltersVisible)}
               className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-bold text-emerald-dark/60 hover:text-gold transition-colors"
             >
@@ -584,89 +669,43 @@ export default function Report2Page() {
               {isFiltersVisible ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
             </button>
           </div>
-
         </div>
 
-        {/* ── Report Cards ── */}
-        <div className="max-w-7xl mx-auto px-4 py-10 md:py-14">
-          <AnimatePresence mode="wait">
-            {filteredCards.length > 0 ? (
-              <motion.div
-                key={`${activeUmoorId}-${activeCityId}`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.4 }}
-                className="space-y-10"
-              >
-                {/* Results Count */}
-                <div className="flex items-center justify-between">
-                  <p className="text-sm text-charcoal/50 mb-6">
-                    Showing <span className="font-bold text-emerald-dark">{filteredCards.length}</span> report{filteredCards.length !== 1 ? 's' : ''}
-                  </p>
-                </div>
+        {/* ── 3-Card Dashboard ── */}
+        <div className="max-w-[1600px] w-full mx-auto px-4 py-8 lg:py-10 flex-1 flex flex-col">
+          <FadeIn className="w-full flex-1 min-h-0">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full min-h-[550px] lg:h-[calc(100vh-320px)]">
 
-                {/* Cards Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-                  {filteredCards.map((card) => (
-                    <CityReportCard
-                      key={card.key}
-                      cityEntry={card.cityEntry}
-                      umoorMeta={card.umoorMeta}
-                      activeContentType={activeContentType}
-                    />
-                  ))}
-                </div>
-              </motion.div>
-            ) : (
-              <motion.div
-                key="empty"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="text-center py-20"
-              >
-                <div className="w-20 h-20 rounded-2xl bg-emerald-dark/5 flex items-center justify-center mx-auto mb-5">
-                  <BarChart3 size={36} className="text-emerald-dark/30" />
-                </div>
-                <h3 className="font-heading text-xl text-emerald-dark mb-2">No Reports Found</h3>
-                <p className="text-sm text-charcoal/50 max-w-md mx-auto">
-                  No report data is available for the selected filter combination. Try selecting a different umoor or city.
-                </p>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+              {/* Card 1: Achievements */}
+              <DataCard
+                title="Achievements"
+                type="achievements"
+                icon={CheckCircle}
+                theme="emerald"
+                items={aggregatedData.achievements}
+                summaryData={commonData.accordion[0]}
+              />
 
-        {/* ── Common Global Gallery & Accordions ── */}
-        <div className="max-w-7xl mx-auto px-4 pb-16 space-y-16">
-          <div className="w-full h-px bg-emerald-dark/10" />
-          
-          <FadeIn>
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-heading font-bold text-emerald-dark">Global Gallery</h2>
-              <p className="text-charcoal/60 mt-2">Visual highlights from across all cities and umoors.</p>
-            </div>
-            <GlobalGallery images={commonData.sliderImages} />
-          </FadeIn>
+              {/* Card 2: Need to Improve */}
+              <DataCard
+                title="Need to Improve"
+                type="improvements"
+                icon={AlertTriangle}
+                theme="#E8C84A"
+                items={aggregatedData.improvements}
+                summaryData={commonData.accordion[1]}
+              />
 
-          <FadeIn>
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-heading font-bold text-emerald-dark">Overall Reports</h2>
-              <p className="text-charcoal/60 mt-2">Detailed program overviews and strategic future goals.</p>
-            </div>
-            <div className="space-y-4 max-w-4xl mx-auto">
-              {commonData.accordion.map((item, idx) => (
-                <AccordionItem
-                  key={idx}
-                  item={item}
-                  isOpen={openGlobalAccIdx === idx}
-                  onToggle={() => setOpenGlobalAccIdx(openGlobalAccIdx === idx ? null : idx)}
-                />
-              ))}
+              {/* Card 3: Gallery Reel */}
+              <VerticalGalleryCard
+                images={aggregatedData.images}
+                summaryData={commonData.accordion[2]}
+              />
+
             </div>
           </FadeIn>
         </div>
+
       </main>
     </div>
   );

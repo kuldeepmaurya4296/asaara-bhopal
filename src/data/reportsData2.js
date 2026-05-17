@@ -40,6 +40,15 @@ export const umoors = [
   { id: 'umoor-sehat', nameEn: 'Umoor Sehat', nameUr: 'امور صحت' },
 ];
 
+export const TAGS_META = {
+  community: { en: 'Community', ur: 'کمیونٹی' },
+  initiatives: { en: 'Initiatives', ur: 'اقدامات' },
+  communication: { en: 'Communication', ur: 'مواصلات' },
+  infrastructure: { en: 'Infrastructure', ur: 'بنیادی ڈھانچہ' },
+  finance: { en: 'Finance', ur: 'مالیات' },
+  health: { en: 'Health', ur: 'صحت' },
+};
+
 // Helper to create a city entry with sample data
 function makeCityEntry(cityId, umoorId, hasSampleData = false) {
   if (!hasSampleData) {
@@ -47,25 +56,37 @@ function makeCityEntry(cityId, umoorId, hasSampleData = false) {
       cityId,
       achievements: { en: null, ur: null },
       improvements: { en: null, ur: null },
-      docUrl: null,
+      images: [],
     };
   }
 
+  const tag1 = cityId === 'bhopal' ? 'community' : 'health';
+  const tag2 = cityId === 'sagar' ? 'infrastructure' : 'initiatives';
+  const tag3 = 'communication';
+  
+  const sampleImages = [
+    'https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&q=80&w=600',
+    'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=600',
+    'https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&q=80&w=600',
+    'https://images.unsplash.com/photo-1542816417-0983c9c9ad53?auto=format&fit=crop&q=80&w=600'
+  ];
+
   return {
     cityId,
+    images: [sampleImages[Math.floor(Math.random() * sampleImages.length)]],
     achievements: {
       ur: {
         heading: 'اہم کامیابیاں',
         items: [
-          { text: 'کمیونٹی پروگرامز کو کامیابی سے مکمل کیا گیا' },
-          { text: 'نئے اقدامات کا آغاز کیا گیا' },
+          { text: `کمیونٹی پروگرامز کو کامیابی سے مکمل کیا گیا`, tags: [tag1, 'initiatives'] },
+          { text: `نئے اقدامات کا آغاز کیا گیا`, tags: [tag2] },
         ],
       },
       en: {
         heading: 'Key Achievements',
         items: [
-          { text: 'Successfully completed community outreach programs across all sectors.' },
-          { text: 'Launched new digital initiatives for member engagement.' },
+          { text: `Successfully completed ${tag1} outreach programs across all sectors in ${cityId}.`, tags: [tag1, 'initiatives'] },
+          { text: `Launched new digital ${tag2} for member engagement.`, tags: [tag2] },
         ],
       },
     },
@@ -73,18 +94,18 @@ function makeCityEntry(cityId, umoorId, hasSampleData = false) {
       ur: {
         heading: 'بہتری کی ضرورت',
         items: [
-          { text: 'رابطے کو بہتر بنانے کی ضرورت ہے' },
+          { text: 'رابطے کو بہتر بنانے کی ضرورت ہے', tags: [tag3, 'infrastructure'] },
+          { text: 'بنیادی ڈھانچے کی دیکھ بھال کی ضرورت ہے', tags: ['infrastructure'] },
         ],
       },
       en: {
         heading: 'Need to Improve',
         items: [
-          { text: 'Communication channels need to be streamlined for faster response times.' },
-          { text: 'Infrastructure maintenance schedules require better coordination.' },
+          { text: `Communication channels need to be streamlined in ${cityId} for faster response times.`, tags: [tag3, 'infrastructure'] },
+          { text: `Infrastructure maintenance schedules require better coordination.`, tags: ['infrastructure'] },
         ],
       },
     },
-    docUrl: null,
   };
 }
 
@@ -194,6 +215,13 @@ export const commonData = {
       headingUr: 'عالمی مستقبل کے اہداف',
       contentEn: 'Strategic planning for the upcoming year includes expanding outreach globally, improving digital infrastructure, and enhancing volunteer training modules across all departments.',
       contentUr: 'آئندہ سال کے لیے اسٹریٹجک منصوبہ بندی میں عالمی سطح پر رسائی کو بڑھانا، ڈیجیٹل انفراسٹرکچر کو بہتر بنانا، اور تمام محکموں میں رضاکاروں کی تربیت کے ماڈیولز کو بہتر بنانا شامل ہے۔',
+      images: [],
+    },
+    {
+      headingEn: 'Visual Highlights',
+      headingUr: 'بصری جھلکیاں',
+      contentEn: 'A curated collection of visual moments captured across various Umoors and cities, showcasing community participation, events, and infrastructural improvements.',
+      contentUr: 'مختلف امور اور شہروں سے لی گئی بصری جھلکیوں کا مجموعہ، جو کمیونٹی کی شرکت، تقریبات، اور بنیادی ڈھانچے کی بہتری کو نمایاں کرتا ہے۔',
       images: [],
     },
   ],

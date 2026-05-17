@@ -44,6 +44,15 @@ body {
   border-radius: 4px;
 }
 
+/* Hide scrollbar utility */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 /* Marquee animation */
 @keyframes marquee {
   0% { transform: translateX(100%); }

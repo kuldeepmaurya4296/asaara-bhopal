@@ -38,7 +38,21 @@ export default function Header() {
   const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
   const dropdownTimeoutRef = useRef(null);
+  const headerRef = useRef(null);
+  const [headerHeight, setHeaderHeight] = useState(0);
   const navigate = useNavigate();
+
+  // Measure header height
+  useEffect(() => {
+    const measureHeader = () => {
+      if (headerRef.current) {
+        setHeaderHeight(headerRef.current.offsetHeight);
+      }
+    };
+    measureHeader();
+    window.addEventListener('resize', measureHeader);
+    return () => window.removeEventListener('resize', measureHeader);
+  }, []);
 
   // Close dropdown on outside click
   useEffect(() => {
@@ -71,7 +85,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed top-0 w-full z-50 flex flex-col shadow-md">
+      <header ref={headerRef} className="fixed top-0 w-full z-50 flex flex-col shadow-md">
         {/* Announcement Marquee */}
         <div className="bg-emerald-dark text-gold py-2.5 overflow-hidden whitespace-nowrap relative">
           <div className="flex items-center animate-marquee">
@@ -228,7 +242,7 @@ export default function Header() {
       </header>
 
       {/* Spacer to push content down since header is now fixed */}
-      <div className="h-[40px] md:h-[93px]" />
+      <div style={{ height: `${headerHeight}px` }} />
 
       {/* Mobile Drawer Overlay */}
       <AnimatePresence>
