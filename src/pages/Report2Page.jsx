@@ -393,7 +393,8 @@ function AccordionItem({ item, isOpen, onToggle }) {
         onClick={onToggle}
         className="w-full px-6 py-5 flex items-center justify-between hover:bg-emerald-50/50 transition-colors cursor-pointer"
       >
-        <div className="text-left">
+        <div className="w-8 shrink-0"></div>
+        <div className="flex-1 text-center">
           <h3 className="font-bold text-lg text-emerald-dark">{item.headingEn}</h3>
           <p className="font-kanz text-sm text-emerald-dark/70 mt-1" dir="rtl">{item.headingUr}</p>
         </div>
@@ -495,11 +496,11 @@ export default function Report2Page() {
     el.scrollLeft = dragRef.current.scrollLeft - walk;
   };
 
-  // Aggregation Engine
   const aggregatedData = useMemo(() => {
     const ach = [];
     const imp = [];
     const imgs = [];
+    const acc = [];
 
     const umoorsToShow = activeUmoorId === 'all'
       ? reportsData2
@@ -545,10 +546,15 @@ export default function Report2Page() {
         if (cityEntry.images && cityEntry.images.length > 0) {
           imgs.push(...cityEntry.images);
         }
+
+        // Accordions
+        if (cityEntry.accordions && cityEntry.accordions.length > 0) {
+          acc.push(...cityEntry.accordions);
+        }
       });
     });
 
-    return { achievements: ach, improvements: imp, images: imgs };
+    return { achievements: ach, improvements: imp, images: imgs, accordions: acc };
   }, [activeUmoorId, activeCityId]);
 
   const availableCities = useMemo(() => {
@@ -581,27 +587,6 @@ export default function Report2Page() {
           subtitle="A unified view of achievements, improvements, and gallery highlights across all active Umoors and cities."
           breadcrumbs={[{ label: 'Dashboard' }]}
         />
-
-        {/* ── Overall Reports Accordion ── */}
-        <div className="max-w-4xl mx-auto px-4 py-12 md:py-16 w-full">
-          <FadeIn>
-            <div className="text-center mb-10">
-              <h2 className="text-3xl font-heading font-bold text-emerald-dark">QAZA E RASIYAH</h2>
-              <p>Detailed program overviews and strategic future goals.</p>
-              <div className="w-16 h-1 bg-gold mx-auto mt-4 rounded-full"></div>
-            </div>
-            <div className="space-y-4">
-              {commonData.accordion.map((item, idx) => (
-                <AccordionItem
-                  key={idx}
-                  item={item}
-                  isOpen={openAccordionIdx === idx}
-                  onToggle={() => setOpenAccordionIdx(openAccordionIdx === idx ? null : idx)}
-                />
-              ))}
-            </div>
-          </FadeIn>
-        </div>
 
         {/* ── Unified Sticky Filter Panel ── */}
         <div className="sticky z-40 top-[40px] md:top-[93px] flex flex-col shadow-md rounded-b-3xl">
@@ -670,6 +655,43 @@ export default function Report2Page() {
             </button>
           </div>
         </div>
+
+        {/* ── Dynamic Accordion Section ── */}
+        {(() => {
+          const accordionsToShow = (activeUmoorId === 'all' && activeCityId === 'all')
+            ? commonData.accordion
+            : aggregatedData.accordions;
+
+          if (accordionsToShow.length === 0) return null;
+
+          return (
+            <div className="max-w-4xl mx-auto px-4 py-8 md:py-10 w-full z-10 relative">
+              <FadeIn>
+                <div className="text-center mb-8 flex flex-col items-center justify-center">
+                  <h2 className="text-3xl md:text-4xl font-heading font-bold text-emerald-dark text-center uppercase tracking-widest">
+                    {activeUmoorId === 'all' && activeCityId === 'all' ? 'QAZA E RASIYAH' : ' QAZA E RASIYAH'}
+                  </h2>
+                  <p className="mt-4 text-base text-charcoal/70 text-center">
+                    {activeUmoorId === 'all' && activeCityId === 'all'
+                      ? 'Detailed program overviews and strategic future goals.'
+                      : 'Strategic insights and program highlights based on selected filters.'}
+                  </p>
+                  <div className="w-16 h-1 bg-gold mx-auto mt-4 rounded-full"></div>
+                </div>
+                <div className="space-y-4">
+                  {accordionsToShow.map((item, idx) => (
+                    <AccordionItem
+                      key={idx}
+                      item={item}
+                      isOpen={openAccordionIdx === idx}
+                      onToggle={() => setOpenAccordionIdx(openAccordionIdx === idx ? null : idx)}
+                    />
+                  ))}
+                </div>
+              </FadeIn>
+            </div>
+          );
+        })()}
 
         {/* ── 3-Card Dashboard ── */}
         <div className="max-w-[1600px] w-full mx-auto px-4 py-8 lg:py-10 flex-1 flex flex-col">

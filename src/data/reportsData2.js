@@ -57,13 +57,14 @@ function makeCityEntry(cityId, umoorId, hasSampleData = false) {
       achievements: { en: null, ur: null },
       improvements: { en: null, ur: null },
       images: [],
+      accordions: [],
     };
   }
 
   const tag1 = cityId === 'bhopal' ? 'community' : 'health';
   const tag2 = cityId === 'sagar' ? 'infrastructure' : 'initiatives';
   const tag3 = 'communication';
-  
+
   const sampleImages = [
     'https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&q=80&w=600',
     'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=600',
@@ -106,6 +107,19 @@ function makeCityEntry(cityId, umoorId, hasSampleData = false) {
         ],
       },
     },
+    accordions: [
+      {
+        headingEn: `${umoorId.replace('umoor-', '').toUpperCase()} in ${cityId.toUpperCase()}`,
+        headingUr: `${umoorId.replace('umoor-', '')} کا جائزہ ${cityId} میں`,
+        contentEn: `A comprehensive overview of the ${umoorId.replace('umoor-', '')} programs and activities conducted in ${cityId}. This includes detailed metrics, volunteer deployment strategies, and future strategic goals tailored for this region.`,
+        contentUr: `یہ سیکشن ${cityId} میں ${umoorId.replace('umoor-', '')} کے پروگراموں اور سرگرمیوں کا جامع جائزہ فراہم کرتا ہے۔ اس میں تفصیلی میٹرکس، رضاکاروں کی تعیناتی کی حکمت عملی، اور اس خطے کے لیے تیار کردہ مستقبل کے اہداف شامل ہیں۔`,
+        images: [
+          sampleImages[Math.floor(Math.random() * sampleImages.length)],
+          sampleImages[Math.floor(Math.random() * sampleImages.length)],
+        ],
+        docUrl: umoorPdf,
+      }
+    ],
   };
 }
 
@@ -177,7 +191,8 @@ export function cityHasData(cityEntry) {
     (cityEntry.improvements.en && cityEntry.improvements.en.items && cityEntry.improvements.en.items.length > 0) ||
     (cityEntry.improvements.ur && cityEntry.improvements.ur.items && cityEntry.improvements.ur.items.length > 0);
   const hasDoc = !!cityEntry.docUrl;
-  return hasAchievements || hasImprovements || hasDoc;
+  const hasAccordions = cityEntry.accordions && cityEntry.accordions.length > 0;
+  return hasAchievements || hasImprovements || hasDoc || hasAccordions;
 }
 
 /** Get city meta info by ID */
@@ -201,7 +216,7 @@ export const commonData = {
   ],
   accordion: [
     {
-      headingEn: 'Overall Program Overview',
+      headingEn: 'QAZA E RASIYAH',
       headingUr: 'مجموعی پروگرام کا جائزہ',
       contentEn: 'A detailed overview of programs conducted during the Ashara period across all Umoors and cities, including logistics, volunteer deployment, and community engagement strategies implemented.',
       contentUr: 'تمام امور اور شہروں میں عشرہ مبارکہ کے دوران منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
@@ -209,20 +224,6 @@ export const commonData = {
         `https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&q=80&w=600`,
       ],
       docUrl: umoorPdf,
-    },
-    {
-      headingEn: 'Global Future Goals',
-      headingUr: 'عالمی مستقبل کے اہداف',
-      contentEn: 'Strategic planning for the upcoming year includes expanding outreach globally, improving digital infrastructure, and enhancing volunteer training modules across all departments.',
-      contentUr: 'آئندہ سال کے لیے اسٹریٹجک منصوبہ بندی میں عالمی سطح پر رسائی کو بڑھانا، ڈیجیٹل انفراسٹرکچر کو بہتر بنانا، اور تمام محکموں میں رضاکاروں کی تربیت کے ماڈیولز کو بہتر بنانا شامل ہے۔',
-      images: [],
-    },
-    {
-      headingEn: 'Visual Highlights',
-      headingUr: 'بصری جھلکیاں',
-      contentEn: 'A curated collection of visual moments captured across various Umoors and cities, showcasing community participation, events, and infrastructural improvements.',
-      contentUr: 'مختلف امور اور شہروں سے لی گئی بصری جھلکیوں کا مجموعہ، جو کمیونٹی کی شرکت، تقریبات، اور بنیادی ڈھانچے کی بہتری کو نمایاں کرتا ہے۔',
-      images: [],
     },
   ],
 };
