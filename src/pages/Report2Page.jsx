@@ -412,27 +412,29 @@ function AccordionItem({ item, isOpen, onToggle }) {
             className="overflow-hidden"
           >
             <div className="px-6 pb-6 pt-2 border-t border-emerald-dark/5 space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-3">
-                  <h4 className="font-semibold text-emerald-dark text-sm uppercase tracking-wider"></h4>
-                  <p className="text-charcoal/80 leading-relaxed text-sm">{item.contentEn}</p>
-                </div>
-                <div className="space-y-3 text-right">
-                  <h4 className="font-semibold text-emerald-dark text-sm uppercase tracking-wider" dir="rtl">اردو</h4>
-                  <p className="font-kanz text-charcoal/80 leading-relaxed text-base" dir="rtl">{item.contentUr}</p>
-                </div>
+              <div className="flex flex-col gap-4 items-center max-w-4xl mx-auto">
+                {item.contentEn && (
+                  <div className="space-y-3 text-center w-full">
+                    <p className="text-charcoal/80 leading-relaxed text-sm">{item.contentEn}</p>
+                  </div>
+                )}
+                {item.contentUr && (
+                  <div className="space-y-3 text-center w-full">
+                    <p className="font-kanz text-charcoal/80 leading-relaxed text-xl" dir="rtl">{item.contentUr}</p>
+                  </div>
+                )}
               </div>
 
               {item.images && item.images.length > 0 && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 pt-4">
+                <div className="flex flex-col items-center gap-6 pt-4">
                   {item.images.map((img, idx) => (
-                    <img key={idx} src={img} alt="Accordion Content" className="w-full h-48 object-cover rounded-xl shadow-sm" />
+                    <img key={idx} src={img} alt="Accordion Content" className="w-full max-w-md h-auto rounded-xl shadow-md" />
                   ))}
                 </div>
               )}
 
               {item.docUrl && (
-                <div className="pt-4 flex justify-center md:justify-start">
+                <div className="pt-4 flex justify-center">
                   <a
                     href={item.docUrl}
                     target="_blank"
