@@ -19,7 +19,7 @@ const navItems = [
   // { label: 'Reports', href: '/report' },
   // { label: 'FAQ', href: '/faq' },
   // { label: 'Contact Us', href: '/contact' },
-  { label: 'Relay Araz', href: '/relay-araz' },
+ // { label: 'Relay Araz', href: '/relay-araz' },
   // { label: "Relay Araz Old", href: '/relay-araz-old' },
   // { label: "Report Old", href: '/report-old' },
   { label: "Report", href: '/report' }

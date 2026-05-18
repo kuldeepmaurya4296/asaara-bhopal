@@ -135,7 +135,7 @@ function DataCard({ title, icon: Icon, theme, items, summaryData }) {
                         : [...prev, tagId]
                     );
                   }}
-                  className={` flex items-center gap-1.5  rounded-full text-[11px] font-bold tracking-wider transition-all duration-300 px-3 py-1 ${isActive
+                  className={` flex items-center gap-1.5  rounded-full text-[11px] font-kanz tracking-wider transition-all duration-300 px-3 py-1 ${isActive
                     ? colors.tagActive
                     : 'text-charcoal/60 ' + colors.tagHover
                     }`}
@@ -166,12 +166,12 @@ function DataCard({ title, icon: Icon, theme, items, summaryData }) {
               <div className="flex justify-between items-start mb-4">
                 <div className="flex flex-wrap gap-2">
                   {(item.tags || (item.tagId ? [item.tagId] : [])).map(tId => (
-                    <span key={tId} className={`text-[11px] tracking-wide font-extrabold ${theme === 'emerald' ? 'text-emerald-600' : 'text-[#E8C84A]'}`}>
+                    <span key={tId} className={`text-[11px] tracking-wide font-kanz font-extrabold ${theme === 'emerald' ? 'text-emerald-600' : 'text-[#E8C84A]'}`}>
                       #{TAGS_META[tId]?.en || tId}
                     </span>
                   ))}
                 </div>
-                <span className="text-[10px] font-bold text-gray-400 bg-gray-50 px-2 py-0.5 rounded border border-gray-100">
+                <span className="text-[10px] font-bold font-kanz text-gray-400 bg-gray-50 px-2 py-0.5 rounded border border-gray-100">
                   {item.cityId.toUpperCase()}
                 </span>
               </div>
@@ -396,7 +396,7 @@ function AccordionItem({ item, isOpen, onToggle }) {
         <div className="w-8 shrink-0"></div>
         <div className="flex-1 text-center">
           <h3 className="font-bold text-lg text-emerald-dark">{item.headingEn}</h3>
-          <p className="font-kanz text-sm text-emerald-dark/70 mt-1" dir="rtl">{item.headingUr}</p>
+          <p className="font-kanz text-3xl text-emerald-dark/70 mt-2" dir="rtl">{item.headingUr}</p>
         </div>
         <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 bg-gold text-white' : 'bg-emerald-50 text-emerald-dark'}`}>
           <ChevronDown size={18} />
@@ -414,7 +414,7 @@ function AccordionItem({ item, isOpen, onToggle }) {
             <div className="px-6 pb-6 pt-2 border-t border-emerald-dark/5 space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-3">
-                  <h4 className="font-semibold text-emerald-dark text-sm uppercase tracking-wider">English</h4>
+                  <h4 className="font-semibold text-emerald-dark text-sm uppercase tracking-wider"></h4>
                   <p className="text-charcoal/80 leading-relaxed text-sm">{item.contentEn}</p>
                 </div>
                 <div className="space-y-3 text-right">
@@ -616,7 +616,7 @@ export default function Report2Page() {
                       <button onClick={() => handleUmoorChange('all')} className={`flex items-center gap-1.5 px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 shrink-0 border ${activeUmoorId === 'all' ? 'bg-emerald-dark text-gold border-emerald-dark shadow-lg scale-105' : 'bg-white text-charcoal/70 border-emerald-dark/10 hover:border-gold/50 hover:text-emerald-dark'}`}>All Umoors</button>
                       {umoors.map((umoor) => (
                         <button key={umoor.id} onClick={() => handleUmoorChange(umoor.id)} className={`flex flex-col items-center px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 shrink-0 border relative overflow-hidden group/btn ${activeUmoorId === umoor.id ? 'bg-emerald-dark text-gold border-emerald-dark shadow-lg scale-105' : 'bg-white text-charcoal/70 border-emerald-dark/10 hover:border-gold/50 hover:text-emerald-dark'}`}>
-                          <span className="font-kanz text-xs leading-tight" dir="rtl">{umoor.nameUr}</span>
+                          <span className="font-kanz text-[20px] leading-tight" dir="rtl">{umoor.nameUr}</span>
                           <span className="text-[11px] leading-tight mt-0.5">{umoor.nameEn}</span>
                         </button>
                       ))}
@@ -637,7 +637,7 @@ export default function Report2Page() {
                       <button onClick={() => setActiveCityId('all')} className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 shrink-0 border ${activeCityId === 'all' ? 'bg-gold text-emerald-dark border-gold shadow-md' : 'bg-white text-charcoal/60 border-charcoal/10 hover:border-gold/50 hover:text-emerald-dark'}`}>All Cities</button>
                       {availableCities.map((city) => (
                         <button key={city.id} onClick={() => setActiveCityId(city.id)} className={`flex flex-col items-center px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 shrink-0 border ${activeCityId === city.id ? 'bg-gold text-emerald-dark border-gold shadow-md' : 'bg-white text-charcoal/60 border-charcoal/10 hover:border-gold/50 hover:text-emerald-dark'}`}>
-                          <span className="font-kanz text-[10px] leading-tight" dir="rtl">{city.nameUr}</span>
+                          <span className="font-kanz text-[15px] leading-tight" dir="rtl">{city.nameUr}</span>
                           <span className="text-[10px] leading-tight mt-0.5">{city.nameEn}</span>
                         </button>
                       ))}
@@ -666,7 +666,7 @@ export default function Report2Page() {
         {/* ── Dynamic Single Accordion Section ── */}
         <div className="max-w-4xl mx-auto px-4 py-8 md:py-10 w-full z-10 relative">
           <FadeIn>
-            <div className="text-center mb-8 flex flex-col items-center justify-center">
+            {/* <div className="text-center mb-8 flex flex-col items-center justify-center">
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-emerald-dark text-center uppercase tracking-widest">
                 {dynamicAccordion.headingEn}
               </h2>
@@ -674,7 +674,7 @@ export default function Report2Page() {
                 {dynamicAccordion.contentEn}
               </p>
               <div className="w-16 h-1 bg-gold mx-auto mt-4 rounded-full"></div>
-            </div>
+            </div> */}
             <div className="space-y-4">
               <AccordionItem
                 item={dynamicAccordion}
