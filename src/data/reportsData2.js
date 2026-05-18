@@ -21,8 +21,8 @@ export const commonData = {
     {
       headingEn: '',
       headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
+
+      contentUr: '',
       images: [
         `/Mss.jpeg`,
       ],
@@ -41,10 +41,10 @@ export const reportsData2 = [
     accordion: {
       headingEn: '',
       headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
+
+      contentUr: '',
       images: [
-        `/Mss.jpeg`,
+        "/Mss.jpeg",
       ],
       docUrl: umoorPdf,
     },
@@ -62,17 +62,17 @@ export const reportsData2 = [
           { textEn: '', textUr: 'محرمات ما ملوثين مؤمنين سي عشرة مباركة ثثظظلسس ثثاك تهاوا واسطسس عزائم كيدا', tags: ['محرمات بابت'] },
         ],
         images: ["https://www.blrjmt.com/wp-content/uploads/sb-instagram-feed-images/642557896_18078047006373522_3613359581573383587_n.heiclow.webp"
-    
+
         ],
         accordion: {
           headingEn: '',
-      headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
-      images: [
-        `/Mss.jpeg`,
-      ],
-      docUrl: umoorPdf,
+          headingUr: 'قضااي رئيسية',
+
+          contentUr: '',
+          images: [
+            `/Mss.jpeg`
+          ],
+          docUrl: umoorPdf,
         }
       },
       {
@@ -91,13 +91,13 @@ export const reportsData2 = [
         ],
         accordion: {
           headingEn: '',
-      headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
-      images: [
-        `/Mss.jpeg`,
-      ],
-      docUrl: umoorPdf,
+          headingUr: 'قضااي رئيسية',
+
+          contentUr: '',
+          images: [
+            `/Mss.jpeg`
+          ],
+          docUrl: umoorPdf,
         }
       },
       {
@@ -117,13 +117,13 @@ export const reportsData2 = [
         ],
         accordion: {
           headingEn: '',
-      headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
-      images: [
-        `/Mss.jpeg`,
-      ],
-      docUrl: umoorPdf,
+          headingUr: 'قضااي رئيسية',
+
+          contentUr: '',
+          images: [
+            `/Mss.jpeg`
+          ],
+          docUrl: umoorPdf,
         }
       },
       {
@@ -139,17 +139,17 @@ export const reportsData2 = [
           { textEn: '', textUr: '', tags: [''] },
         ],
         images: [
-      "https://www.blrjmt.com/wp-content/uploads/sb-instagram-feed-images/516009504_713255458536416_5572747726922394130_n.heiclow.webp"
+          "https://www.blrjmt.com/wp-content/uploads/sb-instagram-feed-images/516009504_713255458536416_5572747726922394130_n.heiclow.webp"
         ],
         accordion: {
           headingEn: '',
-      headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
-      images: [
-        `/Mss.jpeg`,
-      ],
-      docUrl: umoorPdf,
+          headingUr: 'قضااي رئيسية',
+
+          contentUr: '',
+          images: [
+            `/Mss.jpeg`
+          ],
+          docUrl: umoorPdf,
         }
       },
       {
@@ -163,17 +163,17 @@ export const reportsData2 = [
           { textEn: '', textUr: '', tags: [''] },
         ],
         images: [
-     "https://www.blrjmt.com/wp-content/uploads/sb-instagram-feed-images/511454734_1402170707719877_5663356764546071948_n.heiclow.webp"
+          "https://www.blrjmt.com/wp-content/uploads/sb-instagram-feed-images/511454734_1402170707719877_5663356764546071948_n.heiclow.webp"
         ],
         accordion: {
-         headingEn: '',
-      headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
-      images: [
-        `/Mss.jpeg`,
-      ],
-      docUrl: umoorPdf,
+          headingEn: '',
+          headingUr: 'قضااي رئيسية',
+
+          contentUr: '',
+          images: [
+            `/Mss.jpeg`
+          ],
+          docUrl: umoorPdf,
         }
       },
       {
@@ -187,17 +187,17 @@ export const reportsData2 = [
           { textEn: '', textUr: '', tags: [''] },
         ],
         images: [
-       "https://www.blrjmt.com/wp-content/uploads/sb-instagram-feed-images/534304307_18057192359373522_5961789652225816845_nfull.webp"
+          "https://www.blrjmt.com/wp-content/uploads/sb-instagram-feed-images/534304307_18057192359373522_5961789652225816845_nfull.webp"
         ],
         accordion: {
           headingEn: '',
-      headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
-      images: [
-        `/Mss.jpeg`,
-      ],
-      docUrl: umoorPdf,
+          headingUr: 'قضااي رئيسية',
+
+          contentUr: '',
+          images: [
+            `/Mss.jpeg`
+          ],
+          docUrl: umoorPdf,
         }
       },
       {
@@ -212,17 +212,17 @@ export const reportsData2 = [
           { textEn: '', textUr: '', tags: [''] },
         ],
         images: [
-       "https://www.blrjmt.com/wp-content/uploads/sb-instagram-feed-images/534304307_18057192359373522_5961789652225816845_nfull.webp"
+          "https://www.blrjmt.com/wp-content/uploads/sb-instagram-feed-images/534304307_18057192359373522_5961789652225816845_nfull.webp"
         ],
         accordion: {
           headingEn: '',
-      headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
-      images: [
-        `/Mss.jpeg`,
-      ],
-      docUrl: umoorPdf,
+          headingUr: 'قضااي رئيسية',
+
+          contentUr: '',
+          images: [
+            `/Mss.jpeg`
+          ],
+          docUrl: umoorPdf,
         }
       },
       {
@@ -237,17 +237,17 @@ export const reportsData2 = [
           { textEn: '', textUr: '', tags: [''] },
         ],
         images: [
-        "https://www.blrjmt.com/wp-content/uploads/sb-instagram-feed-images/534304307_18057192359373522_5961789652225816845_nfull.webp"
+          "https://www.blrjmt.com/wp-content/uploads/sb-instagram-feed-images/534304307_18057192359373522_5961789652225816845_nfull.webp"
         ],
         accordion: {
-     headingEn: '',
-      headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
-      images: [
-        `/Mss.jpeg`,
-      ],
-      docUrl: umoorPdf,
+          headingEn: '',
+          headingUr: 'قضااي رئيسية',
+
+          contentUr: '',
+          images: [
+            `/Mss.jpeg`
+          ],
+          docUrl: umoorPdf,
         }
       },
       {
@@ -263,17 +263,17 @@ export const reportsData2 = [
         ],
         images: [
           "https://www.blrjmt.com/wp-content/uploads/sb-instagram-feed-images/516009504_713255458536416_5572747726922394130_n.heiclow.webp"
-      
+
         ],
         accordion: {
           headingEn: '',
-      headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
-      images: [
-        `/Mss.jpeg`,
-      ],
-      docUrl: umoorPdf,
+          headingUr: 'قضااي رئيسية',
+
+          contentUr: '',
+          images: [
+            `/Mss.jpeg`
+          ],
+          docUrl: umoorPdf,
         }
       },
       {
@@ -292,13 +292,13 @@ export const reportsData2 = [
         ],
         accordion: {
           headingEn: '',
-      headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
-      images: [
-        `/Mss.jpeg`,
-      ],
-      docUrl: umoorPdf,
+          headingUr: 'قضااي رئيسية',
+
+          contentUr: '',
+          images: [
+            `/Mss.jpeg`
+          ],
+          docUrl: umoorPdf,
         }
       },
       {
@@ -321,13 +321,13 @@ export const reportsData2 = [
         ],
         accordion: {
           headingEn: '',
-      headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
-      images: [
-        `/Mss.jpeg`,
-      ],
-      docUrl: umoorPdf,
+          headingUr: 'قضااي رئيسية',
+
+          contentUr: '',
+          images: [
+            `/Mss.jpeg`
+          ],
+          docUrl: umoorPdf,
         }
       },
       {
@@ -340,20 +340,20 @@ export const reportsData2 = [
         improvements: [
           { textEn: '', textUr: 'شادي لائق فرزندو ككهنا ؛ ، شادي نتهي تهئي.', tags: ['شادي لائـق فرزندو'] },
           { textEn: '', textUr: 'فرزندو نو غير ساتهسس شادي نو ratio ككهنو ؛.', tags: ['شادي لائـق فرزندو'] },
-      
+
         ],
         images: [
           "https://www.blrjmt.com/wp-content/uploads/sb-instagram-feed-images/516009504_713255458536416_5572747726922394130_n.heiclow.webp"
         ],
         accordion: {
           headingEn: '',
-      headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
-      images: [
-        `/Mss.jpeg`,
-      ],
-      docUrl: umoorPdf,
+          headingUr: 'قضااي رئيسية',
+
+          contentUr: '',
+          images: [
+            `/Mss.jpeg`
+          ],
+          docUrl: umoorPdf,
         }
       },
       {
@@ -366,20 +366,20 @@ export const reportsData2 = [
         improvements: [
           { textEn: '', textUr: 'محرمات : ٢ مؤمن', tags: ['محرمات بابت'] },
           { textEn: '', textUr: 'دكان بند عزم : ٥٠ فيصد', tags: ['عشرة مباركة اهبة- دكان بند عزائم'] },
-      
+
         ],
         images: [
-      "https://www.blrjmt.com/wp-content/uploads/sb-instagram-feed-images/516009504_713255458536416_5572747726922394130_n.heiclow.webp"
+          "https://www.blrjmt.com/wp-content/uploads/sb-instagram-feed-images/516009504_713255458536416_5572747726922394130_n.heiclow.webp"
         ],
         accordion: {
           headingEn: '',
-      headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
-      images: [
-        `/Mss.jpeg`,
-      ],
-      docUrl: umoorPdf,
+          headingUr: 'قضااي رئيسية',
+
+          contentUr: '',
+          images: [
+            `/Mss.jpeg`
+          ],
+          docUrl: umoorPdf,
         }
       },
       {
@@ -388,27 +388,27 @@ export const reportsData2 = [
         nameUr: 'ويديشا',
         achievements: [
           { textEn: '', textUr: '', tags: [''] },
-          
+
         ],
         improvements: [
           { textEn: '', textUr: 'محرمات ما مبتلى - 14 مؤمن', tags: ['محرمات بابت'] },
           { textEn: '', textUr: '4 مخصوصين فقظ عاشورة نا دن حاضر تهائي ؛ ، تفهيم جاري ؛. ', tags: ['مخصوصين مؤمنين متعلق'] },
           { textEn: '', textUr: 'مجلس ما حاضري كم ؛.', tags: ['general'] },
           { textEn: '', textUr: 'بعض مؤمنين دارٌهي نهيطط راكهتا. ', tags: ['general'] }
-      
+
         ],
         images: [
-         "https://www.blrjmt.com/wp-content/uploads/sb-instagram-feed-images/516009504_713255458536416_5572747726922394130_n.heiclow.webp"
+          "https://www.blrjmt.com/wp-content/uploads/sb-instagram-feed-images/516009504_713255458536416_5572747726922394130_n.heiclow.webp"
         ],
         accordion: {
           headingEn: '',
-      headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
-      images: [
-        `/Mss.jpeg`,
-      ],
-      docUrl: umoorPdf,
+          headingUr: 'قضااي رئيسية',
+
+          contentUr: '',
+          images: [
+            `/Mss.jpeg`
+          ],
+          docUrl: umoorPdf,
         }
       },
       {
@@ -417,24 +417,24 @@ export const reportsData2 = [
         nameUr: 'بـياؤره',
         achievements: [
           { textEn: '', textUr: '', tags: [''] },
-          
+
         ],
         improvements: [
           { textEn: '', textUr: 'محرمات ما مبتلى - 14 مؤمن', tags: ['محرمات بابت'] },
-      
+
         ],
         images: [
           "https://www.blrjmt.com/wp-content/uploads/sb-instagram-feed-images/516009504_713255458536416_5572747726922394130_n.heiclow.webp"
         ],
         accordion: {
           headingEn: '',
-      headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
-      images: [
-        `/Mss.jpeg`,
-      ],
-      docUrl: umoorPdf,
+          headingUr: 'قضااي رئيسية',
+
+          contentUr: '',
+          images: [
+            `/Mss.jpeg`
+          ],
+          docUrl: umoorPdf,
         }
       },
     ]
@@ -446,8 +446,8 @@ export const reportsData2 = [
     accordion: {
       headingEn: '',
       headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
+
+      contentUr: '',
       images: [
         `/Mss.jpeg`,
       ],
@@ -469,13 +469,13 @@ export const reportsData2 = [
         ],
         accordion: {
           headingEn: '',
-      headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
-      images: [
-        `/Mss.jpeg`,
-      ],
-      docUrl: umoorPdf,
+          headingUr: 'قضااي رئيسية',
+
+          contentUr: '',
+          images: [
+            `/Mss.jpeg`
+          ],
+          docUrl: umoorPdf,
         }
       },
       {
@@ -500,13 +500,13 @@ export const reportsData2 = [
         ],
         accordion: {
           headingEn: '',
-      headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
-      images: [
-        `/Mss.jpeg`,
-      ],
-      docUrl: umoorPdf,
+          headingUr: 'قضااي رئيسية',
+
+          contentUr: '',
+          images: [
+            `/Mss.jpeg`
+          ],
+          docUrl: umoorPdf,
         }
       },
       {
@@ -524,13 +524,13 @@ export const reportsData2 = [
         ],
         accordion: {
           headingEn: '',
-      headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
-      images: [
-        `/Mss.jpeg`,
-      ],
-      docUrl: umoorPdf,
+          headingUr: 'قضااي رئيسية',
+
+          contentUr: '',
+          images: [
+            `/Mss.jpeg`
+          ],
+          docUrl: umoorPdf,
         }
       },
       {
@@ -545,17 +545,17 @@ export const reportsData2 = [
           { textEn: '', textUr: '', tags: [''] },
         ],
         images: [
-         "https://www.blrjmt.com/wp-content/uploads/sb-instagram-feed-images/642557896_18078047006373522_3613359581573383587_n.heiclow.webp"
+          "https://www.blrjmt.com/wp-content/uploads/sb-instagram-feed-images/642557896_18078047006373522_3613359581573383587_n.heiclow.webp"
         ],
         accordion: {
           headingEn: '',
-      headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
-      images: [
-        `/Mss.jpeg`,
-      ],
-      docUrl: umoorPdf,
+          headingUr: 'قضااي رئيسية',
+
+          contentUr: '',
+          images: [
+            `/Mss.jpeg`
+          ],
+          docUrl: umoorPdf,
         }
       },
       {
@@ -574,13 +574,13 @@ export const reportsData2 = [
         ],
         accordion: {
           headingEn: '',
-      headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
-      images: [
-        `/Mss.jpeg`,
-      ],
-      docUrl: umoorPdf,
+          headingUr: 'قضااي رئيسية',
+
+          contentUr: '',
+          images: [
+            `/Mss.jpeg`
+          ],
+          docUrl: umoorPdf,
         }
       },
       {
@@ -600,13 +600,13 @@ export const reportsData2 = [
         ],
         accordion: {
           headingEn: '',
-      headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
-      images: [
-        `/Mss.jpeg`,
-      ],
-      docUrl: umoorPdf,
+          headingUr: 'قضااي رئيسية',
+
+          contentUr: '',
+          images: [
+            `/Mss.jpeg`
+          ],
+          docUrl: umoorPdf,
         }
       },
       {
@@ -624,13 +624,13 @@ export const reportsData2 = [
         ],
         accordion: {
           headingEn: '',
-      headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
-      images: [
-        `/Mss.jpeg`,
-      ],
-      docUrl: umoorPdf,
+          headingUr: 'قضااي رئيسية',
+
+          contentUr: '',
+          images: [
+            `/Mss.jpeg`
+          ],
+          docUrl: umoorPdf,
         }
       },
       {
@@ -644,20 +644,20 @@ export const reportsData2 = [
           { textEn: '', textUr: 'داخلة فضل تهائي ــ ايم عرض ؛', tags: ['الجامعة السيفية داخلة عرض'] },
         ],
         images: [
-         "https://www.blrjmt.com/wp-content/uploads/sb-instagram-feed-images/534304307_18057192359373522_5961789652225816845_nfull.webp"
+          "https://www.blrjmt.com/wp-content/uploads/sb-instagram-feed-images/534304307_18057192359373522_5961789652225816845_nfull.webp"
         ],
         accordion: {
           headingEn: '',
-      headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
-      images: [
-        `/Mss.jpeg`,
-      ],
-      docUrl: umoorPdf,
+          headingUr: 'قضااي رئيسية',
+
+          contentUr: '',
+          images: [
+            `/Mss.jpeg`
+          ],
+          docUrl: umoorPdf,
         }
       },
-       {
+      {
         id: 'نرسنككرٌهـ',
         nameEn: '',
         nameUr: 'نرسنككرٌهـ',
@@ -674,16 +674,16 @@ export const reportsData2 = [
         ],
         accordion: {
           headingEn: '',
-      headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
-      images: [
-        `/Mss.jpeg`,
-      ],
-      docUrl: umoorPdf,
+          headingUr: 'قضااي رئيسية',
+
+          contentUr: '',
+          images: [
+            `/Mss.jpeg`
+          ],
+          docUrl: umoorPdf,
         }
       },
-       {
+      {
         id: 'ويديشا',
         nameEn: '',
         nameUr: 'ويديشا',
@@ -698,16 +698,16 @@ export const reportsData2 = [
         ],
         accordion: {
           headingEn: '',
-      headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
-      images: [
-        `/Mss.jpeg`,
-      ],
-      docUrl: umoorPdf,
+          headingUr: 'قضااي رئيسية',
+
+          contentUr: '',
+          images: [
+            `/Mss.jpeg`
+          ],
+          docUrl: umoorPdf,
         }
       },
-       {
+      {
         id: 'بـياؤره',
         nameEn: '',
         nameUr: 'بـياؤره',
@@ -720,20 +720,20 @@ export const reportsData2 = [
           { textEn: '', textUr: 'داخلة فضل تهائي ــ ايم عرض ؛', tags: ['الجامعة السيفية داخلة عرض'] },
         ],
         images: [
-         "https://www.blrjmt.com/wp-content/uploads/sb-instagram-feed-images/516009504_713255458536416_5572747726922394130_n.heiclow.webp"
+          "https://www.blrjmt.com/wp-content/uploads/sb-instagram-feed-images/516009504_713255458536416_5572747726922394130_n.heiclow.webp"
         ],
         accordion: {
           headingEn: '',
-      headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
-      images: [
-        `/Mss.jpeg`,
-      ],
-      docUrl: umoorPdf,
+          headingUr: 'قضااي رئيسية',
+
+          contentUr: '',
+          images: [
+            `/Mss.jpeg`
+          ],
+          docUrl: umoorPdf,
         }
       },
-        {
+      {
         id: 'سيهور',
         nameEn: '',
         nameUr: 'سيهور',
@@ -749,16 +749,16 @@ export const reportsData2 = [
         ],
         accordion: {
           headingEn: '',
-      headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
-      images: [
-        `/Mss.jpeg`,
-      ],
-      docUrl: umoorPdf,
+          headingUr: 'قضااي رئيسية',
+
+          contentUr: '',
+          images: [
+            `/Mss.jpeg`
+          ],
+          docUrl: umoorPdf,
         }
       },
-        {
+      {
         id: 'ككونا',
         nameEn: '',
         nameUr: 'ككونا',
@@ -774,16 +774,16 @@ export const reportsData2 = [
         ],
         accordion: {
           headingEn: '',
-      headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
-      images: [
-        `/Mss.jpeg`,
-      ],
-      docUrl: umoorPdf,
+          headingUr: 'قضااي رئيسية',
+
+          contentUr: '',
+          images: [
+            `/Mss.jpeg`
+          ],
+          docUrl: umoorPdf,
         }
       },
-        {
+      {
         id: 'بهوثثال - حكيمي',
         nameEn: '',
         nameUr: 'بهوثثال - حكيمي',
@@ -799,16 +799,16 @@ export const reportsData2 = [
         ],
         accordion: {
           headingEn: '',
-      headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
-      images: [
-        `/Mss.jpeg`,
-      ],
-      docUrl: umoorPdf,
+          headingUr: 'قضااي رئيسية',
+
+          contentUr: '',
+          images: [
+            `/Mss.jpeg`
+          ],
+          docUrl: umoorPdf,
         }
       },
-        {
+      {
         id: 'هوشنككاباد',
         nameEn: '',
         nameUr: 'هوشنككاباد',
@@ -820,20 +820,20 @@ export const reportsData2 = [
 
         ],
         images: [
-         "https://www.blrjmt.com/wp-content/uploads/sb-instagram-feed-images/516009504_713255458536416_5572747726922394130_n.heiclow.webp"
+          "https://www.blrjmt.com/wp-content/uploads/sb-instagram-feed-images/516009504_713255458536416_5572747726922394130_n.heiclow.webp"
         ],
         accordion: {
           headingEn: '',
-      headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
-      images: [
-        `/Mss.jpeg`,
-      ],
-      docUrl: umoorPdf,
+          headingUr: 'قضااي رئيسية',
+
+          contentUr: '',
+          images: [
+            `/Mss.jpeg`
+          ],
+          docUrl: umoorPdf,
         }
       },
-        {
+      {
         id: 'اْشتھ',
         nameEn: '',
         nameUr: 'اْشتھ',
@@ -849,16 +849,16 @@ export const reportsData2 = [
         ],
         accordion: {
           headingEn: '',
-      headingUr: 'قضااي رئيسية',
-  
-      contentUr: 'تمام امور اور شہروں میں منعقد ہونے والے پروگرامز کا تفصیلی جائزہ، بشمول لاجسٹکس، رضاکاروں کی تعیناتی، اور کمیونٹی مصروفیت کی حکمت عملی۔',
-      images: [
-        `/Mss.jpeg`,
-      ],
-      docUrl: umoorPdf,
+          headingUr: 'قضااي رئيسية',
+
+          contentUr: '',
+          images: [
+            `/Mss.jpeg`
+          ],
+          docUrl: umoorPdf,
         }
       },
-       
+
     ]
   }
 ];
