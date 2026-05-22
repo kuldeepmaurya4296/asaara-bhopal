@@ -5,9 +5,10 @@ import FadeIn from '../components/animations/FadeIn';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
+import { departments } from '../data/volunteers';
 
 export default function ContactPage() {
-  const [formState, setFormState] = useState({ name: '', email: '', subject: '', message: '' });
+  const [formState, setFormState] = useState({ its: '', mohalla: '', department: '', remark: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const heroRef = useRef(null);
@@ -42,7 +43,7 @@ export default function ContactPage() {
       
       if (response.ok) {
         setSubmitted(true);
-        setFormState({ name: '', email: '', subject: '', message: '' });
+        setFormState({ its: '', mohalla: '', department: '', remark: '' });
         setTimeout(() => setSubmitted(false), 5000);
       } else {
         alert(data.error || 'Failed to send message.');
@@ -159,58 +160,64 @@ export default function ContactPage() {
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-5">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-charcoal/80 mb-1.5">Full Name</label>
+                      <label htmlFor="its" className="block text-sm font-medium text-charcoal/80 mb-1.5">ITS Number</label>
                       <input 
                         type="text" 
-                        id="name"
-                        name="name"
+                        id="its"
+                        name="its"
                         required
-                        value={formState.name}
+                        value={formState.its}
                         onChange={handleChange}
                         className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all"
-                        placeholder="Mufaddal Bhai"
+                        placeholder="Enter ITS Number"
                       />
                     </div>
                     
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-charcoal/80 mb-1.5">Email Address</label>
-                      <input 
-                        type="email" 
-                        id="email"
-                        name="email"
+                      <label htmlFor="mohalla" className="block text-sm font-medium text-charcoal/80 mb-1.5">Mohalla Name</label>
+                      <select 
+                        id="mohalla"
+                        name="mohalla"
                         required
-                        value={formState.email}
+                        value={formState.mohalla}
                         onChange={handleChange}
                         className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all"
-                        placeholder="mufaddal@example.com"
-                      />
+                      >
+                        <option value="" disabled>Select Mohalla</option>
+                        <option value="HAIDERY">HAIDERY</option>
+                        <option value="HUSAINI">HUSAINI</option>
+                        <option value="BURHANI NAGAR">BURHANI NAGAR</option>
+                        <option value="HAKIMI">HAKIMI</option>
+                      </select>
                     </div>
 
                     <div>
-                      <label htmlFor="subject" className="block text-sm font-medium text-charcoal/80 mb-1.5">Subject</label>
-                      <input 
-                        type="text" 
-                        id="subject"
-                        name="subject"
+                      <label htmlFor="department" className="block text-sm font-medium text-charcoal/80 mb-1.5">Khidmat Department</label>
+                      <select 
+                        id="department"
+                        name="department"
                         required
-                        value={formState.subject}
+                        value={formState.department}
                         onChange={handleChange}
                         className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all"
-                        placeholder="How can we help?"
-                      />
+                      >
+                        <option value="" disabled>Select Department</option>
+                        {departments.map((dept) => (
+                          <option key={dept.id} value={dept.name}>{dept.name}</option>
+                        ))}
+                      </select>
                     </div>
 
                     <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-charcoal/80 mb-1.5">Message</label>
+                      <label htmlFor="remark" className="block text-sm font-medium text-charcoal/80 mb-1.5">Any Remark (Optional)</label>
                       <textarea 
-                        id="message"
-                        name="message"
-                        required
+                        id="remark"
+                        name="remark"
                         rows={4}
-                        value={formState.message}
+                        value={formState.remark}
                         onChange={handleChange}
                         className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all resize-none"
-                        placeholder="Write your message here..."
+                        placeholder="Write your remark here..."
                       />
                     </div>
 

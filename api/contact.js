@@ -1,5 +1,6 @@
 import nodemailer from 'nodemailer';
-
+import fs from 'fs/promises';
+import path from 'path';
 export default async function handler(req, res) {
   // Only allow POST
   if (req.method !== 'POST') {
@@ -16,10 +17,10 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { name, email, subject, message } = req.body;
+    const { its, mohalla, department, remark } = req.body;
 
-    if (!name || !email || !message) {
-      return res.status(400).json({ error: 'Name, email, and message are required.' });
+    if (!its || !mohalla || !department) {
+      return res.status(400).json({ error: 'ITS, Mohalla, and Department are required.' });
     }
 
     // Explicitly check for environment variables
@@ -44,10 +45,9 @@ export default async function handler(req, res) {
     });
 
     const mailOptions = {
-      from: `"${name}" <${process.env.EMAIL_USER}>`,
-      replyTo: email,
-      to: process.env.EMAIL_USER,
-      subject: `New Contact Request: ${subject || 'Bhopal Ashara Inquiry'}`,
+      from: `"${its}" <${process.env.EMAIL_USER}>`,
+      to: 'kuldeepmaurya4296@gmail.com',
+      subject: `New Contact Request: ${department}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background: #f9f9f9; border-radius: 10px;">
           <div style="background: linear-gradient(135deg, #0d4a3a, #1a6b52); padding: 20px; border-radius: 10px 10px 0 0; text-align: center;">
@@ -55,13 +55,13 @@ export default async function handler(req, res) {
           </div>
           <div style="background: white; padding: 24px; border-radius: 0 0 10px 10px;">
             <table style="width: 100%; border-collapse: collapse;">
-              <tr><td style="padding: 10px 0; font-weight: bold; color: #0d4a3a; width: 100px;">Name:</td><td style="padding: 10px 0;">${name}</td></tr>
-              <tr><td style="padding: 10px 0; font-weight: bold; color: #0d4a3a;">Email:</td><td style="padding: 10px 0;"><a href="mailto:${email}">${email}</a></td></tr>
-              <tr><td style="padding: 10px 0; font-weight: bold; color: #0d4a3a;">Subject:</td><td style="padding: 10px 0;">${subject || 'N/A'}</td></tr>
+              <tr><td style="padding: 10px 0; font-weight: bold; color: #0d4a3a; width: 150px;">ITS Number:</td><td style="padding: 10px 0;">${its}</td></tr>
+              <tr><td style="padding: 10px 0; font-weight: bold; color: #0d4a3a;">Mohalla Name:</td><td style="padding: 10px 0;">${mohalla}</td></tr>
+              <tr><td style="padding: 10px 0; font-weight: bold; color: #0d4a3a;">Department:</td><td style="padding: 10px 0;">${department}</td></tr>
             </table>
             <hr style="border: none; border-top: 1px solid #eee; margin: 16px 0;" />
-            <p style="font-weight: bold; color: #0d4a3a;">Message:</p>
-            <p style="line-height: 1.6; color: #333;">${message.replace(/\n/g, '<br>')}</p>
+            <p style="font-weight: bold; color: #0d4a3a;">Remark:</p>
+            <p style="line-height: 1.6; color: #333;">${remark ? remark.replace(/\n/g, '<br>') : 'N/A'}</p>
           </div>
           <p style="text-align: center; font-size: 11px; color: #999; margin-top: 16px;">Sent from Bhopal Ashara Relay Centre Contact Form</p>
         </div>
@@ -70,6 +70,33 @@ export default async function handler(req, res) {
 
     const info = await transporter.sendMail(mailOptions);
     console.log('Message sent:', info.messageId);
+
+    // Optional: Write to local JSON file for record-keeping
+    try {
+      // Use os.tmpdir() to work on both local Windows and Vercel serverless
+      const os = await import('os');
+      const filePath = path.join(os.tmpdir(), 'contacts.json');
+      let contacts = [];
+      try {
+        const fileData = await fs.readFile(filePath, 'utf8');
+        if (fileData) contacts = JSON.parse(fileData);
+      } catch (err) {
+        // File might not exist yet, that's fine
+      }
+      
+      contacts.push({
+        its,
+        mohalla,
+        department,
+        remark,
+        timestamp: new Date().toISOString()
+      });
+      
+      await fs.writeFile(filePath, JSON.stringify(contacts, null, 2));
+      console.log('Successfully saved to local JSON file');
+    } catch (fsError) {
+      console.error('Optional file save failed (normal on Vercel):', fsError);
+    }
 
     return res.status(200).json({ success: true, message: 'Message sent successfully!' });
   } catch (error) {
