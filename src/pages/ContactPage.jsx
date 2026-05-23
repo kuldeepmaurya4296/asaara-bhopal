@@ -17,7 +17,7 @@ export default function ContactPage() {
     target: heroRef,
     offset: ["start start", "end start"]
   });
-  
+
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
   useEffect(() => {
@@ -31,16 +31,16 @@ export default function ContactPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formState)
       });
-      
+
       const data = await response.json();
-      
+
       if (response.ok) {
         setSubmitted(true);
         setFormState({ its: '', mohalla: '', department: '', remark: '' });
@@ -78,11 +78,16 @@ export default function ContactPage() {
             <FadeIn direction="up">
               <span className="text-gold text-xs tracking-[0.3em] uppercase font-semibold">Get In Touch</span>
               <h1 className="font-heading text-4xl sm:text-5xl text-cream mt-2 mb-4">
-                Contact Us
+                BHOPAL RELAY KHIDMAT ARAZ
               </h1>
               <p className="text-cream/80 max-w-2xl mx-auto">
-                We are here to assist you with any queries regarding Ashara Mubaraka services, accommodations, and general support.
-              </p>
+                Imam Husain A.S. ke azadaro ki khidmat karne se zyada sawab kisi cheez mein nahi, kyunki is khidmat ke zariye hum direct Khuda Ta’ala, Panjetan Pak, Aimmat Tahereen aur Duat-e-Mutlaqeen ki khushi hasil karte hain.
+
+                Hume ye mubarak mauka mila hai ke hum apne shehar Bhopal mein Imam Husain A.S. ke azadaro aur mumineen ki khidmat kar sakein aur relay system ko aur behtar bana sakein. Is silsile mein hum mukhtalif idaron mein apni khidmat pesh karenge.
+
+                Aapke paas bhi ye khoobsurat mauka hai ke aap apni pasand ke idare ka intekhab karein aur khidmat ki araz pesh karein.
+
+                Moula hum sabko Imam Husain A.S. ki khidmat mein hamesha baaqi rakhein. Ameen.              </p>
             </FadeIn>
           </div>
         </div>
@@ -90,7 +95,7 @@ export default function ContactPage() {
         {/* Contact Content */}
         <div className="max-w-6xl mx-auto px-4 mt-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
-            
+
             {/* Contact Info (Left) */}
             <FadeIn direction="right" delay={0.1}>
               <div className="space-y-10">
@@ -144,9 +149,9 @@ export default function ContactPage() {
               <div className="bg-white rounded-3xl p-8 sm:p-10 shadow-lg border border-emerald-dark/5 relative overflow-hidden">
                 {/* Decorative element */}
                 <div className="absolute -top-10 -right-10 w-32 h-32 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
-                
-                <h3 className="font-heading text-2xl text-emerald-dark mb-6">Send a Message</h3>
-                
+
+                <h3 className="font-heading text-2xl text-emerald-dark mb-6">Khidmat Araz</h3>
+
                 {submitted ? (
                   <div className="bg-emerald-dark/10 border border-emerald-dark/20 rounded-xl p-6 text-center">
                     <div className="w-16 h-16 bg-emerald-dark text-gold rounded-full flex items-center justify-center mx-auto mb-4">
@@ -161,8 +166,8 @@ export default function ContactPage() {
                   <form onSubmit={handleSubmit} className="space-y-5">
                     <div>
                       <label htmlFor="its" className="block text-sm font-medium text-charcoal/80 mb-1.5">ITS Number</label>
-                      <input 
-                        type="text" 
+                      <input
+                        type="text"
                         id="its"
                         name="its"
                         required
@@ -172,10 +177,10 @@ export default function ContactPage() {
                         placeholder="Enter ITS Number"
                       />
                     </div>
-                    
+
                     <div>
                       <label htmlFor="mohalla" className="block text-sm font-medium text-charcoal/80 mb-1.5">Mohalla Name</label>
-                      <select 
+                      <select
                         id="mohalla"
                         name="mohalla"
                         required
@@ -193,7 +198,7 @@ export default function ContactPage() {
 
                     <div>
                       <label htmlFor="department" className="block text-sm font-medium text-charcoal/80 mb-1.5">Khidmat Department</label>
-                      <select 
+                      <select
                         id="department"
                         name="department"
                         required
@@ -210,7 +215,7 @@ export default function ContactPage() {
 
                     <div>
                       <label htmlFor="remark" className="block text-sm font-medium text-charcoal/80 mb-1.5">Any Remark (Optional)</label>
-                      <textarea 
+                      <textarea
                         id="remark"
                         name="remark"
                         rows={4}
@@ -221,7 +226,7 @@ export default function ContactPage() {
                       />
                     </div>
 
-                    <button 
+                    <button
                       type="submit"
                       disabled={isSubmitting}
                       className="w-full bg-emerald-dark text-gold font-medium py-3.5 rounded-xl hover:bg-opacity-90 transition-all flex items-center justify-center gap-2 disabled:opacity-70"
