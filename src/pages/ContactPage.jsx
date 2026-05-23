@@ -96,56 +96,8 @@ export default function ContactPage() {
         <div className="max-w-6xl mx-auto px-4 mt-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
 
-            {/* Contact Info (Left) */}
+            {/* Contact Form (Left) */}
             <FadeIn direction="right" delay={0.1}>
-              <div className="space-y-10">
-                <div>
-                  <h3 className="font-heading text-2xl text-emerald-dark mb-6">Reach Out to Us</h3>
-                  <p className="text-charcoal/80 leading-relaxed mb-8">
-                    Our dedicated team at the Dawoodi Bohra Jamat Bhopal is available to answer your questions and provide support for all community events and services.
-                  </p>
-                </div>
-
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center shrink-0">
-                      <MapPin className="text-gold" size={24} />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-emerald-dark">Location</h4>
-                      <p className="text-charcoal/70 mt-1">Bhopal Jamaat Relay Centre,<br />Alibagh, Bhopal, Madhya Pradesh</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center shrink-0">
-                      <Phone className="text-gold" size={24} />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-emerald-dark">Phone</h4>
-                      <a href="tel:+918982675004" className="text-charcoal/70 mt-1 hover:text-gold transition-colors block">
-                        +91 89826 75004
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center shrink-0">
-                      <Mail className="text-gold" size={24} />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-emerald-dark">Email</h4>
-                      <a href="mailto:info@asharaMubaraka.in" className="text-charcoal/70 mt-1 hover:text-gold transition-colors block">
-                        info@asharaMubaraka.in
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </FadeIn>
-
-            {/* Contact Form (Right) */}
-            <FadeIn direction="left" delay={0.2}>
               <div className="bg-white rounded-3xl p-8 sm:p-10 shadow-lg border border-emerald-dark/5 relative overflow-hidden">
                 {/* Decorative element */}
                 <div className="absolute -top-10 -right-10 w-32 h-32 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
@@ -189,10 +141,12 @@ export default function ContactPage() {
                         className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all"
                       >
                         <option value="" disabled>Select Mohalla</option>
-                        <option value="HAIDERY">HAIDERY</option>
-                        <option value="HUSAINI">HUSAINI</option>
-                        <option value="BURHANI NAGAR">BURHANI NAGAR</option>
-                        <option value="HAKIMI">HAKIMI</option>
+                        <option value="Haidery">Haidery</option>
+                        <option value="Husaini">Husaini</option>
+                        <option value="Najmi">Najmi</option>
+                        <option value="Ezzy">Ezzy</option>
+                        <option value="Burhani">Burhani</option>
+                        <option value="Hakimi">Hakimi</option>
                       </select>
                     </div>
 
@@ -248,11 +202,59 @@ export default function ContactPage() {
               </div>
             </FadeIn>
 
+            {/* Contact Info (Right) */}
+            <FadeIn direction="left" delay={0.2}>
+              <div className="space-y-10">
+                <div>
+                  <h3 className="font-heading text-2xl text-emerald-dark mb-6">Reach Out to Us</h3>
+                  <p className="text-charcoal/80 leading-relaxed mb-8">
+                    Our dedicated team at the Dawoodi Bohra Jamat Bhopal is available to answer your questions and provide support for all community events and services.
+                  </p>
+                </div>
+
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center shrink-0">
+                      <MapPin className="text-gold" size={24} />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-emerald-dark">Location</h4>
+                      <p className="text-charcoal/70 mt-1">Qasr-e-Saifee, Bhopal Talkies Rd,<br />near Bank Of India Bank, near Saifia College Road,<br />Bhopal, Madhya Pradesh 462001</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center shrink-0">
+                      <Phone className="text-gold" size={24} />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-emerald-dark">Phone</h4>
+                      <a href="tel:+916263638053" className="text-charcoal/70 mt-1 hover:text-gold transition-colors block">
+                        +91 62636 38053
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center shrink-0">
+                      <Mail className="text-gold" size={24} />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-emerald-dark">Email</h4>
+                      <a href="mailto:bhopalashararelay@gmail.com" className="text-charcoal/70 mt-1 hover:text-gold transition-colors block">
+                        bhopalashararelay@gmail.com
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+
           </div>
         </div>
       </main>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
